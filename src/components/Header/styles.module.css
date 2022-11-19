@@ -1,0 +1,40 @@
+.header {
+    padding: 5px;
+    background-color: #b3bef0;
+}
+
+.header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainNav {
+    vertical-align: middle;
+    display: inline;
+    background-color: red;
+}
+
+.logo_wrapp {
+    max-width: 50px;
+}
+
+.logo {
+    border-radius: 50%;
+}
+
+.nav_items {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    gap: 20px;
+}
+
+.nav_item {
+    padding: 10px;
+    margin-left: 5px;
+    background-color: rgb(155, 73, 231);
+    color: rgb(41, 29, 29);
+    cursor: pointer;
+    border-radius: 20px;
+}
