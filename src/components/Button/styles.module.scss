@@ -1,0 +1,8 @@
+@use "@material/button/styles" as buttonStyle;
+
+.btn {
+    background-color: aliceblue;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}

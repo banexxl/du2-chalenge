@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '../../utils'
- import styles from  './styles.module.css';
+import styles from './styles.module.scss';
+
 
 interface IProps extends HTMLAttributes<HTMLButtonElement>{
   children: ReactNode,
@@ -9,9 +10,12 @@ interface IProps extends HTMLAttributes<HTMLButtonElement>{
 const Button:React.FC<IProps> = ({ children, className='', ...props}) => {
   const classes = classNames(styles.btn, className)
   return (
-    <button className={classes} {...props}>
-       { children }
-    </button>
+    <button className="mdc-button mdc-button--raised" {...props}>
+  <span className="mdc-button__label"> { children }</span>
+</button>
+    // <button className={classes} {...props}>
+    //    { children }
+    // </button>
   )
 }
 

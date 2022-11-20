@@ -11,7 +11,7 @@ import UserBadge from "components/UserBadge";
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <Container>
+      <Container className="xs">
         <div className={styles.header_content}>
           <div className={styles.logo_wrapp}>
             <img src={logo} alt="logo" className={styles.logo} />
@@ -24,7 +24,7 @@ export const Header = () => {
             </ul>
           </nav>
           <div className="flex">
-            <WishlistBadge />
+            <WishlistBadge/>
             <CartBadge />
             <UserBadge/>
           </div>
