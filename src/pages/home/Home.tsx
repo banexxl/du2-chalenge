@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline';
 import { ProductCard } from "../../components/ProductCard"
+import { ProductList } from 'components/ProductList';
 
 const Home = (props: any) => {
 
@@ -24,9 +25,6 @@ const Home = (props: any) => {
 
           }, [])
 
-          console.log(data);
-
-
           return (
                     <AppLayout>
                               <Headline title='Home' />
@@ -36,11 +34,14 @@ const Home = (props: any) => {
                                                   < div > Loading...</div>
                                         )
                               }
-                              {
-                                        data.map((product: any, index: number) => (
-                                                  <ProductCard key={index} title={product.title} price={product.price} image={product.image}></ProductCard>
-                                        ))
-                              }
+                              <ProductList >
+                                        {
+                                                  data.map((product: any, index: number) => (
+                                                            <ProductCard key={index} title={product.title} price={product.price} image={product.image}></ProductCard>
+                                                  ))
+                                        }
+                              </ProductList>
+
                     </AppLayout >
           )
 }
