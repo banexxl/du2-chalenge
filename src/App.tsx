@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/cart/CartProvider";
 // this is example provider
 import { CounterProvider } from "./context/counter/CounterProvider";
-import { HomePage, ExamplePage, NotFoundPage, CartPage, LoginPage } from "pages";
+import { HomePage, ExamplePage, NotFoundPage, CartPage, LoginPage, Register } from "pages";
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
           <Route path="/example" element={<ExamplePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<Register/>}/>
         </Routes>
       </CartProvider>
     </CounterProvider>

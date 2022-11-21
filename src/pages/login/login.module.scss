@@ -7,6 +7,8 @@
           top: 40%;
           left: 50%;
           transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
           background-color: globalVariables.$color-primary-dark;
           box-shadow: 1rem 1rem 3rem globalVariables.$color-primary-dark;
           opacity: .8;
@@ -85,28 +87,30 @@
           color: white;
 }
 
+.register_button,
 .login_button {
+          position: relative;
+          width: 40%;
+          text-align: center;
           padding: .5em 1em;
-          font-size: 1.5rem;
-          font-weight: lighter;
+          font-size: 1rem;
+          font-weight: 500;
           color: globalVariables.$color-primary-dark;
           background-color: globalVariables.$color-primary-light;
           border: 1px solid black;
           border-radius: .25em;
-          outline: none;
           cursor: pointer;
-          width: 50%;
+}
+
+.register_button:hover,
+.register_button:focus {
+          background-color: whitesmoke;
 }
 
 .login_button:hover,
 .login_button:focus {
-          background-color: whitesmoke;
-}
-
-.forgot_password {
+          background-color: globalVariables.$color-primary-dark;
           color: white;
-          cursor: pointer;
-          position: relative;
 }
 
 .error_message {
