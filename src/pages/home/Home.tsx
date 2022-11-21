@@ -11,6 +11,10 @@ const Home = (props: any) => {
           const [loading, setLoading] = useState(false)
           const [data, setData] = useState([])
 
+          function truncate(str: string, no_words: number) {
+                    return str.split(" ").splice(0, no_words).join(" ");
+          }
+
 
           useEffect(() => {
                     setLoading(true)
@@ -37,7 +41,7 @@ const Home = (props: any) => {
                               <ProductList >
                                         {
                                                   data.map((product: any, index: number) => (
-                                                            <ProductCard key={index} title={product.title} price={product.price} image={product.image}></ProductCard>
+                                                            <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image}></ProductCard>
                                                   ))
                                         }
                               </ProductList>

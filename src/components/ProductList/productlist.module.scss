@@ -1,8 +1,15 @@
 .product_list {
-          display: flex;
-          flex-wrap: wrap;
-         max-width: 80vw;
-         max-height: 60vh;
-         border-style: groove;
-         overflow: auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-gap:10px;   
+          max-width: 80vw;
+          max-height: 60vh;
+          border-style: groove;
+          overflow: auto;  
+}
+
+@media (max-width: 500px){
+  .product_list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

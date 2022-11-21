@@ -1,14 +1,25 @@
-product_title {
-          font-size: 1rem;
-          color: black;
+.card_box{
+          display: flex;
+          flex-direction: column;
+          border-style: groove;
 }
 
-product_price {
+.product_title {
           font-size: 1rem;
+          color: rgb(0, 0, 0);
+}
+
+.product_price {
+          font-size: .8rem;
           color: grey;
 }
 
 .image{
-          max-width: 200px;
+          max-width: 50px;
           max-height: 100px;
 }
+
+.add_to_cart {
+      display: block;
+      width: 50%; 
+    }
