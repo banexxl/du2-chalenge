@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+
 }
 
 code {
@@ -12,11 +15,23 @@ code {
     monospace;
 }
 
+$color-primary: rgb(26, 123, 202);
+$color-primary-light: rgb(53, 164, 255);
+$color-primary-dark: rgb(20, 98, 161);
+
+$color-text: rgb(197, 221, 240);
+
+$color-success-100: #a2f0bc;
+$color-success-500: #12bd4b;
+
+$color-error-100: #f1acc9;
+$color-error-500: #a10c4a;
 
 /* HELPERS */
 .flex {
   display: flex;
 }
-a { 
-  text-decoration: none; 
+
+a {
+  text-decoration: none;
 }

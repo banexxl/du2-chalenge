@@ -1,6 +1,6 @@
 import { CartContext } from "context/cart/CartContext";
 import { FC, useContext } from "react";
-import styles from './styles.module.css';
+import styles from './quantitybutton.module.css';
 
 interface IProps {
   id:number;

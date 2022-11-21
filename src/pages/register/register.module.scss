@@ -1,0 +1,115 @@
+@use "../../global.scss" as globalVariables;
+
+.register_container {
+          position: absolute;
+          height: 50vh;
+          width: 30vw;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: globalVariables.$color-primary-dark;
+          box-shadow: 1rem 1rem 3rem globalVariables.$color-primary-dark;
+          opacity: .8;
+          padding: 30px 10px;
+          border-radius: 20px;
+          border-style: groove;
+}
+
+.register_title {
+          margin: 0;
+          color: white;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: normal;
+}
+
+.form {
+          display: flex;
+          flex-direction: column;
+          margin-top: 40px;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+}
+
+.input_group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 80%;
+}
+
+.input_group label {
+          color: black;
+          font-weight: 600;
+}
+
+.input_group input {
+          font-size: 1.25rem;
+          padding: .5em;
+          background-color: white;
+          border: none;
+          outline: none;
+          border-radius: .25em;
+          color: black;
+          font-weight: lighter;
+}
+
+.input_group.success input {
+          box-shadow: 0 0 0 1px globalVariables.$color-primary-dark;
+}
+
+.input_group.error input {
+          box-shadow: 0 0 0 1px globalVariables.$color-primary-dark;
+}
+
+.input_group input:focus {
+          box-shadow: 0 0 0 1px globalVariables.$color-primary-dark;
+}
+
+.input_group .msg {
+          display: none;
+          font-size: .75rem;
+}
+
+.input_group.success .msg,
+.input_group.error .msg {
+          display: block;
+}
+
+.input_group.error .msg {
+          color: black;
+}
+
+.input_group.success .msg {
+          color: white;
+}
+
+.register_button {
+          padding: .5em 1em;
+          font-size: 1.5rem;
+          font-weight: lighter;
+          color: globalVariables.$color-primary-dark;
+          background-color: globalVariables.$color-primary-light;
+          border: 1px solid black;
+          border-radius: .25em;
+          outline: none;
+          cursor: pointer;
+          width: 50%;
+}
+
+.register_button:hover,
+.register_button:focus {
+          background-color: whitesmoke;
+}
+
+.forgot_password {
+          color: white;
+          cursor: pointer;
+          position: relative;
+}
+
+.error_message {
+          font-weight: bold;
+          color: globalVariables.$color-error-500;
+}

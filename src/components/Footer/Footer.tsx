@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles.module.css';
+import styles from './footer.module.css';
 import logo from '../../assets/images/LogoLevi.png';
 
 const Footer = () => {

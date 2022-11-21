@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppLayout } from "components/Layouts";
 import Headline from "components/Headline";
-import styles from "./styles.module.css";
+import styles from "./cart.module.css";
 import fakedata from "fakedata";
 import { CartContext } from "context/cart/CartContext";
 import CartItem from "./components/CartItem";

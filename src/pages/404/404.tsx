@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppLayout } from 'components/Layouts';
-import styles from './styles.module.css';
+import styles from './404.module.css';
 
 const NotFound = () => {
   return (

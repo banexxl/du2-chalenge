@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import styles from './styles.module.css';
+import styles from './whishlistbadge.module.css';
 
 const WishlistBadge = () => {
   return (

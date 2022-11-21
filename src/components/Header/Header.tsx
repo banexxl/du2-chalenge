@@ -1,7 +1,7 @@
-import { memo } from "react";
+import { memo,useState } from "react";
 import CartBadge from "components/CartBadge";
 import WishlistBadge from "components/WishlistBadge";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
@@ -9,6 +9,12 @@ import Button from "../Button/Button"
 import UserBadge from "components/UserBadge";
 
 export const Header = () => {
+
+  const [token, setToken] = useState(localStorage.getItem("userToken") ?? null)
+  
+  console.log("token u hederu je: " + token);
+  
+
   return (
     <header className={styles.header}>
       <Container className="xs">
@@ -18,15 +24,18 @@ export const Header = () => {
           </div>
           <nav>
             <ul className={styles.nav_items}>
-              <Link to={"/"}>
-                <Button className={styles.nav_item}>Home</Button>
+              <Link to={"/"} className={styles.nav_item}>
+                Home
               </Link>
             </ul>
           </nav>
           <div className="flex">
             <WishlistBadge/>
             <CartBadge />
-            <UserBadge/>
+            {
+              token ? null : <UserBadge/>
+            }
+            
           </div>
         </div>
       </Container>

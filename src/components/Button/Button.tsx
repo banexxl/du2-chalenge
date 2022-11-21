@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '../../utils'
-import styles from './styles.module.scss';
+import styles from './button.module.scss';
 
 
 interface IProps extends HTMLAttributes<HTMLButtonElement>{

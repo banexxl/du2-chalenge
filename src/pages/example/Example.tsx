@@ -4,7 +4,7 @@ import Headline from "components/Headline";
 import { CounterContext } from "context/counter/CounterContext";
 import { Link } from "react-router-dom";
 import Button from "components/Button";
-import styles from "./styles.module.css";
+import styles from "./example.module.css";
 
 const ExamplePage = () => {
   const { counterState, addition, subtraction } = useContext(CounterContext);

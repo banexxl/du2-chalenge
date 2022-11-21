@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode} from 'react';
-import styles from './styles.module.css'
+import styles from './container.module.css'
 import { classNames } from 'utils';
 interface IProps {
     className?:string,

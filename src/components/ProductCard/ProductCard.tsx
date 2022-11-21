@@ -1,5 +1,5 @@
 import React from 'react'
-import productCardStyle from "./styles.module.scss"
+import productCardStyle from "./productcard.module.scss"
 import Container from 'components/Container'
 
 function ProductCard() {
