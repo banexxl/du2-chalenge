@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Headline from 'components/Headline';
 import productContainerStyles from "./product-container.module.scss"
 import { AppLayout } from 'components/Layouts'
-import { ProductCard } from "../../components/ProductCard"
-import { ProductList } from 'components/ProductList';
-import { ProductFilterPrice } from "components/ProductFilterPrice"
-import { ProductFilterCategory } from "components/ProductFilterCategory"
-import { ProductListSort } from "components/ProductListSort"
-import { ProductListSearch } from "components/ProductListSearch"
+import { ProductCard } from "./components/ProductCard"
+import { ProductList } from './components/ProductList';
+import { ProductFilterPrice } from "./components/ProductFilterPrice"
+import { ProductFilterCategory } from "./components/ProductFilterCategory"
+import { ProductListSort } from "./components/ProductListSort"
+import { ProductListSearch } from "./components/ProductListSearch"
 
 const Home = (props: any) => {
 

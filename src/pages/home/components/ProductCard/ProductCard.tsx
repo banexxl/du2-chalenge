@@ -1,4 +1,4 @@
-import { Rating } from 'components/Rating'
+import { Rating } from '../Rating'
 import React from 'react'
 import productCardStyle from "./productcard.module.scss"
 
