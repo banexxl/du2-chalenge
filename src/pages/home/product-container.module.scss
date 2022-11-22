@@ -4,10 +4,19 @@
 }
 
 .filter_price{
-       height: 150px;
-          
+       
+          gap: 40px;
+          height: 200px;
+          width: 200px;
 }
+          
+
 
 .product_list{
+          
         
+}
+
+.filter_container{
+          display: flex;
 }

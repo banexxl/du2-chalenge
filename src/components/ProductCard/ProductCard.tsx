@@ -1,3 +1,4 @@
+import { Rating } from 'components/Rating'
 import React from 'react'
 import productCardStyle from "./productcard.module.scss"
 
@@ -13,6 +14,9 @@ function ProductCard(product: any) {
                               </div>
                               <div className={productCardStyle.product_price}>
                                         {product.price}
+                              </div>
+                              <div>
+                                        <Rating></Rating>
                               </div>
                               <button className={productCardStyle.add_to_cart}>
                                         Add to cart

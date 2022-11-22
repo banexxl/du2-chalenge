@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import filterStyles from "./productfilterprice.module.scss"
 
 function valuetext(value: number) {
           return `${value}°C`;
@@ -16,7 +15,7 @@ export default function ProductFilterPrice() {
           };
 
           return (
-                    <Box sx={{ width: 300 }} className={filterStyles.box}>
+                    <Box sx={{ width: 150 }} >
                               <h2>
                                         Filter by price:
                               </h2>
@@ -24,11 +23,13 @@ export default function ProductFilterPrice() {
                                         getAriaLabel={() => 'Temperature range'}
                                         value={value}
                                         onChange={handleChange}
-
+                                        size='small'
                                         getAriaValueText={valuetext}
                                         valueLabelDisplay="on"
+                                        max={1000}
+                                        step={10}
                               />
 
-                    </Box>
+                    </Box >
           );
 }
