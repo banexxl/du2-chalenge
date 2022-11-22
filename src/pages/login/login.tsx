@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { AppLayout } from 'components/Layouts'
 import loginStyles from "./login.module.scss"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
+import { useAuth } from '../../context/auth/authcontext'
 
 function Login() {
 
-          const [token, setToken] = useState("")
-          const [userName, setUserName] = useState("")
+          const [email, setEmail] = useState("")
           const [password, setPassword] = useState("")
+          const [error, setError] = useState("")
+          const navigate = useNavigate()
 
-          const onSubmitHandler = () => {
-                    fetch('https://fakestoreapi.com/auth/login', {
-                              method: 'POST',
-                              body: JSON.stringify({
-                                        username: userName,
-                                        password: password
-                              })
+          const { loginUser } = useAuth()
+
+
+
+          async function onSubmitHandler(e: any) {
+
+                    e.preventDefault()
+
+                    await loginUser(email, password).then(() => {
+                              navigate("/Home")
+                    }).catch((err: any) => {
+                              if (err.message === "Firebase: Error (auth/wrong-password)." || err.message === "Firebase: Error (auth/user-not-found).") {
+                                        setError("Wrong email or password. Please try again.")
+                              }
                     })
-                              .then(res => {
-                                        res.json()
-                              })
-                              .then(json => console.log(json))
-                              .catch((error) => {
-                                        console.log(error.message)
-                              })
           }
 
 
@@ -36,7 +38,7 @@ function Login() {
                                         <form className={loginStyles.form} onSubmit={onSubmitHandler}>
                                                   <div className={loginStyles.input_group}>
                                                             <label htmlFor="username">User name</label>
-                                                            <input type="username" name="username" id="username" onChange={(e) => setUserName(e.target.value)} />
+                                                            <input type="username" name="username" id="username" onChange={(e) => setEmail(e.target.value)} />
                                                   </div>
 
                                                   <div className={loginStyles.input_group}>

@@ -15,12 +15,7 @@ export default function ProductListSearch() {
                               <div>
 
                                         <TextField id="outlined-search" label="Search field" type="search" />
-                                        <TextField
-                                                  id="outlined-helperText"
-                                                  label="Helper text"
-                                                  defaultValue="Default Value"
-                                                  helperText="Some important text"
-                                        />
+
                               </div>
 
                     </Box>
