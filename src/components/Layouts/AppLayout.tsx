@@ -4,19 +4,19 @@ import Footer from "components/Footer";
 import styles from "./applayout.module.css";
 import Container from "components/Container";
 interface IProps {
-  children?: ReactNode;
+          children?: ReactNode;
 }
 
 const AppLayout: React.FC<IProps> = ({ children }) => {
-  return (
-    <>
-      <Header />
-      <main className={styles.app_layout_main}>
-        <Container>{children}</Container>
-      </main>
-      <Footer />
-    </>
-  );
+          return (
+                    <>
+                              <Header />
+                              <main className={styles.app_layout_main}>
+                                        <Container >{children}</Container>
+                              </main>
+                              <Footer />
+                    </>
+          );
 };
 
 export default AppLayout;

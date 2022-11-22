@@ -4,6 +4,7 @@ import Headline from 'components/Headline';
 import { ProductCard } from "../../components/ProductCard"
 import { ProductList } from 'components/ProductList';
 import { ProductFilterPrice } from "components/ProductFilterPrice"
+import productContainerStyles from "./product-container.module.scss"
 
 const Home = (props: any) => {
 
@@ -35,22 +36,33 @@ const Home = (props: any) => {
 
           return (
                     <AppLayout>
-                              <Headline title='Home' />
-                              {
-                                        loading && (
+                              <div className={productContainerStyles.container}>
+                                        <div className={productContainerStyles.headline}>
 
-                                                  < div > Loading...</div>
-                                        )
-                              }
-                              <ProductFilterPrice></ProductFilterPrice>
-                              <ProductList >
-                                        {
-                                                  data.map((product: any, index: number) => (
-                                                            <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image}></ProductCard>
-                                                  ))
-                                        }
-                              </ProductList>
+                                                  <Headline title='Home' />
+                                                  {
+                                                            loading && (
 
+                                                                      < div > Loading...</div>
+                                                            )
+                                                  }
+                                        </div>
+
+                                        <div className={productContainerStyles.filter_price}>
+
+                                                  <ProductFilterPrice></ProductFilterPrice>
+                                        </div>
+                                        <div className={productContainerStyles.product_list}>
+
+                                                  <ProductList >
+                                                            {
+                                                                      data.map((product: any, index: number) => (
+                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image}></ProductCard>
+                                                                      ))
+                                                            }
+                                                  </ProductList>
+                                        </div>
+                              </div>
                     </AppLayout >
           )
 }
