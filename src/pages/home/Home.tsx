@@ -3,6 +3,7 @@ import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline';
 import { ProductCard } from "../../components/ProductCard"
 import { ProductList } from 'components/ProductList';
+import { ProductFilterPrice } from "components/ProductFilterPrice"
 
 const Home = (props: any) => {
 
@@ -11,8 +12,8 @@ const Home = (props: any) => {
           const [loading, setLoading] = useState(false)
           const [data, setData] = useState([])
 
-          function truncate(str: string, no_words: number) {
-                    return str.split(" ").splice(0, no_words).join(" ");
+          function truncate(str: string, word_count: number) {
+                    return str.split(" ").splice(0, word_count).join(" ");
           }
 
 
@@ -29,6 +30,9 @@ const Home = (props: any) => {
 
           }, [])
 
+          console.log(data);
+
+
           return (
                     <AppLayout>
                               <Headline title='Home' />
@@ -38,6 +42,7 @@ const Home = (props: any) => {
                                                   < div > Loading...</div>
                                         )
                               }
+                              <ProductFilterPrice></ProductFilterPrice>
                               <ProductList >
                                         {
                                                   data.map((product: any, index: number) => (
