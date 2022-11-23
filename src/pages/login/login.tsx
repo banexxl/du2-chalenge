@@ -31,11 +31,14 @@ function Login() {
 
           const onSubmitHandler = async (e: any) => {
                     e.preventDefault();
-                    const token = await loginUser();
-                    setToken(token);
+                    const token = await loginUser()
+                    token != null || token !== undefined ? setToken(token) : setToken("")
+                    navigate("/")
+
+                    console.log("Token: " + token.token);
           }
 
-          console.log(token);
+
 
 
           return (
