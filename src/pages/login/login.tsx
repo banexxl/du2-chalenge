@@ -2,29 +2,40 @@ import React, { useState, useEffect } from 'react'
 import { AppLayout } from 'components/Layouts'
 import loginStyles from "./login.module.scss"
 import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from '../../context/auth/authcontext'
+
+
 
 function Login() {
 
-          const [email, setEmail] = useState("")
+          const [userName, setUsername] = useState("")
           const [password, setPassword] = useState("")
           const [error, setError] = useState("")
+          const [token, setToken] = useState("")
           const navigate = useNavigate()
 
-          const { loginUser } = useAuth()
-
-          async function onSubmitHandler(e: any) {
-
-                    e.preventDefault()
-
-                    await loginUser(email, password).then(() => {
-                              navigate("/")
-                    }).catch((err: any) => {
-                              if (err.message === "Firebase: Error (auth/wrong-password)." || err.message === "Firebase: Error (auth/user-not-found).") {
-                                        setError("Wrong email or password. Please try again.")
-                              }
+          async function loginUser() {
+                    return fetch('https://fakestoreapi.com/auth/login', {
+                              method: 'POST',
+                              headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': '*'
+                              },
+                              body: JSON.stringify({
+                                        username: userName,
+                                        password: password
+                              })
                     })
+                              .then(data => data.json())
           }
+
+          const onSubmitHandler = async (e: any) => {
+                    e.preventDefault();
+                    const token = await loginUser();
+                    setToken(token);
+          }
+
+          console.log(token);
 
 
           return (
@@ -35,12 +46,12 @@ function Login() {
                                         <form className={loginStyles.form} onSubmit={onSubmitHandler}>
                                                   <div className={loginStyles.input_group}>
                                                             <label htmlFor="username">User name</label>
-                                                            <input type="username" name="username" id="username" onChange={(e) => setEmail(e.target.value)} />
+                                                            <input type="username" name="username" id="username" onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
                                                   </div>
 
                                                   <div className={loginStyles.input_group}>
                                                             <label htmlFor="password">Password</label>
-                                                            <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
+                                                            <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                                                   </div>
 
                                                   <button type="submit" className={loginStyles.login_button}>Login</button>
