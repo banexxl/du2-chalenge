@@ -36,10 +36,9 @@ function Login() {
                     navigate("/")
 
                     console.log("Token: " + token.token);
+
+                    window.localStorage.setItem("access_token", token.token)
           }
-
-
-
 
           return (
                     <AppLayout>

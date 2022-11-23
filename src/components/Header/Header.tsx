@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import CartBadge from "components/CartBadge";
 import WishlistBadge from "components/WishlistBadge";
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
 
@@ -11,6 +11,16 @@ import LoginBadge from "components/LoginBadge";
 import LogoutBadge from "components/LogoutBadge";
 
 export const Header = () => {
+
+          const token = window.localStorage.getItem("access_token")
+
+          const navigate = useNavigate()
+
+          function logout() {
+                    window.localStorage.removeItem('access_token')
+                    navigate("/")
+          }
+
 
           return (
                     <header className={styles.header}>
@@ -29,10 +39,17 @@ export const Header = () => {
                                                   <div className={styles.flex}>
                                                             <WishlistBadge />
                                                             <CartBadge />
+                                                            {
+                                                                      token != null || token !== "undefined" ?
+                                                                                <LoginBadge /> :
+                                                                                <div onClick={logout}>
 
-                                                            <LoginBadge />
+                                                                                          <LogoutBadge />
+
+                                                                                </div>
 
 
+                                                            }
                                                   </div>
                                         </div>
                               </Container>
