@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { AppLayout } from 'components/Layouts'
 import loginStyles from "./login.module.scss"
 import { Link, useNavigate } from "react-router-dom"
-
 import { useAuth } from '../../context/auth/authcontext'
 
 function Login() {
@@ -14,14 +13,12 @@ function Login() {
 
           const { loginUser } = useAuth()
 
-
-
           async function onSubmitHandler(e: any) {
 
                     e.preventDefault()
 
                     await loginUser(email, password).then(() => {
-                              navigate("/Home")
+                              navigate("/")
                     }).catch((err: any) => {
                               if (err.message === "Firebase: Error (auth/wrong-password)." || err.message === "Firebase: Error (auth/user-not-found).") {
                                         setError("Wrong email or password. Please try again.")
@@ -49,7 +46,7 @@ function Login() {
                                                   <button type="submit" className={loginStyles.login_button}>Login</button>
 
                                                   <div className={loginStyles.error_message}>
-
+                                                            {error}
                                                   </div>
                                                   <Link to="/register" className={loginStyles.register_button}>
                                                             Need to register?
@@ -59,6 +56,7 @@ function Login() {
 
                               </div >
                     </AppLayout>
+
           )
 }
 
