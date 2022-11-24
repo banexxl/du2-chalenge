@@ -1,18 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import itemDetailsStyles from "./itemdetails.module.scss"
 import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 
 
 function ItemDetails() {
+
+          const [loading, setLoading] = useState(false)
+          const [data, setData] = useState([])
+
+
+
+          useEffect(() => {
+                    setLoading(true)
+                    fetch('https://fakestoreapi.com/products/1')
+                              .then(res => res.json())
+                              .then(json => setData(json))
+                              .catch((error) => {
+                                        console.log(error.message);
+                              }).finally(() => {
+                                        setLoading(false)
+                              })
+
+          }, [])
+
+          console.log(data);
+
+
           return (
                     <AppLayout>
                               <Headline title="Item Details" />
                               <div className={itemDetailsStyles.item_details_container}>
                                         <div className={itemDetailsStyles.item_details_image}>
-                                                  <div>
-                                                            sfdf
-                                                  </div>
                                                   <img></img>
                                         </div>
 

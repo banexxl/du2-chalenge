@@ -8,6 +8,7 @@ import { ProductFilterPrice } from "./components/ProductFilterPrice"
 import { ProductFilterCategory } from "./components/ProductFilterCategory"
 import { ProductListSort } from "./components/ProductListSort"
 import { ProductListSearch } from "./components/ProductListSearch"
+import { Link } from 'react-router-dom';
 
 const Home = (props: any) => {
 
@@ -72,7 +73,9 @@ const Home = (props: any) => {
                                                   <ProductList >
                                                             {
                                                                       data.map((product: any, index: number) => (
-                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image}></ProductCard>
+                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id}>
+
+                                                                                </ProductCard>
                                                                       ))
                                                             }
                                                   </ProductList>
