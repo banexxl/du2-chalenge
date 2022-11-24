@@ -1,15 +1,20 @@
 .item_details{
 
           &_container{
-
+                    display: flex;  
+                    min-height: 60vh;                 
           }
 
           &_image{
-                    
+                    min-width: 40%;
+                    min-height: 60%;
+                    background-color: blue;
           }
 
           &_description_container{
-
+                    min-width: 60%;
+                    min-height: 60%;
+                    background-color: green;
           }
 
           

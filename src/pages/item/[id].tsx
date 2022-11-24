@@ -3,16 +3,20 @@ import itemDetailsStyles from "./itemdetails.module.scss"
 import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 
+
 function ItemDetails() {
           return (
                     <AppLayout>
                               <Headline title="Item Details" />
-                              <div className={itemDetailsStyles.items_details_container}>
-                                        <div>
+                              <div className={itemDetailsStyles.item_details_container}>
+                                        <div className={itemDetailsStyles.item_details_image}>
+                                                  <div>
+                                                            sfdf
+                                                  </div>
                                                   <img></img>
                                         </div>
 
-                                        <div className={itemDetailsStyles.items_details_description_container}>
+                                        <div className={itemDetailsStyles.item_details_description_container}>
                                                   <div>
                                                             Title
                                                   </div>
