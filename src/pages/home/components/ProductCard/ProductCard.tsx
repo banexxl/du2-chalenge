@@ -24,7 +24,11 @@ function ProductCard(product: any) {
                     return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
           }
 
-          const rateObj = product.rating
+          function onClickHandler() {
+
+          }
+
+
 
 
           return (
@@ -42,17 +46,17 @@ function ProductCard(product: any) {
                               <div>
                                         <Rating
                                                   name="hover-feedback"
-                                                  value={rateObj}
+                                                  value={product.rating}
                                                   precision={0.5}
                                                   readOnly
                                                   getLabelText={getLabelText}
                                                   emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                         />
-                                        {rateObj !== null && (
-                                                  <Box sx={{ ml: 2 }}>{labels[rateObj]}</Box>
+                                        {product.rating !== null && (
+                                                  <Box sx={{ ml: 2 }}>{labels[product.rating]}</Box>
                                         )}
                               </div>
-                              <button className={productCardStyle.add_to_cart}>
+                              <button className={productCardStyle.add_to_cart} onClick={onClickHandler}>
                                         Add to cart
                               </button>
                     </div>
