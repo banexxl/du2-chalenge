@@ -10,7 +10,7 @@ import { ProductListSort } from "./components/ProductListSort"
 import { ProductListSearch } from "./components/ProductListSearch"
 import { Link } from 'react-router-dom';
 
-const Home = (props: any) => {
+const Home = () => {
 
 
 
@@ -73,8 +73,10 @@ const Home = (props: any) => {
                                                   <ProductList >
                                                             {
                                                                       data.map((product: any, index: number) => (
-                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id}>
 
+
+                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                                          <Link to={product.id}></Link>
                                                                                 </ProductCard>
                                                                       ))
                                                             }

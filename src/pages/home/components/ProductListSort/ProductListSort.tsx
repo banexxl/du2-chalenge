@@ -5,10 +5,12 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 export default function ProductListSort() {
-          const [age, setAge] = React.useState('');
+
+
+          const [value, setValue] = React.useState('');
 
           const handleChange = (event: SelectChangeEvent) => {
-                    setAge(event.target.value);
+                    setValue(event.target.value);
           };
 
           return (
@@ -18,10 +20,10 @@ export default function ProductListSort() {
                                         <Select
                                                   labelId="demo-simple-select-autowidth-label"
                                                   id="demo-simple-select-autowidth"
-                                                  value={age}
+                                                  value={value}
                                                   onChange={handleChange}
                                                   autoWidth
-                                                  label="Age"
+                                                  label="Sort"
                                         >
                                                   <MenuItem value="">
                                                             <em>None</em>

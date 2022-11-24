@@ -2,19 +2,41 @@
 
           &_container{
                     display: flex;  
-                    min-height: 60vh;                 
+                    min-height: 60vh;  
+                    gap: 40px;               
           }
 
           &_image{
-                    min-width: 40%;
-                    min-height: 60%;
-                    background-color: blue;
+                    width: 40%;
+                    object-fit: cover ;
           }
 
           &_description_container{
-                    min-width: 60%;
-                    min-height: 60%;
-                    background-color: green;
+                    width: 60%;
+                    height: 60%;
+                    text-align: center;
+                    padding-top: 5%;
+
+                    &_title{
+                              font-size: xx-large;
+                              font-weight: 500;
+                    }
+
+                    &_rate{
+                              font-weight: 500;
+                    }
+
+                    &_price{
+                              font-weight: 500;
+                    }
+
+                    &_description{
+                              font-weight: 500;
+                    }
+
+                    &_category{
+                              font-weight: 500;
+                    }
           }
 
           

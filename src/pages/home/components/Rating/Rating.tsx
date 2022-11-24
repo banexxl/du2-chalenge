@@ -21,7 +21,9 @@ function getLabelText(value: number) {
 }
 
 export default function HoverRating() {
+
           const [value, setValue] = React.useState<number | null>(2);
+
           const [hover, setHover] = React.useState(-1);
 
           return (
@@ -36,17 +38,16 @@ export default function HoverRating() {
                                         name="hover-feedback"
                                         value={value}
                                         precision={0.5}
+                                        readOnly
                                         getLabelText={getLabelText}
                                         onChange={(event, newValue) => {
                                                   setValue(newValue);
                                         }}
-                                        onChangeActive={(event, newHover) => {
-                                                  setHover(newHover);
-                                        }}
+
                                         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                               />
                               {value !== null && (
-                                        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+                                        <Box sx={{ ml: 2 }}>{labels[value]}</Box>
                               )}
                     </Box>
           );
