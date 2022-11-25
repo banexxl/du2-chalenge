@@ -2,6 +2,8 @@ import productCardStyle from "./productcard.module.scss"
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
+import { cartCounterActions } from "../../../../store/index"
+import { useDispatch } from "react-redux"
 
 
 function ProductCard(product: any) {
@@ -24,12 +26,11 @@ function ProductCard(product: any) {
                     return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
           }
 
+          const dispatch = useDispatch()
+
           function onClickHandler() {
-
+                    dispatch(cartCounterActions.increment)
           }
-
-
-
 
           return (
                     <div className={productCardStyle.card_box}>

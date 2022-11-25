@@ -1,10 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { HomePage, NotFoundPage, CartPage, LoginPage, Register, ItemDetails } from "pages";
 
+
 function App() {
           return (
-
-
                     <Routes>
                               <Route path="/" element={<HomePage />} />
                               <Route path="/cart" element={<CartPage />} />
@@ -13,8 +12,6 @@ function App() {
                               <Route path="/register" element={<Register />} />
                               <Route path="/item/:itemId" element={<ItemDetails />} />
                     </Routes>
-
-
           );
 }
 
