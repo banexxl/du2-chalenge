@@ -12,7 +12,7 @@ const CartBadge = () => {
           const dispatch = useDispatch()
 
           function onClickHandler() {
-                    dispatch(cartCounterActions.increment)
+                    dispatch(cartCounterActions.increment())
           }
 
           return (
