@@ -5,9 +5,7 @@ import styles from "./styles.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
-
 import LoginBadge from "components/LoginBadge";
-
 import LogoutBadge from "components/LogoutBadge";
 
 export const Header = () => {

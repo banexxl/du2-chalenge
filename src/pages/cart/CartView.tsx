@@ -21,10 +21,9 @@ const CartView = () => {
                               <div className={styles.cartPage}>
                                         <div className={styles.cartItems}>
                                                   {
-                                                            cart?.map((cartItem: any) => {
+                                                            cart.map((cartItem: any, index: number) => {
                                                                       return (
-
-                                                                                <CartItem key={cartItem.id} id={cartItem.id} image={cartItem.image} price={cartItem.price} quantity={cartItem.quantity} title={cartItem.title} removeHandler={() => dispatch(decrement(cartItem.id))} />
+                                                                                <CartItem key={index} id={cartItem.id} image={cartItem.image} price={cartItem.price} quantity={cartItem.quantity} title={cartItem.title} removeHandler={() => dispatch(decrement(cartItem.id))} />
                                                                       )
 
                                                             })

@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import styles from "./cartbadge.module.css";
 import SvgIcon from "components/SvgIcon";
 import { useSelector } from "react-redux";
+import { cartTotalSelector } from "../../store/selectors";
 
 const CartBadge = () => {
 
-          const cartCounter = useSelector((state: any) => state.cart.cartCounter)
+          const cartCounter: any = useSelector(cartTotalSelector)
           console.log(cartCounter);
 
 
