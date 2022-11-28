@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import itemDetailsStyles from "./itemdetails.module.scss"
 import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
+import Button from 'components/Button'
+import WishlistBadge from 'components/WishlistBadge'
+
+import { increment } from "../../store/cartSlice"
+import { useDispatch } from "react-redux"
 
 
 function ItemDetails() {
 
-          const [loading, setLoading] = useState(false)
+          const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
 
           const url = window.location.href
@@ -21,12 +26,18 @@ function ItemDetails() {
                               .then(res => res.json())
                               .then(json => setData(json))
                               .catch((error) => {
-                                        console.log(error.message);
+                                        console.log("Error message: " + error.message);
                               }).finally(() => {
                                         setLoading(false)
                               })
 
-          }, [])
+          }, [itemId])
+
+          console.log(data);
+
+
+
+          const dispatch = useDispatch()
 
 
           return (
@@ -51,7 +62,13 @@ function ItemDetails() {
                                                             {data.description}
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_cart}>
-                                                            Add To car and to wish list
+                                                            {
+                                                                      loading === true ? <p>Loading...</p> :
+                                                                                <Button onClick={() => {
+                                                                                          dispatch(increment(data.id))
+                                                                                }}>Add to cart</Button>
+                                                            }
+                                                            <WishlistBadge />
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
                                                             Category: {data.category}

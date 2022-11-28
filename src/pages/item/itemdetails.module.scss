@@ -18,16 +18,21 @@
                     padding-top: 5%;
 
                     &_title{
-                              font-size: xx-large;
+                              
+                              font-size: 3rem;
                               font-weight: 500;
                     }
 
                     &_rate{
                               font-weight: 500;
+                              font-size: x-large;
                     }
 
                     &_price{
+                              color: steelblue;
+                              font-size: xx-large;
                               font-weight: 500;
+                              font-family: Arial, Helvetica, sans-serif;
                     }
 
                     &_description{
@@ -42,3 +47,8 @@
           
 }
 
+.item_details_description_container_cart{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+}

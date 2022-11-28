@@ -2,8 +2,9 @@ import productCardStyle from "./productcard.module.scss"
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
-import { cartCounterActions } from "../../../../store/index"
+import { increment } from "../../../../store/cartSlice"
 import { useDispatch } from "react-redux"
+import Button from "components/Button";
 
 
 function ProductCard(product: any) {
@@ -27,10 +28,6 @@ function ProductCard(product: any) {
           }
 
           const dispatch = useDispatch()
-
-          function onClickHandler() {
-                    dispatch(cartCounterActions.increment)
-          }
 
           return (
                     <div className={productCardStyle.card_box}>
@@ -57,9 +54,9 @@ function ProductCard(product: any) {
                                                   <Box sx={{ ml: 2 }}>{labels[product.rating]}</Box>
                                         )}
                               </div>
-                              <button className={productCardStyle.add_to_cart} onClick={onClickHandler}>
+                              <Button className={productCardStyle.add_to_cart} onClick={() => dispatch(increment(product.id))}>
                                         Add to cart
-                              </button>
+                              </Button>
                     </div>
           )
 }

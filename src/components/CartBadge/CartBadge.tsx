@@ -2,18 +2,14 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./cartbadge.module.css";
 import SvgIcon from "components/SvgIcon";
-import { cartCounterActions, RootState } from "../../store/index"
-import { useSelector, useDispatch, TypedUseSelectorHook } from "react-redux";
+import { useSelector } from "react-redux";
 
 const CartBadge = () => {
 
-          const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
-          const cartCounter = useAppSelector(state => state.cartReducer.cartCounter)
-          const dispatch = useDispatch()
+          const cartCounter = useSelector((state: any) => state.cart.cartCounter)
+          console.log(cartCounter);
 
-          function onClickHandler() {
-                    dispatch(cartCounterActions.increment())
-          }
+
 
           return (
                     <div>
@@ -26,9 +22,6 @@ const CartBadge = () => {
                                         </span>
 
                               </Link>
-                              <button onClick={onClickHandler}>
-                                        Add to cart
-                              </button>
                     </div>
           );
 };

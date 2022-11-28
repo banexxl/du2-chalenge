@@ -9,10 +9,10 @@
 .cart_icon {
     height: 25px;
     width:25px;
-    color: #fff;
+    color: rgb(0, 38, 255);
 }
 
 .cart_items_number {
    font-size: 12px;
-   color:#fff;
+   color:rgb(0, 26, 255);
 }
