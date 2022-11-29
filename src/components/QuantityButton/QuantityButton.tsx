@@ -10,13 +10,13 @@ interface IProps {
           cb?: (operation: 'plus' | 'minus') => void;
 }
 
-const QuantityButton: FC<IProps> = ({ id, quantity = 1, cb }) => {
+const QuantityButton: FC<IProps> = ({ id, quantity, cb }) => {
 
           const dispatch = useDispatch()
 
           return (
                     <div className={styles.quantity}>
-                              <span className={`${styles.quantity_button} ${styles.quantity_button_minus}`} onClick={() => dispatch(decrement())}>-</span>
+                              <span className={`${styles.quantity_button} ${styles.quantity_button_minus}`} onClick={() => dispatch(decrement(id))}>-</span>
                               <input
                                         readOnly
                                         type="text"
@@ -30,7 +30,7 @@ const QuantityButton: FC<IProps> = ({ id, quantity = 1, cb }) => {
                                         size={2}
                                         inputMode="numeric"
                               />
-                              <span className={styles.quantity_button} onClick={dispatch(decrement)}>+</span>
+                              <span className={styles.quantity_button} onClick={() => dispatch(increment(id))}>+</span>
                     </div>
           );
 };

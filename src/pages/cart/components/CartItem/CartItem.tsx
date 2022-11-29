@@ -32,7 +32,7 @@ const CartItem = ({
                               </div>
                               <QuantityButton quantity={quantity} id={id} />
                               <div>sum: ${(price * quantity).toFixed(2)}</div>
-                              <span onClick={() => removeSingleHandler(id)}>
+                              <span onClick={() => removeAllHandler}>
                                         <SvgIcon type="remove" width={20} height={20} color="#928F8F" />
                               </span>
                     </div>

@@ -20,7 +20,7 @@ const CartView = () => {
           return (
                     <AppLayout>
                               <Headline title="Cart" />
-                              <Button onClick={dispatch(clear)}>Clear Cart</Button>
+                              <Button onClick={() => dispatch(clear())}>Clear Cart</Button>
                               <div className={styles.cartPage}>
 
                                         <div className={styles.cartItems}>
@@ -30,7 +30,9 @@ const CartView = () => {
                                                                                 <CartItem key={index} id={cartItem.id}
                                                                                           image={cartItem.image} price={cartItem.price}
                                                                                           quantity={cartItem.quantity} title={cartItem.title}
-                                                                                          addSingleHandler={() => { dispatch(increment(cartItem.id)) }} removeSingleHandler={() => dispatch(clear())} />
+                                                                                          addSingleHandler={() => { dispatch(increment(cartItem.id)) }} removeSingleHandler={() => { }}
+                                                                                          removeAllHandler={() => dispatch(clear())}
+                                                                                />
                                                                       )
 
                                                             })
