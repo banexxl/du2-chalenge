@@ -1,6 +1,8 @@
 
-import { FC, useContext } from "react";
+import { FC } from "react";
 import styles from './quantitybutton.module.css';
+import { increment, decrement } from "../../store/cartSlice"
+import { useDispatch } from "react-redux"
 
 interface IProps {
           id: number;
@@ -10,12 +12,11 @@ interface IProps {
 
 const QuantityButton: FC<IProps> = ({ id, quantity = 1, cb }) => {
 
+          const dispatch = useDispatch()
+
           return (
                     <div className={styles.quantity}>
-                              <span
-
-                                        className={`${styles.quantity_button} ${styles.quantity_button_minus}`}>
-                                        -</span>
+                              <span className={`${styles.quantity_button} ${styles.quantity_button_minus}`} onClick={() => dispatch(decrement())}>-</span>
                               <input
                                         readOnly
                                         type="text"
@@ -29,7 +30,7 @@ const QuantityButton: FC<IProps> = ({ id, quantity = 1, cb }) => {
                                         size={2}
                                         inputMode="numeric"
                               />
-                              <span className={styles.quantity_button}>+</span>
+                              <span className={styles.quantity_button} onClick={dispatch(decrement)}>+</span>
                     </div>
           );
 };

@@ -8,7 +8,7 @@ import { cartTotalSelector } from "../../store/selectors";
 const CartBadge = () => {
 
           const cartCounter: any = useSelector(cartTotalSelector)
-          console.log(cartCounter);
+          console.log("cartBadge: " + cartCounter);
 
 
 

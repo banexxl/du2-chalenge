@@ -31,7 +31,7 @@ function ItemDetails() {
                                         setLoading(false)
                               })
 
-          }, [itemId])
+          }, [])
 
           console.log(data);
 

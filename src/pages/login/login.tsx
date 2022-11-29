@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { AppLayout } from 'components/Layouts'
 import loginStyles from "./login.module.scss"
 import { Link, useNavigate } from "react-router-dom"
