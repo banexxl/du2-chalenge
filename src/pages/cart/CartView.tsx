@@ -5,7 +5,7 @@ import CartItem from "./components/CartItem";
 import CartTotals from "./components/CartTotals";
 import Button from "components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { increment, clear } from "store/cartSlice";
+import { increment, clear, decrement, removeAllSingleItems } from "store/cartSlice";
 
 const CartView = () => {
 
@@ -30,8 +30,9 @@ const CartView = () => {
                                                                                 <CartItem key={index} id={cartItem.id}
                                                                                           image={cartItem.image} price={cartItem.price}
                                                                                           quantity={cartItem.quantity} title={cartItem.title}
-                                                                                          addSingleHandler={() => { dispatch(increment(cartItem.id)) }} removeSingleHandler={() => { }}
-                                                                                          removeAllHandler={() => dispatch(clear())}
+                                                                                          addSingleHandler={() => { dispatch(increment(cartItem.id)) }}
+                                                                                          removeSingleHandler={() => dispatch(decrement(cartItem.id))}
+                                                                                          removeAllSingleHandler={() => { dispatch(removeAllSingleItems(cartItem.id)) }}
                                                                                 />
                                                                       )
 
@@ -48,3 +49,4 @@ const CartView = () => {
 };
 
 export default CartView;
+

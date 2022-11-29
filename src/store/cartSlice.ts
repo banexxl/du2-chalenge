@@ -47,13 +47,23 @@ const cartSlice = createSlice({
                                                   : item
                               );
                     },
+                    removeAllSingleItems(state, { payload }) {
+                              return state.map((item: any) =>
+                                        item.id === payload
+                                                  ? {
+                                                            ...item,
+                                                            quantity: item.quantity - item.quantity
+                                                  }
+                                                  : item
+                              );
+                    },
                     clear(state) {
                               return [];
                     }
           }
 });
 
-export const { addToCart, increment, decrement, clear } = cartSlice.actions
+export const { addToCart, increment, decrement, clear, removeAllSingleItems } = cartSlice.actions
 const cartSliceReducer = cartSlice.reducer
 
 export default cartSliceReducer
