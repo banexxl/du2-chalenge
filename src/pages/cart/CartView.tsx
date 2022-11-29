@@ -25,7 +25,7 @@ const CartView = () => {
                                                             cart.map((cartItem: any, index: number) => {
                                                                       return (
                                                                                 <CartItem key={index} id={cartItem.id}
-                                                                                          image={cartItem.image} price={cartItem.price}
+                                                                                          image={cartItem.image} price={parseFloat(cartItem.price)}
                                                                                           quantity={cartItem.quantity} title={cartItem.title}
                                                                                           addSingleHandler={() => { dispatch(increment(cartItem.id)) }}
                                                                                           removeSingleHandler={() => dispatch(decrement(cartItem.id))}

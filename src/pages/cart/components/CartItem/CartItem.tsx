@@ -22,21 +22,17 @@ const CartItem = ({
 
           const dispatch = useDispatch()
 
-          const cartTotal = useSelector(cartTotalPriceSelector)
-
-
-
           return (
                     <div className={styles.cartItem} style={{ display: quantity === 0 ? 'none' : 'grid' }} >
                               <img className={styles.cartItem_image} src={image} alt={title} />
                               <div className={styles.cartItem_info}>
                                         <p className={styles.cartItem_title}>{title}</p>
                                         <span className={styles.cartItem_priceInfo}>
-                                                  ${price} x {quantity}
+                                                  {price} x {quantity}
                                         </span>
                               </div>
                               <QuantityButton quantity={quantity} id={id} />
-                              <div>sum: ${ }</div>
+                              <div>sum: ${price * quantity}</div>
                               <span onClick={() => { dispatch(removeAllSingleItems(id)) }} className={styles.remove_all_single_items}>
                                         <SvgIcon type="remove" width={20} height={20} color="#928F8F" />
                               </span>
