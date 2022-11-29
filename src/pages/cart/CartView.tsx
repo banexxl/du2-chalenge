@@ -5,7 +5,7 @@ import CartItem from "./components/CartItem";
 import CartTotals from "./components/CartTotals";
 import Button from "components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { increment, clear, decrement, removeAllSingleItems } from "store/cartSlice";
+import { increment, clear, decrement } from "store/cartSlice";
 
 const CartView = () => {
 
@@ -14,13 +14,10 @@ const CartView = () => {
 
           console.log("cart: " + cart);
 
-
-
-
           return (
                     <AppLayout>
                               <Headline title="Cart" />
-                              <Button onClick={() => dispatch(clear())}>Clear Cart</Button>
+                              <Button className={styles.button_clear_all} onClick={() => dispatch(clear())}>Clear Cart</Button>
                               <div className={styles.cartPage}>
 
                                         <div className={styles.cartItems}>
@@ -32,7 +29,6 @@ const CartView = () => {
                                                                                           quantity={cartItem.quantity} title={cartItem.title}
                                                                                           addSingleHandler={() => { dispatch(increment(cartItem.id)) }}
                                                                                           removeSingleHandler={() => dispatch(decrement(cartItem.id))}
-                                                                                          removeAllSingleHandler={() => { dispatch(removeAllSingleItems(cartItem.id)) }}
                                                                                 />
                                                                       )
 

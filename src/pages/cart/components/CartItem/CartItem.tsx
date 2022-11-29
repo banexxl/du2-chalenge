@@ -9,7 +9,6 @@ import { removeAllSingleItems } from "store/cartSlice";
 interface ICartProps extends ICartItem {
           addSingleHandler: (id: number) => void
           removeSingleHandler: (id: number) => void
-          removeAllSingleHandler: (id: number) => void
 }
 
 const CartItem = ({
@@ -24,7 +23,7 @@ const CartItem = ({
           const dispatch = useDispatch()
 
           return (
-                    <div className={styles.cartItem}>
+                    <div className={styles.cartItem} style={{ display: quantity === 0 ? 'none' : 'grid' }} >
                               <img className={styles.cartItem_image} src={image} alt={title} />
                               <div className={styles.cartItem_info}>
                                         <p className={styles.cartItem_title}>{title}</p>

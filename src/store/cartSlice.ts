@@ -51,8 +51,8 @@ const cartSlice = createSlice({
                               return state.map((item: any) =>
                                         item.id === payload
                                                   ? {
-                                                            ...item,
-                                                            quantity: item.quantity - item.quantity
+                                                            ...item.clear,
+                                                            quantity: item.quantity - item.quantity,
                                                   }
                                                   : item
                               );

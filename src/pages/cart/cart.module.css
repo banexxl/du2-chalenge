@@ -27,3 +27,9 @@
     row-gap: 15px
   }
 }
+
+.button_clear_all{
+position: absolute;
+margin-top: 20px;
+left: 50px;
+}
