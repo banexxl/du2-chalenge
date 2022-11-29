@@ -29,7 +29,7 @@
 }
 
 .button_clear_all{
-position: absolute;
+position: relative;
 margin-top: 20px;
-left: 50px;
+left: 30%;
 }

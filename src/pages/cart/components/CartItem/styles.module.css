@@ -28,4 +28,6 @@
     border:1px solid #ccc
 }
 
-
+.remove_all_single_items{
+          cursor: pointer;
+}
