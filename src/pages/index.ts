@@ -4,3 +4,4 @@ export { default as NotFoundPage } from './404'
 export { default as LoginPage } from "./login"
 export { default as Register } from "./register"
 export { default as ItemDetails } from "./item"
+export { default as Checkout } from "./checkout"

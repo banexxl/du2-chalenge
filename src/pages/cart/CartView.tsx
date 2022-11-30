@@ -6,6 +6,7 @@ import CartTotals from "./components/CartTotals";
 import Button from "components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { increment, clear, decrement } from "store/cartSlice";
+import { Link } from "react-router-dom"
 
 const CartView = () => {
 
@@ -37,10 +38,12 @@ const CartView = () => {
                                         </div>
                                         <div className={styles.cartTotalWrapp}>
                                                   <CartTotals />
-                                                  <Button className={styles.proceedBtn}>Proceed to Checkout</Button>
+                                                  <Link to={"/checkout"}>
+                                                            < Button className={styles.proceedBtn}>Proceed to Checkout</Button>
+                                                  </Link>
                                         </div>
                               </div>
-                    </AppLayout>
+                    </AppLayout >
           );
 };
 
