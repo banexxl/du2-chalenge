@@ -6,7 +6,7 @@ const cartSlice = createSlice({
           name: "cart",
           initialState,
           reducers: {
-                    addToCart(state, { payload }) {
+                    addToCart(state: [] = [], { payload }) {
                               const { id } = payload;
 
                               const find = state.find((item: any) => item.id === id);
@@ -47,6 +47,7 @@ const cartSlice = createSlice({
                                                   : item
                               );
                     },
+                    //TODO: ne radi bas najbolje -> obrise iz cart-a ali ne obrise objekat iz state-a
                     removeAllSingleItems(state, { payload }) {
                               return state.map((item: any) =>
                                         item.id === payload

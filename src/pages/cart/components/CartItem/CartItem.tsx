@@ -1,10 +1,9 @@
 import QuantityButton from "components/QuantityButton/QuantityButton";
 import SvgIcon from "components/SvgIcon";
 import { ICartItem } from "interfaces";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import { removeAllSingleItems } from "store/cartSlice";
-import { cartTotalPriceSelector } from "../../../../store/selectors";
 
 interface ICartProps extends ICartItem {
           addSingleHandler: (id: number) => void
