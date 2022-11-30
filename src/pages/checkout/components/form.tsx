@@ -4,11 +4,9 @@ import formStyle from "./form.module.scss"
 import * as yup from 'yup';
 
 
-const onSubmit = async (values: any, actions: any) => {
-          console.log(values);
-          console.log(actions);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          actions.resetForm();
+const onSubmit = () => {
+          console.log("nesta");
+
 };
 
 const BasicForm = () => {
@@ -20,23 +18,21 @@ const BasicForm = () => {
                     handleBlur,
                     handleChange,
                     handleSubmit,
-          } = useFormik({
+          }: any = useFormik({
                     initialValues: {
-                              firstName: yup.string().required("Required"),
-                              lastName: yup.string().required("Required"),
-                              streeAddress: yup.string().required("Required"),
-                              city: yup.string().required("Required"),
-                              zipCode: yup.string().required("Required"),
-                              phone: yup.number().required("Required"),
-                              email: yup.string().email("Please enter a valid email").required("Required"),
+                              firstName: "",
+                              lastName: "",
+                              streeAddress: "",
+                              city: "",
+                              zipCode: "",
+                              phone: "",
+                              email: "",
                     },
                     validationSchema: checkoutSchema,
                     onSubmit,
           });
 
           console.log(errors);
-
-
 
           return (
                     <form onSubmit={handleSubmit} autoComplete="off">

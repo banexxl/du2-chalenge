@@ -12,16 +12,3 @@ function Checkout() {
 }
 
 export default Checkout
-
-
-initialValues = {
-          firstName: yup.string().required("Required"),
-          lastName: yup.string().required("Required"),
-          streeAddress: yup.string().required("Required"),
-          city: yup.string().required("Required"),
-          zipCode: yup.string().required("Required"),
-          phone: yup.number().required("Required"),
-          email: yup.string().email("Please enter a valid email").required("Required"),
-}
-validationSchema = { checkoutSchema }
-onSubmit = { onSubmitHandler }
