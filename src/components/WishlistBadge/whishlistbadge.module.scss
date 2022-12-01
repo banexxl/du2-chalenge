@@ -9,10 +9,14 @@
 .cart_icon {
     height: 25px;
     width:25px;
-    color: rgb(0, 38, 255);
+    color: rgb(255, 255, 255);
+
+    &:hover{
+          transform: scale(1.5);
+    }
 }
 
 .cart_items_number {
    font-size: 12px;
-   color:rgb(0, 26, 255);
+   color:rgb(255, 255, 255);
 }

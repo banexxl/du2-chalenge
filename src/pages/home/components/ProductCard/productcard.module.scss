@@ -21,6 +21,9 @@
           max-width: 50px;
           max-height: 80px;
           cursor: pointer;
+          &:hover{
+          transform: scale(1.5);
+    }
 }
 
 .add_to_cart {

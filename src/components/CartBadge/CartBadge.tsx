@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import styles from "./cartbadge.module.css";
+import styles from "./cartbadge.module.scss";
 import SvgIcon from "components/SvgIcon";
 import { useSelector } from "react-redux";
 import { cartTotalSelector } from "../../store/selectors";

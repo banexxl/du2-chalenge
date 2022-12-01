@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import styles from "./LoginBadge.module.css";
+import styles from "./LoginBadge.module.scss";
 import SvgIcon from "components/SvgIcon";
 
 const LoginBadge = () => {

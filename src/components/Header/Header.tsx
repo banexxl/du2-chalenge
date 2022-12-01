@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import CartBadge from "components/CartBadge";
 import WishlistBadge from "components/WishlistBadge";
-import styles from "./styles.module.scss";
+import headerStyles from "./headerStyles.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
@@ -21,18 +21,18 @@ export const Header = () => {
 
 
           return (
-                    <header className={styles.header}>
+                    <header className={headerStyles.header}>
                               <Container className="xs">
-                                        <div className={styles.header_content}>
-                                                  <div className={styles.logo_wrapp}>
-                                                            <img src={logo} alt="logo" className={styles.logo} />
+                                        <div className={headerStyles.header_content}>
+                                                  <div className={headerStyles.logo_wrapp}>
+                                                            <img src={logo} alt="logo" className={headerStyles.logo} />
                                                   </div>
                                                   <div>
-                                                            <Link to={"/"} className={styles.nav_item}>
+                                                            <Link to={"/"} className={headerStyles.nav_item}>
                                                                       Home
                                                             </Link>
                                                   </div>
-                                                  <div className={styles.flex}>
+                                                  <div className={headerStyles.flex}>
                                                             <WishlistBadge />
                                                             <CartBadge />
                                                             {
