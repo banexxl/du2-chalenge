@@ -28,13 +28,12 @@ nav h3:hover {
   color: white;
 }
 
-form {
+.form_modal {
   width: 95%;
   max-width: 400px;
-  margin: 0 auto;
 }
 
-form label {
+.form_label {
   font-size: 1rem;
   font-weight: bold;
   display: block;
@@ -48,8 +47,8 @@ select {
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
   color: white;
-  border: 2px solid #4a5568;
-  background-color: #2d3748;
+  border: 2px solid #01245f;
+  background-color: #2b75f7;
   border-radius: 10px;
   outline: none;
 }

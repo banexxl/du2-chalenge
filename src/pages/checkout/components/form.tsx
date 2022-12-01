@@ -1,15 +1,47 @@
 import { useFormik } from "formik";
 import { checkoutSchema } from "../../../schema";
 import formStyle from "./form.module.scss"
-import * as yup from 'yup';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clear } from "store/cartSlice";
+
+const styleModal = {
+          position: 'absolute' as 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'background.paper',
+          border: '2px solid #000',
+          boxShadow: 24,
+          p: 4,
+};
 
 
 const onSubmit = () => {
-          console.log("nesta");
+          console.log("Form submitted");
 
-};
+}
+
 
 const BasicForm = () => {
+
+          const navigate = useNavigate()
+          const dispatch = useDispatch();
+
+          const [openModal, setOpenModal] = useState(false);
+          const handleOpen = () => setOpenModal(true);
+          const handleClose = () => {
+                    setOpenModal(false)
+                    dispatch(clear())
+                    navigate('/')
+          }
+
+
           const {
                     values,
                     errors,
@@ -32,11 +64,9 @@ const BasicForm = () => {
                     onSubmit,
           });
 
-          console.log(errors);
-
           return (
-                    <form onSubmit={handleSubmit} autoComplete="off">
-                              <label htmlFor="firstName">First name</label>
+                    <form onSubmit={handleSubmit} autoComplete="off" className={formStyle.form_modal}>
+                              <label htmlFor="firstName" className={formStyle.form_label}>First name</label>
                               <input
                                         value={values.firstName}
                                         onChange={handleChange}
@@ -46,7 +76,8 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <label htmlFor="lastName">Last name</label>
+                              {errors.firstName && touched.firstName && <p className={formStyle.error}>{errors.firstName}</p>}
+                              <label htmlFor="lastName" className={formStyle.form_label}>Last name</label>
                               <input
                                         value={values.lastName}
                                         onChange={handleChange}
@@ -55,7 +86,8 @@ const BasicForm = () => {
                                         placeholder="Enter your last name"
                                         onBlur={handleBlur}
                               />
-                              <label htmlFor="streeAddress">Address</label>
+                              {errors.lastName && touched.lastName && <p className={formStyle.error}>{errors.lastName}</p>}
+                              <label htmlFor="streeAddress" className={formStyle.form_label}>Address</label>
                               <input
                                         value={values.streeAddress}
                                         onChange={handleChange}
@@ -65,7 +97,8 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <label htmlFor="city">City</label>
+                              {errors.streeAddress && touched.streeAddress && <p className={formStyle.error}>{errors.streeAddress}</p>}
+                              <label htmlFor="city" className={formStyle.form_label}>City</label>
                               <input
                                         value={values.city}
                                         onChange={handleChange}
@@ -75,7 +108,8 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <label htmlFor="zipCode">zipCode</label>
+                              {errors.city && touched.city && <p className={formStyle.error}>{errors.city}</p>}
+                              <label htmlFor="zipCode" className={formStyle.form_label}>ZIP code</label>
                               <input
                                         value={values.zipCode}
                                         onChange={handleChange}
@@ -85,7 +119,8 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <label htmlFor="phone">phone</label>
+                              {errors.zipCode && touched.zipCode && <p className={formStyle.error}>{errors.zipCode}</p>}
+                              <label htmlFor="phone" className={formStyle.form_label}>Mobile phone</label>
                               <input
                                         value={values.phone}
                                         onChange={handleChange}
@@ -95,7 +130,8 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <label htmlFor="email">email</label>
+                              {errors.phone && touched.phone && <p className={formStyle.error}>{errors.phone}</p>}
+                              <label htmlFor="email" className={formStyle.form_label}>Email</label>
                               <input
                                         value={values.email}
                                         onChange={handleChange}
@@ -105,10 +141,27 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
-                              <button disabled={isSubmitting} type="submit">
+                              {errors.email && touched.email && <p className={formStyle.error}>{errors.email}</p>}
+                              <button disabled={isSubmitting} type="submit" onClick={handleOpen}>
                                         Submit
                               </button>
+                              <Modal
+                                        open={openModal}
+                                        onClose={handleClose}
+                                        aria-labelledby="modal-modal-title"
+                                        aria-describedby="modal-modal-description"
+                              >
+                                        <Box sx={styleModal}>
+                                                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            Thank you!
+                                                  </Typography>
+                                                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                                            We will inform you when the package is on its way!
+                                                  </Typography>
+                                        </Box>
+                              </Modal>
                     </form>
           );
 };
 export default BasicForm;
+
