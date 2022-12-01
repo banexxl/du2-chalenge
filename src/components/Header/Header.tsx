@@ -27,13 +27,11 @@ export const Header = () => {
                                                   <div className={styles.logo_wrapp}>
                                                             <img src={logo} alt="logo" className={styles.logo} />
                                                   </div>
-                                                  <nav>
-                                                            <ul className={styles.nav_items}>
-                                                                      <Link to={"/"} className={styles.nav_item}>
-                                                                                Home
-                                                                      </Link>
-                                                            </ul>
-                                                  </nav>
+                                                  <div>
+                                                            <Link to={"/"} className={styles.nav_item}>
+                                                                      Home
+                                                            </Link>
+                                                  </div>
                                                   <div className={styles.flex}>
                                                             <WishlistBadge />
                                                             <CartBadge />

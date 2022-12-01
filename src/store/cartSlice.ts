@@ -53,7 +53,6 @@ const cartSlice = createSlice({
                                                   ? {
                                                             price: 0,
                                                             quantity: 0,
-
                                                   }
                                                   : item
                               );

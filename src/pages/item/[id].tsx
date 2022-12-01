@@ -5,7 +5,7 @@ import Headline from 'components/Headline'
 import Button from 'components/Button'
 import WishlistBadge from 'components/WishlistBadge'
 
-import { increment } from "../../store/cartSlice"
+import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
 
 
@@ -65,7 +65,7 @@ function ItemDetails() {
                                                             {
                                                                       loading === true ? <p>Loading...</p> :
                                                                                 <Button onClick={() => {
-                                                                                          dispatch(increment(data.id))
+                                                                                          dispatch(addToCart(data))
                                                                                 }}>Add to cart</Button>
                                                             }
                                                             <WishlistBadge />
