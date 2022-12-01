@@ -2,8 +2,16 @@
     padding:20px;
     background-color: #27334d;
     min-height: 200px;
+    display: flex;
+    align-items: center;
+          justify-content: space-around;
 }
 
 .logo{
           border-radius: 100px;
+}
+
+
+a{
+          color: rgb(46, 99, 214);
 }
