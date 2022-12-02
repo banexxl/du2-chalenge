@@ -3,82 +3,111 @@ import axios from 'axios';
 const { REACT_APP_BASE_API_URL } = process.env;
 
 const BaseHttpService = () => {
-  let BASE_URL = REACT_APP_BASE_API_URL;
-  let _accessToken: string | null = null;
+          let BASE_URL = REACT_APP_BASE_API_URL;
 
-  const get = async (endpoint:string, options = {}) => {
-    options = {...options, ..._getCommonOptions()};
-    return await axios.get(`${BASE_URL}/${endpoint}`, options)
-      .catch(error => _handleHttpError(error));
-  }
+          let _accessToken: string | null = null;
 
-  const post = async (endpoint:string, data = {}, options = {}) => {
-    options = {...options, ..._getCommonOptions()};
-    return axios.post(`${BASE_URL}/${endpoint}`, data, options)
-      .catch(error => _handleHttpError(error));
-  }
+          const getAllProducts = async (endpoint: string) => {
 
-  const put = async (endpoint:string, data = {}, options = {}) => {
-    options = {...options, ..._getCommonOptions()};
-    return axios.put(`${BASE_URL}/${endpoint}`, data, options)
-      .catch(error => _handleHttpError(error));
-  }
+                    fetch(`${BASE_URL}` + endpoint, {
+                              method: 'GET',
+                              headers: {
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': '*',
+                                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                              }
+                    })
+                              .then(res => {
+                                        console.log("res", res);
+                                        res.json()
+                              })
+                              .then((json) => {
+                                        console.log("json", json);
+                              })
+                              .catch((error) => {
+                                        console.log(error.message);
+                              })
+          }
 
-  const remove = async (endpoint:string, options = {}) => {
-    options = {...options, ..._getCommonOptions()};
-    return axios.delete(`${BASE_URL}/${endpoint}`, options)
-      .catch(error => _handleHttpError(error));
-  }
+          const getProductById = async (endpoint: string, options = {}) => {
+                    options = { ...options, ..._getCommonOptions() };
+                    //     return await axios.get(`${BASE_URL}/${endpoint}`, options)
+                    //       .catch(error => _handleHttpError(error));
+                    fetch(BASE_URL + `/products/${options}`)
+                              .then(res => res.json())
+                              .catch((error) => {
+                                        console.log("Error message: " + error.message);
+                              })
+          }
 
-  const patch = async (endpoint:string, data = {}, options = {}) => {
-    options = {...options, ..._getCommonOptions()};
-    return axios.patch(`${BASE_URL}/${endpoint}`, data, options)
-      .catch(error => _handleHttpError(error));
-  }
+          const post = async (endpoint: string, data = {}, options = {}) => {
+                    options = { ...options, ..._getCommonOptions() };
+                    return axios.post(`${BASE_URL}/${endpoint}`, data, options)
+                              .catch(error => _handleHttpError(error));
+          }
 
-  const _handleHttpError = (error:any) => {
-       return error;
-  }
+          const put = async (endpoint: string, data = {}, options = {}) => {
+                    options = { ...options, ..._getCommonOptions() };
+                    return axios.put(`${BASE_URL}/${endpoint}`, data, options)
+                              .catch(error => _handleHttpError(error));
+          }
 
-  const _getCommonOptions = () => {
-    const token = loadToken();
-    return {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-  }
+          const remove = async (endpoint: string, options = {}) => {
+                    options = { ...options, ..._getCommonOptions() };
+                    return axios.delete(`${BASE_URL}/${endpoint}`, options)
+                              .catch(error => _handleHttpError(error));
+          }
 
-  const getAccessToken = () => {
-    return _accessToken ? _accessToken : loadToken();
-  }
+          const patch = async (endpoint: string, data = {}, options = {}) => {
+                    options = { ...options, ..._getCommonOptions() };
+                    return axios.patch(`${BASE_URL}/${endpoint}`, data, options)
+                              .catch(error => _handleHttpError(error));
+          }
 
-  const saveToken = (accessToken:string) => {
-    _accessToken = accessToken;
-    return localStorage.setItem('accessToken', accessToken);
-  }
+          const _handleHttpError = (error: any) => {
+                    return error;
+          }
 
-  const loadToken = () => {
-    const token = localStorage.getItem('accessToken');
-    _accessToken = token;
-    return token;
-  }
+          const _getCommonOptions = () => {
+                    const token = loadToken();
+                    return {
+                              headers: {
+                                        Authorization: `Bearer ${token}`,
+                              },
+                    };
+          }
 
-  const removeToken = () => {
-    localStorage.removeItem('accessToken');
-  }
+          const getAccessToken = () => {
+                    return _accessToken ? _accessToken : loadToken();
+          }
 
-  return {
-    get,
-    post,
-    put,
-    remove,
-    patch,
-    getAccessToken,
-    saveToken,
-    loadToken,
-    removeToken
-  };
+          const saveToken = (accessToken: string) => {
+                    _accessToken = accessToken;
+                    return localStorage.setItem('accessToken', accessToken);
+          }
+
+          const loadToken = () => {
+                    const token = localStorage.getItem('accessToken');
+                    _accessToken = token;
+                    return token;
+          }
+
+          const removeToken = () => {
+                    localStorage.removeItem('accessToken');
+          }
+
+          return {
+                    getAllProducts,
+                    getProductById,
+                    post,
+                    put,
+                    remove,
+                    patch,
+                    getAccessToken,
+                    saveToken,
+                    loadToken,
+                    removeToken
+          };
 }
 
 export default BaseHttpService;

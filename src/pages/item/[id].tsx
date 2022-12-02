@@ -20,14 +20,14 @@ function ItemDetails() {
 
           useEffect(() => {
                     setLoading(true)
-                    fetch(`https://fakestoreapi.com/products/${params.itemId}`)
-                              .then(res => res.json())
-                              .then(json => setData(json))
-                              .catch((error) => {
-                                        console.log("Error message: " + error.message);
-                              }).finally(() => {
-                                        setLoading(false)
-                              })
+                    // fetch(`https://fakestoreapi.com/products/${params.itemId}`)
+                    //           .then(res => res.json())
+                    //           .then(json => setData(json))
+                    //           .catch((error) => {
+                    //                     console.log("Error message: " + error.message);
+                    //           }).finally(() => {
+                    //                     setLoading(false)
+                    //           })
 
           }, [])
 

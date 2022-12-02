@@ -9,13 +9,16 @@ import { ProductFilterCategory } from "./components/ProductFilterCategory"
 import { ProductListSort } from "./components/ProductListSort"
 import { ProductListSearch } from "./components/ProductListSearch"
 import { Link } from 'react-router-dom';
+import productServices from "../../services/product.services"
 
 const Home = () => {
 
-
-
           const [loading, setLoading] = useState(false)
-          const [data, setData] = useState([])
+          // const [data, setData] = useState([])
+          let allProducts = productServices.getAll()
+          console.log(allProducts);
+
+
 
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
@@ -24,19 +27,18 @@ const Home = () => {
 
           useEffect(() => {
                     setLoading(true)
-                    fetch('https://fakestoreapi.com/products')
-                              .then(res => res.json())
-                              .then(json => setData(json))
-                              .catch((error) => {
-                                        console.log(error.message);
-                              }).finally(() => {
-                                        setLoading(false)
-                              })
+                    // allProducts = productServices.getAll()
+                    // console.log(allProducts);
+                    // fetch('https://fakestoreapi.com/products')
+                    //           .then(res => res.json())
+                    //           .then(json => setData(json))
+                    //           .catch((error) => {
+                    //                     console.log(error.message);
+                    //           }).finally(() => {
+                    //                     setLoading(false)
+                    //           })
 
           }, [])
-
-          console.log(data);
-
 
           return (
                     <AppLayout>
@@ -72,7 +74,7 @@ const Home = () => {
 
                                                   <ProductList >
                                                             {
-                                                                      data.map((product: any, index: number) => (
+                                                                      allProducts.map((product: any, index: number) => (
 
 
                                                                                 <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
