@@ -4,6 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { addToCart } from "../../../../store/cartSlice"
 import { useDispatch } from "react-redux"
 import Button from "components/Button";
+import { Link } from "react-router-dom";
 
 
 function ProductCard(product: any) {
@@ -12,10 +13,10 @@ function ProductCard(product: any) {
 
           return (
                     <div className={productCardStyle.card_box}>
-                              <a href={`/item/${product.id}`}>
+                              <Link to={`/item/${product.id}`}>
                                         <img src={product.image} alt="img" className={productCardStyle.image}>
                                         </img>
-                              </a>
+                              </Link>
                               <div className={productCardStyle.product_title}>
                                         {product.title}
                               </div>

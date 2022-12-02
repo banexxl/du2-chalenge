@@ -7,22 +7,20 @@ import WishlistBadge from 'components/Badges/WishlistBadge'
 
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
-
+import { useParams } from "react-router-dom"
 
 function ItemDetails() {
 
+          const params = useParams()
+
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
-
-          const url = window.location.href
-          const split = url.split("/")
-          const itemId = split[4]
 
           const dataRating = data.rating
 
           useEffect(() => {
                     setLoading(true)
-                    fetch(`https://fakestoreapi.com/products/${itemId}`)
+                    fetch(`https://fakestoreapi.com/products/${params.itemId}`)
                               .then(res => res.json())
                               .then(json => setData(json))
                               .catch((error) => {
