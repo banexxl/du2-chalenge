@@ -74,13 +74,13 @@ const Home = () => {
 
                                                   <ProductList >
                                                             {
-                                                                      allProducts.map((product: any, index: number) => (
+                                                                      // allProducts.map((product: any, index: number) => (
 
 
-                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
-                                                                                          <Link to={product.id}></Link>
-                                                                                </ProductCard>
-                                                                      ))
+                                                                      //           <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                      //                     <Link to={product.id}></Link>
+                                                                      //           </ProductCard>
+                                                                      // ))
                                                             }
                                                   </ProductList>
                                         </div>
