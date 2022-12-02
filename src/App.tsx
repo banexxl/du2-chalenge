@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage, NotFoundPage, CartPage, LoginPage, Register, ItemDetails, Checkout } from "pages";
+import { HomePage, NotFoundPage, CartPage, LoginPage, Register, ItemDetails, Checkout, User } from "pages";
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
                               <Route path="/register" element={<Register />} />
                               <Route path="/item/:itemId" element={<ItemDetails />} />
                               <Route path="/checkout" element={<Checkout />} />
+                              <Route path="/user" element={<User />} />
                     </Routes>
           );
 }
