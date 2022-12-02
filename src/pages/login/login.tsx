@@ -41,6 +41,8 @@ function Login() {
                                         window.localStorage.setItem("access_token", json.token)
                                         console.log(json)
                                         json !== null && json !== undefined ? setOpenModal(true) : setOpenModal(false)
+                              }).catch(error => {
+                                        alert("Invalid username and/or password")
                               })
           }
 
