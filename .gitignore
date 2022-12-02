@@ -13,6 +13,7 @@
 
 # public
 /public
+/public/env.js
 
 # misc
 .DS_Store
