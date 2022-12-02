@@ -12,6 +12,9 @@ export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
 
+          console.log(token);
+
+
           const navigate = useNavigate()
 
           function logout() {
@@ -36,13 +39,14 @@ export const Header = () => {
                                                             <WishlistBadge />
                                                             <CartBadge />
                                                             {
-                                                                      token != null || token !== "undefined" ?
-                                                                                <LoginBadge /> :
+                                                                      token !== null || token !== "undefined" ?
+
                                                                                 <div onClick={logout}>
 
                                                                                           <LogoutBadge />
 
-                                                                                </div>
+                                                                                </div> :
+                                                                                <LoginBadge />
 
 
                                                             }
