@@ -1,0 +1,17 @@
+.user_badge {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    height: fit-content;
+    padding: 5px;
+    cursor: pointer;
+}
+.user_icon {
+    height: 25px;
+    width:25px;
+    color: rgb(255, 255, 255);
+
+    &:hover{
+          transform: scale(1.5);
+    }
+}

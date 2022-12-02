@@ -1,4 +1,3 @@
-import React, { memo } from 'react'
 import styles from './whishlistbadge.module.scss';
 
 const WishlistBadge = () => {
@@ -10,4 +9,4 @@ const WishlistBadge = () => {
           )
 }
 
-export default memo(WishlistBadge)
+export default WishlistBadge

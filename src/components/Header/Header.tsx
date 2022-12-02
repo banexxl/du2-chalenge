@@ -1,12 +1,13 @@
 import { memo, useState } from "react";
-import CartBadge from "components/CartBadge";
-import WishlistBadge from "components/WishlistBadge";
+import CartBadge from "components/Badges/CartBadge";
+import UserBadge from "components/Badges/UserBadge"
+import WishlistBadge from "components/Badges/WishlistBadge";
 import headerStyles from "./headerStyles.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
-import LoginBadge from "components/LoginBadge";
-import LogoutBadge from "components/LogoutBadge";
+import LoginBadge from "components/Badges/LoginBadge";
+import LogoutBadge from "components/Badges/LogoutBadge";
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -62,14 +63,10 @@ export const Header = () => {
                                                             {
                                                                       token === null || token === "undefined" ? <LoginBadge /> :
 
-                                                                                <div onClick={logout}>
-
+                                                                                <div onClick={logout} style={{ display: "flex" }}>
+                                                                                          <UserBadge />
                                                                                           <LogoutBadge />
-
                                                                                 </div>
-
-
-
                                                             }
                                                   </div>
                                         </div>

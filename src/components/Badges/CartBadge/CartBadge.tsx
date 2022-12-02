@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./cartbadge.module.scss";
-import SvgIcon from "components/SvgIcon";
+import SvgIcon from "components/Badges/SvgIcon";
 import { useSelector } from "react-redux";
-import { cartTotalSelector } from "../../store/selectors";
+import { cartTotalSelector } from "../../../store/selectors";
 
 const CartBadge = () => {
 

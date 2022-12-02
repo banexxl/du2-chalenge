@@ -1,5 +1,5 @@
 import QuantityButton from "components/QuantityButton/QuantityButton";
-import SvgIcon from "components/SvgIcon";
+import SvgIcon from "components/Badges/SvgIcon";
 import { ICartItem } from "interfaces";
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";

@@ -1,5 +1,5 @@
 import styles from "./LogoutBadge.module.scss";
-import SvgIcon from "components/SvgIcon";
+import SvgIcon from "components/Badges/SvgIcon";
 
 const LogoutBadge = () => {
           return (

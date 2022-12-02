@@ -3,7 +3,7 @@ import itemDetailsStyles from "./itemdetails.module.scss"
 import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 import Button from 'components/Button'
-import WishlistBadge from 'components/WishlistBadge'
+import WishlistBadge from 'components/Badges/WishlistBadge'
 
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
