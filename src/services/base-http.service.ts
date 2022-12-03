@@ -9,7 +9,7 @@ const BaseHttpService = () => {
 
           const getAllProducts = async (endpoint: string) => {
 
-                    fetch(`${BASE_URL}` + endpoint, {
+                    axios(`${BASE_URL}` + endpoint, {
                               method: 'GET',
                               headers: {
                                         'Content-Type': 'application/json',
@@ -18,11 +18,8 @@ const BaseHttpService = () => {
                               }
                     })
                               .then(res => {
-                                        console.log("res", res);
-                                        res.json()
-                              })
-                              .then((json) => {
-                                        console.log("json", json);
+                                        console.log("res", res.data);
+                                        // res.json()
                               })
                               .catch((error) => {
                                         console.log(error.message);

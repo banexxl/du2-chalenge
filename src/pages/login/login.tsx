@@ -16,7 +16,6 @@ function Login() {
           const navigate = useNavigate()
 
           const [openModal, setOpenModal] = useState(false);
-          const handleOpen = () => setOpenModal(true);
           const handleClose = () => {
                     setOpenModal(false)
                     navigate('/')
@@ -39,7 +38,6 @@ function Login() {
                               .then(res => res.json())
                               .then(json => {
                                         window.localStorage.setItem("access_token", json.token)
-                                        console.log(json)
                                         json !== null && json !== undefined ? setOpenModal(true) : setOpenModal(false)
                               }).catch(error => {
                                         alert("Invalid username and/or password")
