@@ -15,11 +15,10 @@ const Home = () => {
 
           const [loading, setLoading] = useState(false)
           const [data, setData] = useState([])
-
           const basehttpservice = BaseHttpService
 
           const getAllProducts = () => {
-                    const data = basehttpservice.getAll()
+                    basehttpservice.getAll()
                               .then((data: any) => {
                                         setData(data)
                                         return data
@@ -69,9 +68,8 @@ const Home = () => {
 
                                                   <ProductList >
                                                             {
+
                                                                       data.map((product: any, index: number) => (
-
-
                                                                                 <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
                                                                                           <Link to={product.id}></Link>
                                                                                 </ProductCard>

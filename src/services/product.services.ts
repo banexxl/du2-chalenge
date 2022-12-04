@@ -6,7 +6,7 @@ const getAll = async () => {
           return await apiClient.getAllProducts("/products");
 }
 
-const getById = async (id: number) => {
+const getById = async (id: string) => {
           return await apiClient.getProductById(`products/${id}`);
 }
 

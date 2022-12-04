@@ -27,12 +27,21 @@ const BaseHttpService = () => {
           }
 
 
-          const getProductById = async (endpoint: string, options = {}) => {
+          const getProductById = (endpoint: string, options = {}) => {
                     options = { ...options, ..._getCommonOptions() };
                     //     return await axios.get(`${BASE_URL}/${endpoint}`, options)
                     //       .catch(error => _handleHttpError(error));
-                    fetch(BASE_URL + `/products/${options}`)
-                              .then(res => res.json())
+                    return axios.get(BASE_URL + `/products/${options}`, {
+                              headers: {
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': '*',
+                                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                              }
+                    })
+                              .then(res => {
+                                        console.log('res', res);
+                                        return res
+                              })
                               .catch((error) => {
                                         console.log("Error message: " + error.message);
                               })

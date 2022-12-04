@@ -4,39 +4,33 @@ import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 import Button from 'components/Button'
 import WishlistBadge from 'components/Badges/WishlistBadge'
-
+import BaseHttpService from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 
 function ItemDetails() {
 
-          const params = useParams()
-
+          const params: any = useParams()
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
-
+          const basehttpservice = BaseHttpService
           const dataRating = data.rating
+
+          const getProduct = () => {
+                    basehttpservice.getById(params.itemId)
+                              .then((data: any) => {
+                                        setData(data)
+                                        return data
+                              }).then()
+          }
 
           useEffect(() => {
                     setLoading(true)
-                    // fetch(`https://fakestoreapi.com/products/${params.itemId}`)
-                    //           .then(res => res.json())
-                    //           .then(json => setData(json))
-                    //           .catch((error) => {
-                    //                     console.log("Error message: " + error.message);
-                    //           }).finally(() => {
-                    //                     setLoading(false)
-                    //           })
-
+                    getProduct()
           }, [])
 
-          console.log(data);
-
-
-
           const dispatch = useDispatch()
-
 
           return (
                     <AppLayout>

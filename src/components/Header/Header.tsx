@@ -15,8 +15,6 @@ import Box from '@mui/material/Box';
 export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
-
-          console.log(token);
           const navigate = useNavigate()
 
           const [openModal, setOpenModal] = useState(false);
