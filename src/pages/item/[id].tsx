@@ -4,7 +4,7 @@ import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 import Button from 'components/Button'
 import WishlistBadge from 'components/Badges/WishlistBadge'
-import BaseHttpService from "../../services/product.services"
+import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
@@ -14,12 +14,12 @@ function ItemDetails() {
           const params: any = useParams()
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
-          const basehttpservice = BaseHttpService
+          const producServices = ProducServices
           const dataRating = data.rating
 
           const getProduct = () => {
 
-                    basehttpservice.getById(params.itemId)
+                    producServices.getById(params.itemId)
                               .then((data: any) => {
                                         setData(data)
                                         setLoading(false)

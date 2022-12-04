@@ -48,6 +48,23 @@ const BaseHttpService = () => {
                               })
           }
 
+          const getUserById = (endpoint: string, id: number) => {
+
+                    return axios.get(BASE_URL + `/users/${id}`, {
+                              headers: {
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': '*',
+                                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+                              }
+                    })
+                              .then(res => {
+                                        return res.data
+                              })
+                              .catch((error) => {
+                                        console.log("Error message: " + error.message);
+                              })
+          }
+
           const post = async (endpoint: string, data = {}, options = {}) => {
                     options = { ...options, ..._getCommonOptions() };
                     return axios.post(`${BASE_URL}/${endpoint}`, data, options)
@@ -107,6 +124,7 @@ const BaseHttpService = () => {
           return {
                     getAllProducts,
                     getProductById,
+                    getUserById,
                     post,
                     put,
                     remove,
