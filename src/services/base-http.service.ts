@@ -7,10 +7,10 @@ const BaseHttpService = () => {
 
           let _accessToken: string | null = null;
 
-          const getAllProducts = async (endpoint: string) => {
+          const getAllProducts = (endpoint: string) => {
 
-                    axios(`${BASE_URL}` + endpoint, {
-                              method: 'GET',
+                    return axios.get(`${BASE_URL}` + endpoint, {
+                              // method: 'GET',
                               headers: {
                                         'Content-Type': 'application/json',
                                         'Access-Control-Allow-Origin': '*',
@@ -18,13 +18,14 @@ const BaseHttpService = () => {
                               }
                     })
                               .then(res => {
-                                        console.log("res", res.data);
+                                        return res.data
                                         // res.json()
                               })
                               .catch((error) => {
                                         console.log(error.message);
                               })
           }
+
 
           const getProductById = async (endpoint: string, options = {}) => {
                     options = { ...options, ..._getCommonOptions() };

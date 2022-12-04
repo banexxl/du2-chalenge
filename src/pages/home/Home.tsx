@@ -9,16 +9,22 @@ import { ProductFilterCategory } from "./components/ProductFilterCategory"
 import { ProductListSort } from "./components/ProductListSort"
 import { ProductListSearch } from "./components/ProductListSearch"
 import { Link } from 'react-router-dom';
-import productServices from "../../services/product.services"
+import BaseHttpService from "../../services/product.services"
 
 const Home = () => {
 
           const [loading, setLoading] = useState(false)
-          // const [data, setData] = useState([])
-          let allProducts = productServices.getAll()
-          console.log(allProducts);
+          const [data, setData] = useState([])
 
+          const basehttpservice = BaseHttpService
 
+          const getAllProducts = () => {
+                    const data = basehttpservice.getAll()
+                              .then((data: any) => {
+                                        setData(data)
+                                        return data
+                              }).then()
+          }
 
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
@@ -26,18 +32,7 @@ const Home = () => {
 
 
           useEffect(() => {
-                    setLoading(true)
-                    // allProducts = productServices.getAll()
-                    // console.log(allProducts);
-                    // fetch('https://fakestoreapi.com/products')
-                    //           .then(res => res.json())
-                    //           .then(json => setData(json))
-                    //           .catch((error) => {
-                    //                     console.log(error.message);
-                    //           }).finally(() => {
-                    //                     setLoading(false)
-                    //           })
-
+                    getAllProducts()
           }, [])
 
           return (
@@ -74,13 +69,13 @@ const Home = () => {
 
                                                   <ProductList >
                                                             {
-                                                                      // allProducts.map((product: any, index: number) => (
+                                                                      data.map((product: any, index: number) => (
 
 
-                                                                      //           <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
-                                                                      //                     <Link to={product.id}></Link>
-                                                                      //           </ProductCard>
-                                                                      // ))
+                                                                                <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                                          <Link to={product.id}></Link>
+                                                                                </ProductCard>
+                                                                      ))
                                                             }
                                                   </ProductList>
                                         </div>
