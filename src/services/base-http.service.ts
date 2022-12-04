@@ -112,13 +112,13 @@ const BaseHttpService = () => {
           }
 
           const loadToken = () => {
-                    const token = localStorage.getItem('accessToken');
+                    const token = localStorage.getItem('access_token');
                     _accessToken = token;
                     return token;
           }
 
           const removeToken = () => {
-                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('access_token');
           }
 
           return {
