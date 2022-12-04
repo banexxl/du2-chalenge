@@ -18,8 +18,11 @@ function ItemDetails() {
           const dataRating = data.rating
 
           const getProduct = () => {
+
                     basehttpservice.getById(params.itemId)
                               .then((data: any) => {
+                                        console.log(data);
+
                                         setData(data)
                                         return data
                               }).then()

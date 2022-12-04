@@ -10,7 +10,6 @@ const BaseHttpService = () => {
           const getAllProducts = (endpoint: string) => {
 
                     return axios.get(`${BASE_URL}` + endpoint, {
-                              // method: 'GET',
                               headers: {
                                         'Content-Type': 'application/json',
                                         'Access-Control-Allow-Origin': '*',
@@ -27,11 +26,14 @@ const BaseHttpService = () => {
           }
 
 
-          const getProductById = (endpoint: string, options = {}) => {
-                    options = { ...options, ..._getCommonOptions() };
+          const getProductById = (endpoint: string, id: number) => {
+                    // options = { ...options, ..._getCommonOptions() }
+                    // console.log('options', options);
+
                     //     return await axios.get(`${BASE_URL}/${endpoint}`, options)
                     //       .catch(error => _handleHttpError(error));
-                    return axios.get(BASE_URL + `/products/${options}`, {
+
+                    return axios.get(BASE_URL + `/products/${id}`, {
                               headers: {
                                         'Content-Type': 'application/json',
                                         'Access-Control-Allow-Origin': '*',
@@ -39,8 +41,7 @@ const BaseHttpService = () => {
                               }
                     })
                               .then(res => {
-                                        console.log('res', res);
-                                        return res
+                                        return res.data
                               })
                               .catch((error) => {
                                         console.log("Error message: " + error.message);
