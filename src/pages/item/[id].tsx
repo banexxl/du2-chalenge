@@ -21,9 +21,8 @@ function ItemDetails() {
 
                     basehttpservice.getById(params.itemId)
                               .then((data: any) => {
-                                        console.log(data);
-
                                         setData(data)
+                                        setLoading(false)
                                         return data
                               }).then()
           }
