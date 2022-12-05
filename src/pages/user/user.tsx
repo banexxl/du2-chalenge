@@ -1,7 +1,6 @@
 import Headline from 'components/Headline';
 import { AppLayout } from 'components/Layouts';
 import { useEffect, useState } from 'react';
-import styles from './user.module.css';
 import BaseHttpService from 'services/base-http.service';
 import jwt_decode from "jwt-decode"
 import userServices from "../../services/users.services"
