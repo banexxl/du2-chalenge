@@ -11,11 +11,14 @@ import LogoutBadge from "components/Badges/LogoutBadge";
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useSelector } from "react-redux";
+import WishListBadgeListed from "components/Badges/WishlistBadgeListed"
 
 export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
           const navigate = useNavigate()
+          const wishList = useSelector((state: any) => state.wishList)
 
           const [openModal, setOpenModal] = useState(false);
           const handleOpen = () => setOpenModal(true);
@@ -56,9 +59,16 @@ export const Header = () => {
                                                             </Link>
                                                   </div>
                                                   <div className={headerStyles.flex}>
-                                                            <Link to="/wishlist">
-                                                                      <WishlistBadge />
-                                                            </Link>
+                                                            {
+                                                                      !wishList ?
+                                                                                <Link to="/wishlist">
+                                                                                          <WishlistBadge />
+                                                                                </Link>
+                                                                                :
+                                                                                <Link to="/wishlist">
+                                                                                          <WishListBadgeListed />
+                                                                                </Link>
+                                                            }
                                                             <CartBadge />
                                                             {
                                                                       token === null || token === "undefined" ? <LoginBadge /> :

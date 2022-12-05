@@ -1,7 +1,7 @@
-import styles from './whishlistbadge.module.scss';
+import styles from './whishlistbadgelisted.module.scss';
 import SvgIcon from "components/Badges/SvgIcon";
 
-const WishlistBadge = () => {
+const WishlistBadgeListed = () => {
           return (
                     <span className={styles.wishlist_badge}>
                               <SvgIcon type="heartfilled" className={styles.wishlist_icon} />
@@ -10,4 +10,4 @@ const WishlistBadge = () => {
           )
 }
 
-export default WishlistBadge
+export default WishlistBadgeListed
