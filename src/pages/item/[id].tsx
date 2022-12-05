@@ -6,10 +6,9 @@ import Button from 'components/Button'
 import WishlistBadge from 'components/Badges/WishlistBadge'
 import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { addToWishList } from "../../store/wishListSlice"
-import { wishListItemsSelector } from "../../store/selectors"
 function ItemDetails() {
 
           const params: any = useParams()
@@ -17,8 +16,6 @@ function ItemDetails() {
           const [data, setData] = useState<any>({});
           const productServices = ProducServices
           const dataRating = data.rating
-
-          const wishListCounter: any = useSelector(wishListItemsSelector)
 
           const getProduct = () => {
 
@@ -36,8 +33,6 @@ function ItemDetails() {
           }, [])
 
           const dispatch = useDispatch()
-
-          console.log(wishListCounter);
 
 
           return (

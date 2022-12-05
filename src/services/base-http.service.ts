@@ -21,17 +21,12 @@ const BaseHttpService = () => {
                                         // res.json()
                               })
                               .catch((error) => {
-                                        console.log(error.message);
+                                        alert(error.message);
                               })
           }
 
 
           const getProductById = (endpoint: string, id: number) => {
-                    // options = { ...options, ..._getCommonOptions() }
-                    // console.log('options', options);
-
-                    //     return await axios.get(`${BASE_URL}/${endpoint}`, options)
-                    //       .catch(error => _handleHttpError(error));
 
                     return axios.get(BASE_URL + `/products/${id}`, {
                               headers: {
@@ -44,7 +39,7 @@ const BaseHttpService = () => {
                                         return res.data
                               })
                               .catch((error) => {
-                                        console.log("Error message: " + error.message);
+                                        alert("Error message: " + error.message);
                               })
           }
 
@@ -61,7 +56,7 @@ const BaseHttpService = () => {
                                         return res.data
                               })
                               .catch((error) => {
-                                        console.log("Error message: " + error.message);
+                                        alert("Error message: " + error.message);
                               })
           }
 

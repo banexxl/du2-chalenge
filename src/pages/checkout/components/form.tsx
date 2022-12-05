@@ -24,7 +24,6 @@ const styleModal = {
 
 const onSubmit = () => {
           console.log("Form submitted");
-
 }
 
 

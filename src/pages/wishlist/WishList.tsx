@@ -7,8 +7,7 @@ import wishListyle from "./wishListStyle.module.scss"
 function WishList() {
 
           const wishList = useSelector((state: any) => state.wishList)
-          console.log("wishList: ", wishList);
-
+          console.log("wishList:", wishList);
 
 
           return (
