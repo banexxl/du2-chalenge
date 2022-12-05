@@ -7,6 +7,7 @@ const wishListSlice = createSlice({
           initialState,
           reducers: {
                     addToWishList(state, { payload }) {
+
                               const { id } = payload;
 
                               const find = state.find((item: any) => item.id === id);
@@ -27,14 +28,13 @@ const wishListSlice = createSlice({
                               }
                     },
                     removeFromWishList(state, { payload }) {
-                              return state.map((item: any) =>
-                                        item.id === payload
-                                                  ? {
-                                                            ...item,
-                                                            quantity: item.quantity - 1
-                                                  }
-                                                  : item
-                              );
+
+                              const { id } = payload
+
+                              const index = state.map((item: any) => item.id).indexOf(id)
+
+                              state.splice(index, 1)
+
                     },
                     clear(state) {
                               return [];
