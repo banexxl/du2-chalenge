@@ -10,23 +10,30 @@ function UserCard(user: any) {
                                         <UserBadgeLarge />
                               </div>
                               <div className={userCardStyle.user_details_container}>
-                                        <span>
-                                                  First name: {user.firstname}
+                                        <span className={userCardStyle.title}>
+                                                  User details:
                                         </span>
-                                        <span>
-                                                  Last name: {user.lastname}
-                                        </span>
-                                        <span>
-                                                  City: {user.city}
-                                                  ZIP: {user.zipcode}
-                                                  Street: {user.street} {user.number}
-                                        </span>
-                                        <span>
-                                                  Email: {user.email}
-                                        </span>
-                                        <span>
-                                                  Phone number: {user.phone}
-                                        </span>
+                                        <span className={userCardStyle.user_details}>
+                                                  First name:
+                                        </span>  {user.firstname}
+                                        <span className={userCardStyle.user_details}>
+                                                  Last name:
+                                        </span>{user.lastname}
+                                        <span className={userCardStyle.user_details}>
+                                                  City:
+                                        </span>{user.city}
+                                        <span className={userCardStyle.user_details}>
+                                                  ZIP:
+                                        </span>{user.zipcode}
+                                        <span className={userCardStyle.user_details}>
+                                                  Street:
+                                        </span>  {user.street} {user.number}
+                                        <span className={userCardStyle.user_details}>
+                                                  Email:
+                                        </span>{user.email}
+                                        <span className={userCardStyle.user_details}>
+                                                  Phone number:
+                                        </span>{user.phone}
                               </div>
                     </div>
           )
