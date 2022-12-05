@@ -19,6 +19,7 @@ export const Header = () => {
           const token = window.localStorage.getItem("access_token")
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
+          console.log("header wishlist ", wishList);
 
           const [openModal, setOpenModal] = useState(false);
           const handleOpen = () => setOpenModal(true);
@@ -60,7 +61,8 @@ export const Header = () => {
                                                   </div>
                                                   <div className={headerStyles.flex}>
                                                             {
-                                                                      !wishList ?
+                                                                      wishList === undefined || wishList.length === 0 ?
+
                                                                                 <Link to="/wishlist">
                                                                                           <WishlistBadge />
                                                                                 </Link>
@@ -68,6 +70,7 @@ export const Header = () => {
                                                                                 <Link to="/wishlist">
                                                                                           <WishListBadgeListed />
                                                                                 </Link>
+
                                                             }
                                                             <CartBadge />
                                                             {
