@@ -11,6 +11,6 @@ export const cartTotalPriceSelector = createSelector([cartSelector], (cart: any)
           cart.reduce((total: number, item: any) => (total += parseFloat(item.price) * item.quantity), 0)
 );
 
-export const wishListTotalSelector = createSelector([wishListSelector], (wishList: any) =>
+export const wishListItemsSelector = createSelector([wishListSelector], (wishList: any) =>
           wishList.reduce((total: number, item: any) => (total += parseFloat(item.price) * item.quantity), 0)
 );

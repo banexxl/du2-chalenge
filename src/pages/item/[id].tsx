@@ -8,8 +8,8 @@ import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { addToWishList, removeFromWishList } from "../../store/wishListSlice"
-import { wishListTotalSelector } from "../../store/selectors"
+import { addToWishList } from "../../store/wishListSlice"
+import { wishListItemsSelector } from "../../store/selectors"
 function ItemDetails() {
 
           const params: any = useParams()
@@ -17,7 +17,8 @@ function ItemDetails() {
           const [data, setData] = useState<any>({});
           const productServices = ProducServices
           const dataRating = data.rating
-          const wishListCounter: any = useSelector(wishListTotalSelector)
+
+          const wishListCounter: any = useSelector(wishListItemsSelector)
 
           const getProduct = () => {
 
