@@ -12,9 +12,6 @@ function WishList() {
 
           const wishList = useSelector((state: any) => state.wishList)
           console.log("wishList:", wishList);
-
-          console.log(clearWishList);
-
           const dispatch = useDispatch()
 
           return (
@@ -34,7 +31,7 @@ function WishList() {
                                                   })
                                         }
                               </div>
-                              <Button style={{ width: '200px' }} onClick={() => dispatch(clearWishList)}>Clear wish list</Button>
+                              <Button style={{ width: '200px' }} onClick={() => dispatch(clearWishList())}>Clear wish list</Button>
                     </AppLayout>
           )
 }

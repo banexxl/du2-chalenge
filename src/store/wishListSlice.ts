@@ -36,7 +36,7 @@ const wishListSlice = createSlice({
                               state.splice(index, 1)
 
                     },
-                    clearWishList(state) {
+                    clearWishList() {
                               return [];
                     }
           }
