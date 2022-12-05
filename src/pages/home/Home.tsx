@@ -13,25 +13,18 @@ import BaseHttpService from "../../services/product.services"
 
 const Home = () => {
 
-          const [loading, setLoading] = useState(false)
           const [data, setData] = useState([])
           const basehttpservice = BaseHttpService
-
-          const getAllProducts = () => {
-                    basehttpservice.getAll()
-                              .then((data: any) => {
-                                        setData(data)
-                                        return data
-                              }).then()
-          }
 
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
           }
 
-
           useEffect(() => {
-                    getAllProducts()
+                    basehttpservice.getAll()
+                              .then((data: any) => {
+                                        setData(data)
+                              })
           }, [])
 
           return (
@@ -40,12 +33,6 @@ const Home = () => {
                                         <div className={productContainerStyles.headline}>
 
                                                   <Headline title='Home' />
-                                                  {
-                                                            loading && (
-
-                                                                      < div > Loading...</div>
-                                                            )
-                                                  }
                                         </div>
                                         <div className={productContainerStyles.filter_container}>
 

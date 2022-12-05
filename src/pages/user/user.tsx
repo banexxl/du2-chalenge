@@ -3,19 +3,34 @@ import { AppLayout } from 'components/Layouts';
 import { useEffect, useState } from 'react';
 import styles from './user.module.css';
 import BaseHttpService from 'services/base-http.service';
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode"
 import userServices from "../../services/users.services"
+import { UserCard } from './UserCard';
 
 
 
 export default function UserDetails() {
 
-          const [data, setData] = useState()
+          type User = {
+                    name: {
+                              firstname: string
+                              lastname: string
+                    },
+                    address: {
+                              city: string,
+                              number: string,
+                              street: string,
+                              zipcode: string
+                    },
+                    email: string,
+                    phone: string,
+                    username: string
+          }
+
+          const [data, setData] = useState<User>()
           const baseHTTP = BaseHttpService
           const token: any = baseHTTP().getAccessToken()
           var decoded: any = jwt_decode(token);
-
-          let firstname = ""
 
           useEffect(() => {
                     userServices.getUser(decoded.sub).then((userData) => {
@@ -23,23 +38,24 @@ export default function UserDetails() {
                     })
           }, [])
 
-
           return (
                     <AppLayout>
-                              <Headline title="Item Details" />
-                              <div className={styles.user_container}>
-                                        <div className={styles.image}>
+                              <Headline title="User" />
+                              {
+                                        data ?
+                                                  <UserCard firstname={data.name.firstname}
+                                                            lastname={data.name.lastname}
+                                                            city={data.address.city}
+                                                            phone={data.phone}
+                                                            email={data.email}
+                                                            zipcode={data.address.zipcode}
+                                                            street={data.address.street}
+                                                  >
+                                                  </UserCard>
+                                                  :
+                                                  <span>Loading...</span>
+                              }
 
-                                        </div>
-                                        <div className={styles.user_data}>
-                                                  <div className={styles.user_name}>
-                                                            Name: { }
-                                                  </div>
-                                                  <div className={styles.user_email}></div>
-                                                  <div className={styles.user_address}></div>
-                                                  <div className={styles.user_phone}></div>
-                                        </div>
-                              </div>
                     </AppLayout>
           )
 }
