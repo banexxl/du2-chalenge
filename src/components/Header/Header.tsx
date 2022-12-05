@@ -19,7 +19,6 @@ export const Header = () => {
           const token = window.localStorage.getItem("access_token")
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
-          console.log("header wishlist ", wishList);
 
           const [openModal, setOpenModal] = useState(false);
           const handleOpen = () => setOpenModal(true);

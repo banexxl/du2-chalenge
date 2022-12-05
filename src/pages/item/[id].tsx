@@ -4,11 +4,14 @@ import { AppLayout } from 'components/Layouts'
 import Headline from 'components/Headline'
 import Button from 'components/Button'
 import WishlistBadge from 'components/Badges/WishlistBadge'
+import WishlistBadgeListed from "components/Badges/WishlistBadgeListed"
 import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-import { addToWishList } from "../../store/wishListSlice"
+import { addToWishList, checkItemInList, removeFromWishList } from "../../store/wishListSlice"
+
+
 function ItemDetails() {
 
           const params: any = useParams()
@@ -34,6 +37,8 @@ function ItemDetails() {
 
           const dispatch = useDispatch()
 
+          let itemCheck = checkItemInList(data)
+          console.log(itemCheck);
 
           return (
                     <AppLayout>
@@ -63,9 +68,19 @@ function ItemDetails() {
                                                                                           dispatch(addToCart(data))
                                                                                 }}>Add to cart</Button>
                                                             }
-                                                            <div onClick={() => dispatch(addToWishList(data))}>
-                                                                      <WishlistBadge />
-                                                            </div>
+                                                            {
+                                                                      checkItemInList(data) ?
+                                                                                <div onClick={() => dispatch(addToWishList(data))}>
+                                                                                          <WishlistBadge />
+                                                                                </div>
+                                                                                :
+                                                                                <div onClick={() => dispatch(removeFromWishList(data))}>
+                                                                                          <WishlistBadgeListed />
+                                                                                </div>
+
+                                                            }
+
+
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
                                                             Category: {data.category}
