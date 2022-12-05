@@ -4,7 +4,7 @@ import SvgIcon from "components/Badges/SvgIcon";
 const WishlistBadge = () => {
           return (
                     <span className={styles.wishlist_badge}>
-                              <SvgIcon type="heart" className={styles.wishlist_icon} />
+                              <SvgIcon type="heartfilled" className={styles.wishlist_icon} />
                               <span className={styles.wishlist_number}></span>
                     </span>
           )
