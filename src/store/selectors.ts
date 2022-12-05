@@ -1,6 +1,7 @@
 const { createSelector } = require("@reduxjs/toolkit");
 
-const cartSelector = (state: any) => state.cart;
+const cartSelector = (state: any) => state.cart
+const wishListSelector = (state: any) => state.wishList
 
 export const cartTotalSelector = createSelector([cartSelector], (cart: any) =>
           cart.reduce((total: number, item: any) => (total += item.quantity), 0)
@@ -8,4 +9,8 @@ export const cartTotalSelector = createSelector([cartSelector], (cart: any) =>
 
 export const cartTotalPriceSelector = createSelector([cartSelector], (cart: any) =>
           cart.reduce((total: number, item: any) => (total += parseFloat(item.price) * item.quantity), 0)
+);
+
+export const wishListTotalSelector = createSelector([wishListSelector], (wishList: any) =>
+          wishList.reduce((total: number, item: any) => (total += parseFloat(item.price) * item.quantity), 0)
 );

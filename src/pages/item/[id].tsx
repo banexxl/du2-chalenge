@@ -6,20 +6,22 @@ import Button from 'components/Button'
 import WishlistBadge from 'components/Badges/WishlistBadge'
 import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-
+import { addToWishList, removeFromWishList } from "../../store/wishListSlice"
+import { wishListTotalSelector } from "../../store/selectors"
 function ItemDetails() {
 
           const params: any = useParams()
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
-          const producServices = ProducServices
+          const productServices = ProducServices
           const dataRating = data.rating
+          const wishListCounter: any = useSelector(wishListTotalSelector)
 
           const getProduct = () => {
 
-                    producServices.getById(params.itemId)
+                    productServices.getById(params.itemId)
                               .then((data: any) => {
                                         setData(data)
                                         setLoading(false)
@@ -33,6 +35,9 @@ function ItemDetails() {
           }, [])
 
           const dispatch = useDispatch()
+
+          console.log(wishListCounter);
+
 
           return (
                     <AppLayout>
@@ -62,14 +67,16 @@ function ItemDetails() {
                                                                                           dispatch(addToCart(data))
                                                                                 }}>Add to cart</Button>
                                                             }
-                                                            <WishlistBadge />
+                                                            <div onClick={() => dispatch(addToWishList(data))}>
+                                                                      <WishlistBadge />
+                                                            </div>
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
                                                             Category: {data.category}
                                                   </div>
                                         </div>
                               </div>
-                    </AppLayout>
+                    </AppLayout >
           )
 }
 

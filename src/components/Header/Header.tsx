@@ -56,7 +56,9 @@ export const Header = () => {
                                                             </Link>
                                                   </div>
                                                   <div className={headerStyles.flex}>
-                                                            <WishlistBadge />
+                                                            <Link to="/wishlist">
+                                                                      <WishlistBadge />
+                                                            </Link>
                                                             <CartBadge />
                                                             {
                                                                       token === null || token === "undefined" ? <LoginBadge /> :
