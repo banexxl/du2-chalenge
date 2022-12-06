@@ -37,6 +37,7 @@ const wishListSlice = createSlice({
 
                     },
                     checkItemInList(state, { payload }) {
+
                               const { id } = payload
 
                               state.forEach((item: any) => {

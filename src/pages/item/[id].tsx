@@ -17,6 +17,7 @@ function ItemDetails() {
           const params: any = useParams()
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
+          const [inWishList, setInWishList] = useState(false)
           const productServices = ProducServices
           const dataRating = data.rating
 
@@ -37,8 +38,15 @@ function ItemDetails() {
 
           const dispatch = useDispatch()
 
-          let itemCheck = checkItemInList(data)
-          console.log(itemCheck);
+          const addToWL = () => {
+                    dispatch(addToWishList(data))
+                    setInWishList(true)
+          }
+
+          const removeFromWL = () => {
+                    dispatch(removeFromWishList(data))
+                    setInWishList(false)
+          }
 
           return (
                     <AppLayout>
@@ -69,12 +77,12 @@ function ItemDetails() {
                                                                                 }}>Add to cart</Button>
                                                             }
                                                             {
-                                                                      checkItemInList(data) ?
-                                                                                <div onClick={() => dispatch(addToWishList(data))}>
+                                                                      !inWishList ?
+                                                                                <div onClick={addToWL}>
                                                                                           <WishlistBadge />
                                                                                 </div>
                                                                                 :
-                                                                                <div onClick={() => dispatch(removeFromWishList(data))}>
+                                                                                <div onClick={removeFromWL}>
                                                                                           <WishlistBadgeListed />
                                                                                 </div>
 
