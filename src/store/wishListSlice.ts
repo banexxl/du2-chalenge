@@ -36,26 +36,13 @@ const wishListSlice = createSlice({
                               state.splice(index, 1)
 
                     },
-                    checkItemInList(state, { payload }) {
-
-                              const { id } = payload
-
-                              state.forEach((item: any) => {
-
-                                        if (item.id === id) {
-                                                  return true
-                                        } else {
-                                                  return false
-                                        }
-                              });
-                    },
                     clearWishList() {
                               return [];
                     }
           }
 });
 
-export const { addToWishList, removeFromWishList, clearWishList, checkItemInList } = wishListSlice.actions
+export const { addToWishList, removeFromWishList, clearWishList } = wishListSlice.actions
 const wishListSliceReducer = wishListSlice.reducer
 
 export default wishListSliceReducer

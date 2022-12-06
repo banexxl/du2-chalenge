@@ -9,8 +9,8 @@ import ProducServices from "../../services/product.services"
 import { addToCart } from "../../store/cartSlice"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-import { addToWishList, checkItemInList, removeFromWishList } from "../../store/wishListSlice"
-
+import { addToWishList, removeFromWishList } from "../../store/wishListSlice"
+import Alert from '@mui/material/Alert';
 
 function ItemDetails() {
 
@@ -18,6 +18,8 @@ function ItemDetails() {
           const [loading, setLoading] = useState(true)
           const [data, setData] = useState<any>({});
           const [inWishList, setInWishList] = useState(false)
+          const [alertAdd, setAlertAdd] = useState(false)
+          const [alertRemove, setAlertRemove] = useState(false)
           const productServices = ProducServices
           const dataRating = data.rating
 
@@ -41,17 +43,41 @@ function ItemDetails() {
           const addToWL = () => {
                     dispatch(addToWishList(data))
                     setInWishList(true)
+                    setAlertAdd(true)
+                    setTimeout(() => {
+                              setAlertAdd(false)
+                    }, 3000);
+                    setAlertRemove(false)
           }
 
           const removeFromWL = () => {
                     dispatch(removeFromWishList(data))
                     setInWishList(false)
+                    setAlertRemove(true)
+                    setTimeout(() => {
+                              setAlertRemove(false)
+                    }, 3000);
+                    setAlertAdd(false)
           }
 
           return (
                     <AppLayout>
                               <Headline title="Item Details" />
                               <div className={itemDetailsStyles.item_details_container}>
+                                        {
+                                                  alertAdd ?
+                                                            <Alert variant="filled" severity="success" className={itemDetailsStyles.alert}>
+                                                                      Item added to wishlist!
+                                                            </Alert>
+                                                            : null
+                                        }
+                                        {
+                                                  alertRemove ?
+                                                            <Alert variant="filled" severity="warning" className={itemDetailsStyles.alert}>
+                                                                      Item removed from wishlist!
+                                                            </Alert>
+                                                            : null
+                                        }
 
                                         <img src={data.image} alt="Item" className={itemDetailsStyles.item_details_image}>
                                         </img>
@@ -87,8 +113,6 @@ function ItemDetails() {
                                                                                 </div>
 
                                                             }
-
-
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
                                                             Category: {data.category}
