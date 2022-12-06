@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage, NotFoundPage, CartPage, LoginPage, Register, ItemDetails, Checkout, User, WishList } from "pages";
+import { HomePage, NotFoundPage, CartPage, LoginPage, ItemDetails, Checkout, User, WishList } from "pages";
 
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
                               <Route path="/cart" element={<CartPage />} />
                               <Route path="*" element={<NotFoundPage />} />
                               <Route path="/login" element={<LoginPage />} />
-                              <Route path="/register" element={<Register />} />
                               <Route path="/item/:itemId" element={<ItemDetails />} />
                               <Route path="/checkout" element={<Checkout />} />
                               <Route path="/user" element={<User />} />
