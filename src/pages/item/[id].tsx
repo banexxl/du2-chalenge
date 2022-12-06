@@ -46,7 +46,7 @@ function ItemDetails() {
                     setAlertAdd(true)
                     setTimeout(() => {
                               setAlertAdd(false)
-                    }, 3000);
+                    }, 2000);
                     setAlertRemove(false)
           }
 
@@ -56,7 +56,7 @@ function ItemDetails() {
                     setAlertRemove(true)
                     setTimeout(() => {
                               setAlertRemove(false)
-                    }, 3000);
+                    }, 2000);
                     setAlertAdd(false)
           }
 
