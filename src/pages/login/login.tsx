@@ -15,6 +15,7 @@ import userServices from "../../services/users.services"
 function Login() {
 
           const navigate = useNavigate()
+          const loginUser = userServices.loginUser
 
           const [openModal, setOpenModal] = useState(false);
           const handleClose = () => {
@@ -23,25 +24,13 @@ function Login() {
           }
 
           const onSubmitHandler = async () => {
-
-                    return await fetch('https://fakestoreapi.com/auth/login', {
-                              method: 'POST',
-                              body: JSON.stringify({
-                                        username: values.username,
-                                        password: values.password
-                              }),
-                              headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json',
-                                        'Access-Control-Allow-Origin': '*'
-                              },
-                    })
-                              .then(res => res.json())
+                    await loginUser(values.username, values.password)
+                              .then((res: any) => res.json())
                               .then(json => {
-                                        window.localStorage.setItem("access_token", json.token)
-                                        json !== null && json !== undefined ? setOpenModal(true) : setOpenModal(false)
-                              }).catch(error => {
-                                        alert("Invalid username and/or password")
+                                        console.log("json", json);
+
+                                        window.localStorage.setItem("access_token", json)
+
                               })
           }
 

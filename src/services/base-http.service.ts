@@ -60,6 +60,29 @@ const BaseHttpService = () => {
                               })
           }
 
+          const loginUser = (endpoint: string, username: string, password: string) => {
+
+                    axios(BASE_URL + endpoint, {
+                              method: "POST",
+                              data: {
+                                        username: username,
+                                        password: password
+                              },
+                              headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': '*'
+                              },
+                    })
+                              .then((res: any) => res.json())
+                              .then(json => console.log(json))
+                              .catch(error => {
+                                        alert("Invalid username and/or password")
+                              })
+
+
+          }
+
           const post = async (endpoint: string, data = {}, options = {}) => {
                     options = { ...options, ..._getCommonOptions() };
                     return axios.post(`${BASE_URL}/${endpoint}`, data, options)
@@ -120,6 +143,7 @@ const BaseHttpService = () => {
                     getAllProducts,
                     getProductById,
                     getUserById,
+                    loginUser,
                     post,
                     put,
                     remove,

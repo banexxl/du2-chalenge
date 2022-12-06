@@ -8,7 +8,7 @@ function App() {
                               <Route path="/" element={<HomePage />} />
                               <Route path="/cart" element={<CartPage />} />
                               <Route path="*" element={<NotFoundPage />} />
-                              <Route path="/login" element={<LoginPage />} />
+                              <Route path="/auth/login" element={<LoginPage />} />
                               <Route path="/item/:itemId" element={<ItemDetails />} />
                               <Route path="/checkout" element={<Checkout />} />
                               <Route path="/user" element={<User />} />
