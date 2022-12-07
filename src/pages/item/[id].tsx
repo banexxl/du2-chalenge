@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom"
 import { addToWishList, removeFromWishList } from "../../store/wishListSlice"
 import Alert from '@mui/material/Alert';
 import { Backdrop, CircularProgress } from '@mui/material'
+import { Trans, useTranslation } from 'react-i18next'
 
 function ItemDetails() {
 
@@ -23,6 +24,7 @@ function ItemDetails() {
           const productServices = ProducServices
           const dataRating = data.rating
           const [openBackdrop, setOpenBackdrop] = useState(false);
+          const { t } = useTranslation();
 
           const getProduct = () => {
 
@@ -93,9 +95,9 @@ function ItemDetails() {
                                                   <div className={itemDetailsStyles.item_details_description_container_price}>
                                                             Price: {data.price}$
                                                   </div>
-                                                  <div className={itemDetailsStyles.item_details_description_container_description}>
-                                                            {data.description}
-                                                  </div>
+                                                  <Trans className={itemDetailsStyles.item_details_description_container_description} i18nKey="userMessagesUnread">
+                                                            {t(data.description)}
+                                                  </Trans>
                                                   <div className={itemDetailsStyles.item_details_description_container_cart}>
                                                             {
                                                                       openBackdrop === true ?

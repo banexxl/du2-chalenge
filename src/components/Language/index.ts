@@ -1,1 +1,1 @@
-export { default } from './languageSelect';
+export { default } from './i18n';
