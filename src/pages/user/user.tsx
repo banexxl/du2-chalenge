@@ -5,6 +5,7 @@ import BaseHttpService from 'services/base-http.service';
 import jwt_decode from "jwt-decode"
 import userServices from "../../services/users.services"
 import { UserCard } from './UserCard';
+import { Backdrop, Button, CircularProgress } from '@mui/material';
 
 
 
@@ -27,15 +28,22 @@ export default function UserDetails() {
           }
 
           const [data, setData] = useState<User>()
+          const [openBackdrop, setOpenBackdrop] = useState(false);
           const baseHTTP = BaseHttpService
           const token: any = baseHTTP().getAccessToken()
           var decoded: any = jwt_decode(token);
 
           useEffect(() => {
+                    setOpenBackdrop(true)
                     userServices.getUser(decoded.sub).then((userData) => {
+                              setOpenBackdrop(false)
                               setData(userData)
                     })
           }, [])
+
+
+
+
 
           return (
                     <AppLayout>
@@ -52,9 +60,14 @@ export default function UserDetails() {
                                                   >
                                                   </UserCard>
                                                   :
-                                                  <span>Loading...</span>
-                              }
+                                                  <Backdrop
+                                                            sx={{ color: '#fff', zIndex: "10" }}
+                                                            open={openBackdrop}
+                                                  >
+                                                            <CircularProgress style={{ color: "black" }} />
+                                                  </Backdrop>
 
+                              }
                     </AppLayout>
           )
 }
