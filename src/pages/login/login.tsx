@@ -104,10 +104,6 @@ function Login() {
                                                   </div>
 
                                                   <button type="submit" className={loginStyles.login_button}>Login</button>
-                                                  <Link to="/register" className={loginStyles.register_button}>
-                                                            Need to register?
-                                                  </Link>
-
                                         </form>
 
                               </div >

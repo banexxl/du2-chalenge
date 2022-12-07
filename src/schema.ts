@@ -14,12 +14,6 @@ export const checkoutSchema = yup.object().shape({
 
 });
 
-export const registerSchema = yup.object().shape({
-          username: yup.string().min(3, "Username must be at least 3 characters long").required("Required"),
-          password: yup.string().min(5).matches(passwordRules, { message: "Please create a stronger password" }).required("Required"),
-          confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match").required("Required"),
-});
-
 
 export const loginSchema = yup.object().shape({
           username: yup.string().min(3, "Username must be at least 3 characters long").required("Required"),
