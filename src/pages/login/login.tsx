@@ -24,12 +24,16 @@ function Login() {
           }
 
           const onSubmitHandler = async () => {
-                    await loginUser(values.username, values.password)
-                              .then((token: any) => {
-                                        setToken(token)
-                                        localStorage.setItem("access_token", token.token)
-                              })
-
+                    try {
+                              await loginUser(values.username, values.password)
+                                        .then((token: any) => {
+                                                  setToken(token)
+                                                  localStorage.setItem("access_token", token.token)
+                                                  setOpenModal(true)
+                                        })
+                    } catch (error: any) {
+                              alert("Invalid username or password!")
+                    }
 
           }
 
