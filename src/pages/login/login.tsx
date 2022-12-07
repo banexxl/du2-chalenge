@@ -25,13 +25,8 @@ function Login() {
 
           const onSubmitHandler = async () => {
                     await loginUser(values.username, values.password)
-                              .then((res: any) => res.json())
-                              .then(json => {
-                                        console.log("json", json);
+                              .then((res: any) => console.log("res", res))
 
-                                        window.localStorage.setItem("access_token", json)
-
-                              })
           }
 
           const {

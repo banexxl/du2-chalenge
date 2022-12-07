@@ -60,9 +60,9 @@ const BaseHttpService = () => {
                               })
           }
 
-          const loginUser = (endpoint: string, username: string, password: string) => {
+          const loginUser = async (endpoint: string, username: string, password: string) => {
 
-                    axios(BASE_URL + endpoint, {
+                    return await axios(BASE_URL + endpoint, {
                               method: "POST",
                               data: {
                                         username: username,
@@ -74,10 +74,9 @@ const BaseHttpService = () => {
                                         'Access-Control-Allow-Origin': '*'
                               },
                     })
-                              .then((res: any) => res.json())
-                              .then(json => console.log(json))
+                              .then((res: any) => res.data)
                               .catch(error => {
-                                        alert("Invalid username and/or password")
+                                        console.log("aaaa", error.message)
                               })
 
 
