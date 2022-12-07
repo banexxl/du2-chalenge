@@ -5,7 +5,7 @@ import BaseHttpService from 'services/base-http.service';
 import jwt_decode from "jwt-decode"
 import userServices from "../../services/users.services"
 import { UserCard } from './UserCard';
-import { Backdrop, Button, CircularProgress } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 
 
@@ -40,10 +40,6 @@ export default function UserDetails() {
                               setData(userData)
                     })
           }, [])
-
-
-
-
 
           return (
                     <AppLayout>
