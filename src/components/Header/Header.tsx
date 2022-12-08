@@ -13,7 +13,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
 import WishListBadgeListed from "components/Badges/WishlistBadgeListed"
-import Language from "components/Language";
 
 export const Header = () => {
 
@@ -60,7 +59,7 @@ export const Header = () => {
                                                             </Link>
                                                   </div>
                                                   <div className={headerStyles.header_content}>
-                                                            <Language />
+
                                                             {
                                                                       wishList === undefined || wishList.length === 0 ?
 
