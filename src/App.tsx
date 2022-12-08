@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { HomePage, NotFoundPage, CartPage, LoginPage, ItemDetails, Checkout, User, WishList } from "pages";
 import { useState } from "react";
+import "./services/i18n"
 
 function App() {
 

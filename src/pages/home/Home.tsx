@@ -26,7 +26,6 @@ const Home = () => {
                               setData(data)
                               setFilteredItems(data)
                     })
-
           }, [])
 
           console.log(data);
@@ -35,31 +34,34 @@ const Home = () => {
           //filter
           const filterItem = (category: any) => {
 
-                    const newItem = data.filter((newVal: any) => {
-                              return newVal.category === category;
+                    const newItem = data.filter((item: any) => {
+                              return item.category === category;
                     });
                     setFilteredItems(newItem);
           };
 
           //sort
           const [sortValue, setSortValue] = useState("")
-          console.log(sortValue);
-          const [sortedItems, setSortedItems] = useState(data)
 
           const handleSortChange = () => {
-
-                    const sortedList = data.sort((a: any, b: any) => b[sortValue] - a[sortValue])
-                    setSortedItems(sortedList);
+                    const sortedData = data.sort((a: any, b: any) => (a.sortValue > b.sortValue) ? 1 : -1)
+                    console.log("sorteddata: ", sortedData);
           };
 
+          //search
+          const [searchTerm, setSearchTerm] = useState("")
 
-
+          const elementFound = () => {
+                    const newItem = data.filter((item: any) => {
+                              return item.title === searchTerm;
+                    })
+                    setFilteredItems(newItem)
+          }
 
           return (
                     <AppLayout>
                               <div className={productContainerStyles.container}>
                                         <div className={productContainerStyles.headline}>
-
                                                   <Headline title='Home' />
                                         </div>
                                         <div className={productContainerStyles.filter_container}>
@@ -113,14 +115,14 @@ const Home = () => {
                                                                                 <MenuItem divider={true} value="">
                                                                                           <em>None</em>
                                                                                 </MenuItem>
-                                                                                <MenuItem divider={true} value={"Category"} onClick={() => setSortValue("Category")}>Category</MenuItem>
-                                                                                <MenuItem divider={true} value={"Price"} onClick={() => setSortValue("Price")}>Price</MenuItem>
-                                                                                <MenuItem value={"Title"} onClick={() => setSortValue("Title")}>Title</MenuItem>
+                                                                                <MenuItem divider={true} value={"category"} onClick={() => setSortValue("category")}>category</MenuItem>
+                                                                                <MenuItem divider={true} value={"price"} onClick={() => setSortValue("price")}>price</MenuItem>
+                                                                                <MenuItem value={"title"} onClick={() => setSortValue("title")}>title</MenuItem>
                                                                       </Select>
                                                             </FormControl>
                                                   </div>
                                                   <div className={productContainerStyles.search}>
-                                                            {/* <Box
+                                                            <Box
                                                                       component="form"
                                                                       sx={{
                                                                                 '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -129,12 +131,10 @@ const Home = () => {
                                                                       autoComplete="off"
                                                             >
                                                                       <div>
-
-                                                                                <TextField id="outlined-search" label="Search field" type="search" />
-
+                                                                                <TextField id="outlined-search" label="Search field" type="search" onChange={(e) => setSearchTerm(e.target.value)} />
                                                                       </div>
 
-                                                            </Box> */}
+                                                            </Box>
                                                   </div>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
