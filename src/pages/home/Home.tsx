@@ -14,6 +14,7 @@ const Home = () => {
           const basehttpservice = BaseHttpService
           const [openBackdrop, setOpenBackdrop] = useState(false);
           const [filteredItems, setFilteredItems] = useState(data)
+
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
           }
@@ -39,25 +40,20 @@ const Home = () => {
                     });
                     setFilteredItems(newItem);
           };
+
           //sort
-          // const sortItem = (srtType: any) => {
-          //           const newItem = data.sort((newVal: any) => {
-          //                     return newVal.category === category;
-          //           });
-          //           setFilteredItems(newItem);
-          // };
-          const valuea = ""
-          const handleChange = () => {
+          const [sortValue, setSortValue] = useState("")
+          console.log(sortValue);
+          const [sortedItems, setSortedItems] = useState(data)
 
-          }
-          const valuetexta = () => {
+          const handleSortChange = () => {
 
-          }
-          const [value, setValue] = React.useState<number[]>([20, 37]);
-
-          const handleChangea = (event: Event, newValue: number | number[]) => {
-                    setValue(newValue as number[]);
+                    const sortedList = data.sort((a: any, b: any) => b[sortValue] - a[sortValue])
+                    setSortedItems(sortedList);
           };
+
+
+
 
           return (
                     <AppLayout>
@@ -104,24 +100,24 @@ const Home = () => {
                                                             </FormControl>
                                                   </div>
                                                   <div className={productContainerStyles.sort}>
-                                                            {/* <FormControl sx={{ m: 1, minWidth: 80 }}>
+                                                            <FormControl sx={{ m: 1, minWidth: 80 }}>
                                                                       <InputLabel id="demo-simple-select-autowidth-label">Sort</InputLabel>
                                                                       <Select
                                                                                 labelId="demo-simple-select-autowidth-label"
                                                                                 id="demo-simple-select-autowidth"
-                                                                                value={value}
-                                                                                onChange={handleChange}
+                                                                                value={sortValue}
+                                                                                onChange={handleSortChange}
                                                                                 autoWidth
                                                                                 label="Sort"
                                                                       >
-                                                                                <MenuItem value="">
+                                                                                <MenuItem divider={true} value="">
                                                                                           <em>None</em>
                                                                                 </MenuItem>
-                                                                                <MenuItem value={10}>Category</MenuItem>
-                                                                                <MenuItem value={21}>Price</MenuItem>
-                                                                                <MenuItem value={22}>Rating</MenuItem>
+                                                                                <MenuItem divider={true} value={"Category"} onClick={() => setSortValue("Category")}>Category</MenuItem>
+                                                                                <MenuItem divider={true} value={"Price"} onClick={() => setSortValue("Price")}>Price</MenuItem>
+                                                                                <MenuItem value={"Title"} onClick={() => setSortValue("Title")}>Title</MenuItem>
                                                                       </Select>
-                                                            </FormControl> */}
+                                                            </FormControl>
                                                   </div>
                                                   <div className={productContainerStyles.search}>
                                                             {/* <Box
