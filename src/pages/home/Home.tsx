@@ -4,13 +4,9 @@ import productContainerStyles from "./product-container.module.scss"
 import { AppLayout } from 'components/Layouts'
 import { ProductCard } from "./components/ProductCard"
 import { ProductList } from './components/ProductList';
-import { ProductFilterPrice } from "./components/ProductFilterPrice"
-import { ProductFilterCategory } from "./components/ProductFilterCategory"
-import { ProductListSort } from "./components/ProductListSort"
-import { ProductListSearch } from "./components/ProductListSearch"
 import { Link } from 'react-router-dom';
 import BaseHttpService from "../../services/product.services"
-import { Backdrop, CircularProgress, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Backdrop, Box, CircularProgress, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Slider, TextField } from '@mui/material';
 
 const Home = () => {
 
@@ -32,16 +28,36 @@ const Home = () => {
 
           }, [])
 
+          console.log(data);
+
+
           //filter
           const filterItem = (category: any) => {
+
                     const newItem = data.filter((newVal: any) => {
                               return newVal.category === category;
                     });
                     setFilteredItems(newItem);
           };
-          console.log(filterItem);
-
           //sort
+          // const sortItem = (srtType: any) => {
+          //           const newItem = data.sort((newVal: any) => {
+          //                     return newVal.category === category;
+          //           });
+          //           setFilteredItems(newItem);
+          // };
+          const valuea = ""
+          const handleChange = () => {
+
+          }
+          const valuetexta = () => {
+
+          }
+          const [value, setValue] = React.useState<number[]>([20, 37]);
+
+          const handleChangea = (event: Event, newValue: number | number[]) => {
+                    setValue(newValue as number[]);
+          };
 
           return (
                     <AppLayout>
@@ -53,11 +69,25 @@ const Home = () => {
                                         <div className={productContainerStyles.filter_container}>
 
                                                   <div className={productContainerStyles.filter_price}>
+                                                            {/* <Box sx={{ width: 150 }} >
+                                                                      <h2>
+                                                                                Filter by price:
+                                                                      </h2>
+                                                                      <Slider
+                                                                                getAriaLabel={() => 'Temperature range'}
+                                                                                value={value}
+                                                                                onChange={handleChangea}
+                                                                                size='small'
+                                                                                //getAriaValueText={valuetexta}
+                                                                                valueLabelDisplay="on"
+                                                                                max={1000}
+                                                                                step={10}
+                                                                      />
 
-                                                            <ProductFilterPrice></ProductFilterPrice>
+                                                            </Box > */}
+
                                                   </div>
-
-                                                  <div>
+                                                  <div className={productContainerStyles.filter_category}>
                                                             <FormControl>
                                                                       <FormLabel id="demo-row-radio-buttons-group-label">Product Categories</FormLabel>
                                                                       <RadioGroup
@@ -69,14 +99,46 @@ const Home = () => {
                                                                                 <FormControlLabel value="male" control={<Radio />} label="Men's clothing" onClick={() => filterItem("men's clothing")} />
                                                                                 <FormControlLabel value="electronics" control={<Radio />} label="Electronics" onClick={() => filterItem("electronics")} />
                                                                                 <FormControlLabel value="jewelry" control={<Radio />} label="Jewelry" onClick={() => filterItem("jewelery")} />
+                                                                                <FormControlLabel value="all" control={<Radio />} label="All" onClick={() => setFilteredItems(data)} />
                                                                       </RadioGroup>
                                                             </FormControl>
                                                   </div>
-                                                  <div>
-                                                            <ProductListSort></ProductListSort>
+                                                  <div className={productContainerStyles.sort}>
+                                                            {/* <FormControl sx={{ m: 1, minWidth: 80 }}>
+                                                                      <InputLabel id="demo-simple-select-autowidth-label">Sort</InputLabel>
+                                                                      <Select
+                                                                                labelId="demo-simple-select-autowidth-label"
+                                                                                id="demo-simple-select-autowidth"
+                                                                                value={value}
+                                                                                onChange={handleChange}
+                                                                                autoWidth
+                                                                                label="Sort"
+                                                                      >
+                                                                                <MenuItem value="">
+                                                                                          <em>None</em>
+                                                                                </MenuItem>
+                                                                                <MenuItem value={10}>Category</MenuItem>
+                                                                                <MenuItem value={21}>Price</MenuItem>
+                                                                                <MenuItem value={22}>Rating</MenuItem>
+                                                                      </Select>
+                                                            </FormControl> */}
                                                   </div>
-                                                  <div>
-                                                            <ProductListSearch></ProductListSearch>
+                                                  <div className={productContainerStyles.search}>
+                                                            {/* <Box
+                                                                      component="form"
+                                                                      sx={{
+                                                                                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                                                                      }}
+                                                                      noValidate
+                                                                      autoComplete="off"
+                                                            >
+                                                                      <div>
+
+                                                                                <TextField id="outlined-search" label="Search field" type="search" />
+
+                                                                      </div>
+
+                                                            </Box> */}
                                                   </div>
                                         </div>
                                         <div className={productContainerStyles.product_list}>

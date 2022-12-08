@@ -1,1 +1,0 @@
-export { default as ProductFilterCategory } from './ProductFilterCategory'

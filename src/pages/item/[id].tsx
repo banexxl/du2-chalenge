@@ -93,9 +93,9 @@ function ItemDetails() {
                                                   <div className={itemDetailsStyles.item_details_description_container_price}>
                                                             Price: {data.price}$
                                                   </div>
-                                                  <Trans className={itemDetailsStyles.item_details_description_container_description} i18nKey="userMessagesUnread">
+                                                  {/* <Trans className={itemDetailsStyles.item_details_description_container_description} i18nKey="userMessagesUnread">
                                                             {t(data.description)}
-                                                  </Trans>
+                                                  </Trans> */}
                                                   <div className={itemDetailsStyles.item_details_description_container_cart}>
                                                             {
                                                                       openBackdrop === true ?
