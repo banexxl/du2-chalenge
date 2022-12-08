@@ -19,7 +19,6 @@ function Login() {
 
           const navigate = useNavigate()
           const loginUser = userServices.loginUser
-          const [token, setToken] = useState()
           const [openModal, setOpenModal] = useState(false);
           const handleClose = () => {
                     setOpenModal(false)
@@ -29,9 +28,7 @@ function Login() {
           const onSubmitHandler = async () => {
                     try {
                               await loginUser(values.username, values.password)
-                                        .then((token: any) => {
-                                                  setToken(token)
-                                                  localStorage.setItem("access_token", token.token)
+                                        .then(() => {
                                                   setOpenModal(true)
                                         })
                     } catch (error: any) {

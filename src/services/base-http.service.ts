@@ -74,9 +74,11 @@ const BaseHttpService = () => {
                                         'Access-Control-Allow-Origin': '*'
                               },
                     })
-                              .then((res: any) => res.data)
+                              .then((res: any) => {
+                                        return localStorage.setItem("access_token", res.data.token)
+                              })
                               .catch(error => {
-                                        console.log("aaaa", error.message)
+                                        alert(error.message)
                               })
 
 
