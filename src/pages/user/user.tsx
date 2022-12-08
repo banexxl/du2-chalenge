@@ -6,10 +6,13 @@ import jwt_decode from "jwt-decode"
 import userServices from "../../services/users.services"
 import { UserCard } from './UserCard';
 import { Backdrop, CircularProgress } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 
 
 export default function UserDetails() {
+
+          const { t } = useTranslation();
 
           type User = {
                     name: {
@@ -43,7 +46,7 @@ export default function UserDetails() {
 
           return (
                     <AppLayout>
-                              <Headline title="User" />
+                              <Headline title={t("user")} />
                               {
                                         data ?
                                                   <UserCard firstname={data.name.firstname}

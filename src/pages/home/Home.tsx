@@ -7,6 +7,8 @@ import { ProductList } from './components/ProductList';
 import { Link } from 'react-router-dom';
 import BaseHttpService from "../../services/product.services"
 import { Backdrop, Box, CircularProgress, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Slider, TextField } from '@mui/material';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
 
@@ -14,6 +16,7 @@ const Home = () => {
           const basehttpservice = BaseHttpService
           const [openBackdrop, setOpenBackdrop] = useState(false);
           const [filteredItems, setFilteredItems] = useState(data)
+          const { t } = useTranslation();
 
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
@@ -62,7 +65,7 @@ const Home = () => {
                     <AppLayout>
                               <div className={productContainerStyles.container}>
                                         <div className={productContainerStyles.headline}>
-                                                  <Headline title='Home' />
+                                                  <Headline title={t('home')} />
                                         </div>
                                         <div className={productContainerStyles.filter_container}>
 

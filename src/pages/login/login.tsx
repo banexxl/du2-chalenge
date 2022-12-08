@@ -9,10 +9,13 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import userServices from "../../services/users.services"
+import { useTranslation } from 'react-i18next'
 
 
 
 function Login() {
+
+          const { t } = useTranslation();
 
           const navigate = useNavigate()
           const loginUser = userServices.loginUser
@@ -69,7 +72,7 @@ function Login() {
 
           return (
                     <AppLayout>
-                              <Headline title='Login' />
+                              <Headline title={t("login")} />
                               <div className={loginStyles.login_container}>
                                         <h1 className={loginStyles.login_title}>Welcome!</h1>
                                         <h1 className={loginStyles.login_title}>Please login to continue</h1>

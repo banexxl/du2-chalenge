@@ -7,17 +7,19 @@ import Button from "components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { increment, clear, decrement } from "store/cartSlice";
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next";
 
 const CartView = () => {
 
           const cart = useSelector((state: any) => state.cart)
           const dispatch = useDispatch();
+          const { t } = useTranslation();
 
           console.log("cart: " + cart);
 
           return (
                     <AppLayout>
-                              <Headline title="Cart" />
+                              <Headline title={t("cart")} />
                               <Button className={styles.button_clear_all} onClick={() => dispatch(clear())}>Clear Cart</Button>
                               <div className={styles.cartPage}>
 
@@ -39,7 +41,7 @@ const CartView = () => {
                                         <div className={styles.cartTotalWrapp}>
                                                   <CartTotals />
                                                   <Link to={"/checkout"}>
-                                                            < Button className={styles.proceedBtn}>Proceed to Checkout</Button>
+                                                            < Button className={styles.proceedBtn}>Checkout</Button>
                                                   </Link>
                                         </div>
                               </div>
