@@ -1,15 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { HomePage, NotFoundPage, CartPage, LoginPage, ItemDetails, Checkout, User, WishList } from "pages";
 import { useState } from "react";
-import i18 from "i18next"
-import LocaleContext from "./store/localeContext"
-
 
 function App() {
 
-          const [locale, setLocale] = useState(i18.language);
+          // const [locale, setLocale] = useState(i18.language);
 
-          i18.on('languageChanged', (lng) => setLocale(i18.language))
+          // i18.on('languageChanged', (lng) => setLocale(i18.language))
 
 
 
