@@ -21,7 +21,6 @@ import { clearWishList } from "store/wishListSlice"
 export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
-          console.log(token);
 
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)

@@ -31,7 +31,7 @@ const Home = () => {
                     })
           }, [])
 
-          console.log(data);
+          // console.log(data);
 
 
           //filter
@@ -47,8 +47,27 @@ const Home = () => {
           const [sortValue, setSortValue] = useState("")
 
           const handleSortChange = () => {
-                    const sortedData = data.sort((a: any, b: any) => (a.sortValue > b.sortValue) ? 1 : -1)
-                    console.log("sorteddata: ", sortedData);
+
+                    console.log(sortValue)
+
+                    switch (sortValue) {
+                              case "price":
+                                        const sortedByPrice = data.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
+                                        setData(sortedByPrice)
+                                        break;
+                              case "category":
+                                        const sortedByCategory = data.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
+                                        setData(sortedByCategory)
+                                        break;
+                              case "title":
+                                        const sortedByTitle = data.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
+                                        setData(sortedByTitle)
+                                        break;
+                              default:
+                                        break;
+                    }
+
+
           };
 
           //search
@@ -115,9 +134,7 @@ const Home = () => {
                                                                                 autoWidth
                                                                                 label="Sort"
                                                                       >
-                                                                                <MenuItem divider={true} value="">
-                                                                                          <em>None</em>
-                                                                                </MenuItem>
+
                                                                                 <MenuItem divider={true} value={"category"} onClick={() => setSortValue("category")}>category</MenuItem>
                                                                                 <MenuItem divider={true} value={"price"} onClick={() => setSortValue("price")}>price</MenuItem>
                                                                                 <MenuItem value={"title"} onClick={() => setSortValue("title")}>title</MenuItem>
