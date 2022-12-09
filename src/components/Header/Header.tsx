@@ -14,12 +14,16 @@ import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
 import WishListBadgeListed from "components/Badges/WishlistBadgeListed"
 import LanguageSelect from "../Language/languageSelect"
+import { useDispatch } from "react-redux"
+import { clearCart } from "store/cartSlice"
+import { clearWishList } from "store/wishListSlice"
 
 export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
+          const dispatch = useDispatch()
 
           const [openModal, setOpenModal] = useState(false);
           const handleOpen = () => setOpenModal(true);
@@ -31,6 +35,8 @@ export const Header = () => {
           function logout() {
                     window.localStorage.removeItem('access_token')
                     handleOpen()
+                    dispatch(clearCart())
+                    dispatch(clearWishList())
                     navigate("/")
           }
 

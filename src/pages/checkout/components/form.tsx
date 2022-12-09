@@ -7,7 +7,7 @@ import Modal from '@mui/material/Modal';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clear } from "store/cartSlice";
+import { clearCart } from "store/cartSlice";
 
 const styleModal = {
           position: 'absolute' as 'absolute',
@@ -36,7 +36,7 @@ const BasicForm = () => {
           const handleOpen = () => setOpenModal(true);
           const handleClose = () => {
                     setOpenModal(false)
-                    dispatch(clear())
+                    dispatch(clearCart())
                     navigate('/')
           }
 

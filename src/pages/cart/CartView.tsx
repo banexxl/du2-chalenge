@@ -5,7 +5,7 @@ import CartItem from "./components/CartItem";
 import CartTotals from "./components/CartTotals";
 import Button from "components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { increment, clear, decrement } from "store/cartSlice";
+import { increment, clearCart, decrement } from "store/cartSlice";
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 
@@ -20,7 +20,7 @@ const CartView = () => {
           return (
                     <AppLayout>
                               <Headline title={t("cart")} />
-                              <Button className={styles.button_clear_all} onClick={() => dispatch(clear())}>Clear Cart</Button>
+                              <Button className={styles.button_clear_all} onClick={() => dispatch(clearCart())}>Clear Cart</Button>
                               <div className={styles.cartPage}>
 
                                         <div className={styles.cartItems}>
