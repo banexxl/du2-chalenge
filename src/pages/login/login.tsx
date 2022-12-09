@@ -10,16 +10,21 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import userServices from "../../services/users.services"
 import { useTranslation } from 'react-i18next'
-
+import { loginAction } from "store/userSlice"
+import { useDispatch } from 'react-redux'
 
 
 function Login() {
 
           const { t } = useTranslation();
 
+
+          const dispatch = useDispatch()
           const navigate = useNavigate()
           const loginUser = userServices.loginUser
           const [openModal, setOpenModal] = useState(false);
+
+
           const handleClose = () => {
                     setOpenModal(false)
                     navigate('/')
@@ -30,6 +35,7 @@ function Login() {
                               await loginUser(values.username, values.password)
                                         .then(() => {
                                                   setOpenModal(true)
+                                                  dispatch(loginAction)
                                         })
                     } catch (error: any) {
                               alert("Invalid username or password!")

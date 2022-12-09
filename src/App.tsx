@@ -1,18 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage, NotFoundPage, CartPage, LoginPage, ItemDetails, Checkout, User, WishList } from "pages";
-import { useState } from "react";
+import { HomePage, NotFoundPage, CartPage, LoginPage, ItemDetails, Checkout, User, WishList, ExamplePage } from "pages";
+import PrivateRoutes from "utils/PrivateRoutes"
 import "./services/i18n"
 
 function App() {
 
-          // const [locale, setLocale] = useState(i18.language);
-
-          // i18.on('languageChanged', (lng) => setLocale(i18.language))
-
-
-
           return (
-
                     <Routes>
                               <Route path="/" element={<HomePage />} />
                               <Route path="/cart" element={<CartPage />} />
@@ -22,8 +15,10 @@ function App() {
                               <Route path="/checkout" element={<Checkout />} />
                               <Route path="/user" element={<User />} />
                               <Route path="/wishlist" element={<WishList />} />
+                              <Route element={<PrivateRoutes />}>
+                                        <Route path="/example" element={<ExamplePage />} />
+                              </Route>
                     </Routes>
-
           );
 }
 

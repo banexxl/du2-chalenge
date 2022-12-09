@@ -75,7 +75,8 @@ const BaseHttpService = () => {
                               },
                     })
                               .then((res: any) => {
-                                        return localStorage.setItem("access_token", res.data.token)
+                                        saveToken(res.data.token)
+                                        // return localStorage.setItem("access_token", res.data.token)
                               })
                               .catch(error => {
                                         alert(error.message)
@@ -127,7 +128,7 @@ const BaseHttpService = () => {
 
           const saveToken = (accessToken: string) => {
                     _accessToken = accessToken;
-                    return localStorage.setItem('accessToken', accessToken);
+                    return localStorage.setItem('access_token', accessToken);
           }
 
           const loadToken = () => {

@@ -21,6 +21,8 @@ import { clearWishList } from "store/wishListSlice"
 export const Header = () => {
 
           const token = window.localStorage.getItem("access_token")
+          console.log(token);
+
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
           const dispatch = useDispatch()
@@ -64,6 +66,16 @@ export const Header = () => {
                                                             <Link to={"/"} className={headerStyles.nav_item}>
                                                                       Home
                                                             </Link>
+                                                            {
+                                                                      token === null || token === "undefined" ?
+                                                                                null
+                                                                                :
+                                                                                <Link to={"/example"} className={headerStyles.nav_item}>
+                                                                                          Example
+                                                                                </Link>
+
+                                                            }
+
                                                   </div>
                                                   <div className={headerStyles.header_content}>
                                                             <LanguageSelect />
@@ -82,8 +94,9 @@ export const Header = () => {
                                                             <CartBadge />
 
                                                             {
-                                                                      token === null || token === "undefined" ? <LoginBadge /> :
-
+                                                                      token === null || token === "undefined" ?
+                                                                                <LoginBadge />
+                                                                                :
                                                                                 <div style={{ display: "flex" }}>
                                                                                           <span onClick={logout}>
                                                                                                     <LogoutBadge />
