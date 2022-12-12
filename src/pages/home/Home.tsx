@@ -15,37 +15,39 @@ const Home = () => {
           const [data, setData] = useState([])
           const basehttpservice = BaseHttpService
           const [openBackdrop, setOpenBackdrop] = useState(false);
-          const [filteredItems, setFilteredItems] = useState(data)
           const { t } = useTranslation();
 
           function truncate(str: string, word_count: number) {
                     return str.split(" ").splice(0, word_count).join(" ");
           }
 
+          const getAllItems = () => {
+                    basehttpservice.getAll().then((data: any) => {
+                              setOpenBackdrop(false)
+                              setData(data)
+                    })
+          }
+
           useEffect(() => {
                     setOpenBackdrop(true)
-                    basehttpservice.getAll().then((data: any) => {
-                              setOpenBackdrop(true)
-                              setData(data)
-                              setFilteredItems(data)
-                    })
+                    getAllItems()
           }, [])
 
           // console.log(data);
 
 
           //filter
+          const [filteredItems, setFilteredItems] = useState(data)
           const filterItem = (category: any) => {
-
-                    const newItem = data.filter((item: any) => {
+                    const newItems = data.filter((item: any) => {
                               return item.category === category;
                     });
-                    setFilteredItems(newItem);
+                    console.log(newItems);
+                    setFilteredItems(newItems);
           };
 
           //sort
           const [sortValue, setSortValue] = useState("")
-
           const handleSortChange = () => {
 
                     console.log(sortValue)
@@ -72,7 +74,6 @@ const Home = () => {
 
           //search
           const [searchTerm, setSearchTerm] = useState("")
-
           const elementFound = () => {
                     const newItem = data.filter((item: any) => {
                               return item.title === searchTerm;
@@ -119,7 +120,7 @@ const Home = () => {
                                                                                 <FormControlLabel value="male" control={<Radio />} label="Men's clothing" onClick={() => filterItem("men's clothing")} />
                                                                                 <FormControlLabel value="electronics" control={<Radio />} label="Electronics" onClick={() => filterItem("electronics")} />
                                                                                 <FormControlLabel value="jewelry" control={<Radio />} label="Jewelry" onClick={() => filterItem("jewelery")} />
-                                                                                <FormControlLabel value="all" control={<Radio />} label="All" onClick={() => setFilteredItems(data)} />
+                                                                                <FormControlLabel value="all" control={<Radio />} label="All" onClick={() => getAllItems()} />
                                                                       </RadioGroup>
                                                             </FormControl>
                                                   </div>
@@ -159,7 +160,7 @@ const Home = () => {
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {
-                                                            !data ?
+                                                            data.length === 0 ?
                                                                       <Backdrop
                                                                                 sx={{ color: '#fff', zIndex: "100" }}
                                                                                 open={openBackdrop}
@@ -167,15 +168,30 @@ const Home = () => {
                                                                                 <CircularProgress style={{ color: "black" }} />
                                                                       </Backdrop>
                                                                       :
-                                                                      <ProductList >
-                                                                                {
-                                                                                          filteredItems.map((product: any, index: number) => (
-                                                                                                    <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
-                                                                                                              <Link to={product.id}></Link>
-                                                                                                    </ProductCard>
-                                                                                          ))
-                                                                                }
-                                                                      </ProductList>
+                                                                      data ?
+                                                                                <ProductList >
+                                                                                          {
+                                                                                                    data.map((product: any, index: number) => (
+                                                                                                              <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                                                                        <Link to={product.id}></Link>
+                                                                                                              </ProductCard>
+                                                                                                    ))
+                                                                                          }
+                                                                                </ProductList>
+                                                                                :
+                                                                                filteredItems ?
+                                                                                          <ProductList >
+                                                                                                    {
+                                                                                                              filteredItems.map((product: any, index: number) => (
+                                                                                                                        <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                                                                                  <Link to={product.id}></Link>
+                                                                                                                        </ProductCard>
+                                                                                                              ))
+                                                                                                    }
+                                                                                          </ProductList>
+                                                                                          :
+                                                                                          null
+
                                                   }
                                         </div>
                               </div>
