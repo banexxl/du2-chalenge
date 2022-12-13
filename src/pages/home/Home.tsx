@@ -111,7 +111,6 @@ const Home = () => {
                                         <div className={productContainerStyles.headline}>
                                                   <Headline title={t('home')} />
                                         </div>
-                                        <Button onClick={() => setFilteredValues([])}>Reset filters</Button>
                                         <div className={productContainerStyles.filter_container}>
                                                   <div className={productContainerStyles.filter_category}>
                                                             <ProductFilterCategory filterValueSelected={onFilterValueSelected} />
