@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Headline from 'components/Headline';
 import productContainerStyles from "./product-container.module.scss"
 import { AppLayout } from 'components/Layouts'
@@ -7,8 +7,10 @@ import { ProductList } from './components/ProductList';
 import { Link } from 'react-router-dom';
 import BaseHttpService from "../../services/product.services"
 import { Backdrop, Box, CircularProgress, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Slider, TextField } from '@mui/material';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { ProductFilterCategory } from './components/ProductFilterCategory';
+import Button from 'components/Button';
+import { ProductSort } from './components/ProductSort';
 
 const Home = () => {
 
@@ -25,68 +27,79 @@ const Home = () => {
                     basehttpservice.getAll().then((data: any) => {
                               setOpenBackdrop(false)
                               setData(data)
+                              return data
                     })
           }
+          console.log("data: ", data);
 
           useEffect(() => {
                     setOpenBackdrop(true)
                     getAllItems()
           }, [])
 
-          // console.log(data);
 
+          const [filteredValues, setFilteredValues] = useState([])
 
           //filter
-          const [filteredItems, setFilteredItems] = useState(data)
-          const filterItem = (category: any) => {
-                    const newItems = data.filter((item: any) => {
-                              return item.category === category;
-                    });
-                    console.log(newItems);
-                    setFilteredItems(newItems);
-          };
+          const onFilterValueSelected = (category: string) => {
+                    const filterArray: any = []
+                    try {
+                              data ?
+                                        data.forEach((element: any) => {
+                                                  if (element.category === category) {
+                                                            filterArray.push(element)
+                                                            setFilteredValues(filterArray)
+                                                  } else {
+                                                            return null
+                                                  }
+                                        })
+                                        :
+                                        filteredValues?.forEach((element: any) => {
+                                                  if (element.category === category) {
+                                                            filterArray.push(element)
+                                                            setFilteredValues(filterArray)
+                                                  } else {
+                                                            return null
+                                                  }
+                                        })
+                    } catch (error: any) {
+                              alert(error.message);
+
+                    }
+
+          }
 
           //sort
-          const [sortValue, setSortValue] = useState("")
-          const handleSortChange = () => {
-
-                    console.log(sortValue)
-
-                    switch (sortValue) {
+          const onSortValueSelected = (sortType: any) => {
+                    switch (sortType) {
                               case "price":
-                                        const sortedByPrice = data.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
-                                        setData(sortedByPrice)
+                                        const sortedByPrice = filteredValues.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
+                                        setFilteredValues(sortedByPrice)
                                         break;
                               case "category":
-                                        const sortedByCategory = data.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
-                                        setData(sortedByCategory)
+                                        const sortedByCategory = filteredValues.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
+                                        setFilteredValues(sortedByCategory)
                                         break;
                               case "title":
-                                        const sortedByTitle = data.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
-                                        setData(sortedByTitle)
+                                        const sortedByTitle = filteredValues.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
+                                        setFilteredValues(sortedByTitle)
                                         break;
                               default:
                                         break;
                     }
-
-
           };
 
-          //search
-          const [searchTerm, setSearchTerm] = useState("")
-          const elementFound = () => {
-                    const newItem = data.filter((item: any) => {
-                              return item.title === searchTerm;
-                    })
-                    setFilteredItems(newItem)
-          }
+          console.log("filteredvalues ", filteredValues);
+
 
           return (
                     <AppLayout>
                               <div className={productContainerStyles.container}>
+
                                         <div className={productContainerStyles.headline}>
                                                   <Headline title={t('home')} />
                                         </div>
+                                        <Button onClick={getAllItems}>Reset</Button>
                                         <div className={productContainerStyles.filter_container}>
 
                                                   <div className={productContainerStyles.filter_price}>
@@ -109,40 +122,12 @@ const Home = () => {
 
                                                   </div>
                                                   <div className={productContainerStyles.filter_category}>
-                                                            <FormControl>
-                                                                      <FormLabel id="demo-row-radio-buttons-group-label">Product Categories</FormLabel>
-                                                                      <RadioGroup
-                                                                                row
-                                                                                aria-labelledby="demo-row-radio-buttons-group-label"
-                                                                                name="row-radio-buttons-group"
-                                                                      >
-                                                                                <FormControlLabel value="female" control={<Radio />} label="Women's clothing" onClick={() => filterItem("women's clothing")} />
-                                                                                <FormControlLabel value="male" control={<Radio />} label="Men's clothing" onClick={() => filterItem("men's clothing")} />
-                                                                                <FormControlLabel value="electronics" control={<Radio />} label="Electronics" onClick={() => filterItem("electronics")} />
-                                                                                <FormControlLabel value="jewelry" control={<Radio />} label="Jewelry" onClick={() => filterItem("jewelery")} />
-                                                                                <FormControlLabel value="all" control={<Radio />} label="All" onClick={() => getAllItems()} />
-                                                                      </RadioGroup>
-                                                            </FormControl>
+                                                            <ProductFilterCategory filterValueSelected={onFilterValueSelected} data={data} />
                                                   </div>
                                                   <div className={productContainerStyles.sort}>
-                                                            <FormControl sx={{ m: 1, minWidth: 80 }}>
-                                                                      <InputLabel id="demo-simple-select-autowidth-label">Sort</InputLabel>
-                                                                      <Select
-                                                                                labelId="demo-simple-select-autowidth-label"
-                                                                                id="demo-simple-select-autowidth"
-                                                                                value={sortValue}
-                                                                                onChange={handleSortChange}
-                                                                                autoWidth
-                                                                                label="Sort"
-                                                                      >
-
-                                                                                <MenuItem divider={true} value={"category"} onClick={() => setSortValue("category")}>category</MenuItem>
-                                                                                <MenuItem divider={true} value={"price"} onClick={() => setSortValue("price")}>price</MenuItem>
-                                                                                <MenuItem value={"title"} onClick={() => setSortValue("title")}>title</MenuItem>
-                                                                      </Select>
-                                                            </FormControl>
+                                                            <ProductSort sortValueSelected={onSortValueSelected} ></ProductSort>
                                                   </div>
-                                                  <div className={productContainerStyles.search}>
+                                                  {/* <div className={productContainerStyles.search}>
                                                             <Box
                                                                       component="form"
                                                                       sx={{
@@ -156,7 +141,7 @@ const Home = () => {
                                                                       </div>
 
                                                             </Box>
-                                                  </div>
+                                                  </div> */}
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {
@@ -168,30 +153,22 @@ const Home = () => {
                                                                                 <CircularProgress style={{ color: "black" }} />
                                                                       </Backdrop>
                                                                       :
-                                                                      data ?
-                                                                                <ProductList >
-                                                                                          {
+                                                                      <ProductList>
+                                                                                {
+                                                                                          filteredValues.length === 0 ?
                                                                                                     data.map((product: any, index: number) => (
                                                                                                               <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
                                                                                                                         <Link to={product.id}></Link>
                                                                                                               </ProductCard>
                                                                                                     ))
-                                                                                          }
-                                                                                </ProductList>
-                                                                                :
-                                                                                filteredItems ?
-                                                                                          <ProductList >
-                                                                                                    {
-                                                                                                              filteredItems.map((product: any, index: number) => (
-                                                                                                                        <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
-                                                                                                                                  <Link to={product.id}></Link>
-                                                                                                                        </ProductCard>
-                                                                                                              ))
-                                                                                                    }
-                                                                                          </ProductList>
-                                                                                          :
-                                                                                          null
-
+                                                                                                    :
+                                                                                                    filteredValues.map((product: any, index: number) => (
+                                                                                                              <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
+                                                                                                                        <Link to={product.id}></Link>
+                                                                                                              </ProductCard>
+                                                                                                    ))
+                                                                                }
+                                                                      </ProductList>
                                                   }
                                         </div>
                               </div>
