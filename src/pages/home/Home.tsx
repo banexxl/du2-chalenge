@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Headline from 'components/Headline';
 import productContainerStyles from "./product-container.module.scss"
 import { AppLayout } from 'components/Layouts'
@@ -6,11 +6,12 @@ import { ProductCard } from "./components/ProductCard"
 import { ProductList } from './components/ProductList';
 import { Link } from 'react-router-dom';
 import BaseHttpService from "../../services/product.services"
-import { Backdrop, Box, CircularProgress, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Slider, TextField } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ProductFilterCategory } from './components/ProductFilterCategory';
 import Button from 'components/Button';
 import { ProductSort } from './components/ProductSort';
+import { ProductListSearch } from './components/ProductListSearch';
 
 const Home = () => {
 
@@ -75,17 +76,14 @@ const Home = () => {
                     switch (sortType) {
                               case "price":
                                         const sortedByPrice = data.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
-
                                         setFilteredValues(sortedByPrice)
                                         break;
                               case "category":
                                         const sortedByCategory = data.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
-
                                         setFilteredValues(sortedByCategory)
                                         break;
                               case "title":
                                         const sortedByTitle = data.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
-
                                         setFilteredValues(sortedByTitle)
                                         break;
                               default:
@@ -94,6 +92,14 @@ const Home = () => {
                     }
                     setFilteredValues([])
           };
+
+          //search
+          const onSearchValueSelected = (searchTerm: any) => {
+                    const newItem = data.filter((item: any) => {
+                              return item.title.toLowerCase().includes(searchTerm)
+                    })
+                    setFilteredValues(newItem)
+          }
 
           console.log("filteredvalues ", filteredValues);
 
@@ -133,21 +139,9 @@ const Home = () => {
                                                   <div className={productContainerStyles.sort}>
                                                             <ProductSort sortValueSelected={onSortValueSelected}></ProductSort>
                                                   </div>
-                                                  {/* <div className={productContainerStyles.search}>
-                                                            <Box
-                                                                      component="form"
-                                                                      sx={{
-                                                                                '& .MuiTextField-root': { m: 1, width: '25ch' },
-                                                                      }}
-                                                                      noValidate
-                                                                      autoComplete="off"
-                                                            >
-                                                                      <div>
-                                                                                <TextField id="outlined-search" label="Search field" type="search" onChange={(e) => setSearchTerm(e.target.value)} />
-                                                                      </div>
-
-                                                            </Box>
-                                                  </div> */}
+                                                  <div className={productContainerStyles.search}>
+                                                            <ProductListSearch searchValueSelected={onSearchValueSelected}></ProductListSearch>
+                                                  </div>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {
