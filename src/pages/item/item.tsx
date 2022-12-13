@@ -12,9 +12,11 @@ import { useParams } from "react-router-dom"
 import { addToWishList, removeFromWishList } from "../../store/wishListSlice"
 import Alert from '@mui/material/Alert';
 import { Backdrop, CircularProgress } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 function ItemDetails() {
 
+          const { t } = useTranslation();
           const params: any = useParams()
           const [data, setData] = useState<any>({});
           const [inWishList, setInWishList] = useState(false)
@@ -63,7 +65,7 @@ function ItemDetails() {
 
           return (
                     <AppLayout>
-                              <Headline title="Item Details" />
+                              <Headline title={t("item_details")} />
                               <div className={itemDetailsStyles.item_details_container}>
                                         {
                                                   alertAdd ?

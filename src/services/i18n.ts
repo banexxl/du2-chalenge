@@ -13,7 +13,8 @@ const resources = {
                               "cart": "Cart",
                               "wish_list": "Wish List",
                               "login": "Log in",
-                              "checkout": "Checkout"
+                              "checkout": "Checkout",
+                              "item_details": "Item Details"
                     },
           },
           sr: {
@@ -26,7 +27,8 @@ const resources = {
                               "cart": "Korpa",
                               "wish_list": "Omiljeni proizvodi",
                               "login": "Prijava",
-                              "checkout": "Kupi"
+                              "checkout": "Kupi",
+                              "item_details": "Detalji"
                     },
           },
 };
