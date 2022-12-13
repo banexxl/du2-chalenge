@@ -71,22 +71,28 @@ const Home = () => {
 
           //sort
           const onSortValueSelected = (sortType: any) => {
+                    console.log(sortType);
                     switch (sortType) {
                               case "price":
-                                        const sortedByPrice = filteredValues.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
+                                        const sortedByPrice = data.sort((a: any, b: any) => (a.price < b.price) ? 1 : (a.price > b.price) ? -1 : 0);
+
                                         setFilteredValues(sortedByPrice)
                                         break;
                               case "category":
-                                        const sortedByCategory = filteredValues.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
+                                        const sortedByCategory = data.sort((a: any, b: any) => (a.category < b.category) ? 1 : (a.category > b.category) ? -1 : 0);
+
                                         setFilteredValues(sortedByCategory)
                                         break;
                               case "title":
-                                        const sortedByTitle = filteredValues.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
+                                        const sortedByTitle = data.sort((a: any, b: any) => (a.title < b.title) ? 1 : (a.title > b.title) ? -1 : 0);
+
                                         setFilteredValues(sortedByTitle)
                                         break;
                               default:
+
                                         break;
                     }
+                    setFilteredValues([])
           };
 
           console.log("filteredvalues ", filteredValues);
@@ -99,7 +105,7 @@ const Home = () => {
                                         <div className={productContainerStyles.headline}>
                                                   <Headline title={t('home')} />
                                         </div>
-                                        <Button onClick={getAllItems}>Reset</Button>
+                                        <Button onClick={() => setFilteredValues([])}>Reset filters</Button>
                                         <div className={productContainerStyles.filter_container}>
 
                                                   <div className={productContainerStyles.filter_price}>
@@ -122,10 +128,10 @@ const Home = () => {
 
                                                   </div>
                                                   <div className={productContainerStyles.filter_category}>
-                                                            <ProductFilterCategory filterValueSelected={onFilterValueSelected} data={data} />
+                                                            <ProductFilterCategory filterValueSelected={onFilterValueSelected} />
                                                   </div>
                                                   <div className={productContainerStyles.sort}>
-                                                            <ProductSort sortValueSelected={onSortValueSelected} ></ProductSort>
+                                                            <ProductSort sortValueSelected={onSortValueSelected}></ProductSort>
                                                   </div>
                                                   {/* <div className={productContainerStyles.search}>
                                                             <Box
@@ -155,7 +161,7 @@ const Home = () => {
                                                                       :
                                                                       <ProductList>
                                                                                 {
-                                                                                          filteredValues.length === 0 ?
+                                                                                          filteredValues?.length === 0 ?
                                                                                                     data.map((product: any, index: number) => (
                                                                                                               <ProductCard key={index} title={truncate(product.title, 4)} price={product.price + "$"} image={product.image} id={product.id} rating={product.rating.rate}>
                                                                                                                         <Link to={product.id}></Link>

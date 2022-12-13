@@ -3,7 +3,6 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 export default function ProductSort(props: any) {
 
           const onSortValueChanged = (event: any) => {
-                    console.log(event.target.value);
                     props.sortValueSelected(event.target.value)
           }
 

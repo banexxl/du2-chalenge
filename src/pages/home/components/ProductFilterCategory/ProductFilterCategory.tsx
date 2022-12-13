@@ -3,7 +3,6 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 export default function ProductFilterCategory(props: any) {
 
           const onFilterValueChanged = (event: any) => {
-                    console.log(event.target.value);
                     props.filterValueSelected(event.target.value)
           }
 
