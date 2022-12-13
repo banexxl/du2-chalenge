@@ -113,34 +113,14 @@ const Home = () => {
                                         </div>
                                         <Button onClick={() => setFilteredValues([])}>Reset filters</Button>
                                         <div className={productContainerStyles.filter_container}>
-
-                                                  <div className={productContainerStyles.filter_price}>
-                                                            {/* <Box sx={{ width: 150 }} >
-                                                                      <h2>
-                                                                                Filter by price:
-                                                                      </h2>
-                                                                      <Slider
-                                                                                getAriaLabel={() => 'Temperature range'}
-                                                                                value={value}
-                                                                                onChange={handleChangea}
-                                                                                size='small'
-                                                                                //getAriaValueText={valuetexta}
-                                                                                valueLabelDisplay="on"
-                                                                                max={1000}
-                                                                                step={10}
-                                                                      />
-
-                                                            </Box > */}
-
-                                                  </div>
                                                   <div className={productContainerStyles.filter_category}>
                                                             <ProductFilterCategory filterValueSelected={onFilterValueSelected} />
                                                   </div>
                                                   <div className={productContainerStyles.sort}>
-                                                            <ProductSort sortValueSelected={onSortValueSelected}></ProductSort>
+                                                            <ProductSort sortValueSelected={onSortValueSelected} />
                                                   </div>
                                                   <div className={productContainerStyles.search}>
-                                                            <ProductListSearch searchValueSelected={onSearchValueSelected}></ProductListSearch>
+                                                            <ProductListSearch searchValueSelected={onSearchValueSelected} />
                                                   </div>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
