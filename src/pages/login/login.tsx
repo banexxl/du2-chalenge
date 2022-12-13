@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AppLayout } from 'components/Layouts'
 import loginStyles from "./login.module.scss"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Headline from 'components/Headline'
 import { useFormik } from "formik";
 import { loginSchema } from "../../schema";
@@ -47,7 +47,6 @@ function Login() {
                     values,
                     errors,
                     touched,
-                    isSubmitting,
                     handleBlur,
                     handleChange,
                     handleSubmit,

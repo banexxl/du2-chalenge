@@ -1,7 +1,5 @@
 import styles from './whishlistbadge.module.scss';
 import SvgIcon from "components/Badges/SvgIcon";
-import { useSelector } from 'react-redux';
-import { wishListItemsSelector } from 'store/selectors';
 
 const WishlistBadge = () => {
 
