@@ -9,7 +9,6 @@ import BaseHttpService from "../../services/product.services"
 import { Backdrop, CircularProgress } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ProductFilterCategory } from './components/ProductFilterCategory';
-import Button from 'components/Button';
 import { ProductSort } from './components/ProductSort';
 import { ProductListSearch } from './components/ProductListSearch';
 
@@ -64,7 +63,7 @@ const Home = () => {
                                                   }
                                         })
                     } catch (error: any) {
-                              alert(error.message);
+                              console.log(error.message);
 
                     }
 

@@ -21,7 +21,7 @@ const BaseHttpService = () => {
                                         // res.json()
                               })
                               .catch((error) => {
-                                        alert(error.message);
+                                        console.log(error.message);
                               })
           }
 
@@ -39,7 +39,7 @@ const BaseHttpService = () => {
                                         return res.data
                               })
                               .catch((error) => {
-                                        alert("Error message: " + error.message);
+                                        console.log("Error message: " + error.message);
                               })
           }
 
@@ -56,7 +56,7 @@ const BaseHttpService = () => {
                                         return res.data
                               })
                               .catch((error) => {
-                                        alert("Error message: " + error.message);
+                                        console.log("Error message: " + error.message);
                               })
           }
 
@@ -79,7 +79,7 @@ const BaseHttpService = () => {
                                         // return localStorage.setItem("access_token", res.data.token)
                               })
                               .catch(error => {
-                                        alert(error.message)
+                                        console.log(error.message)
                               })
 
 

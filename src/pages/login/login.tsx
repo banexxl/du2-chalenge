@@ -5,40 +5,45 @@ import { useNavigate } from "react-router-dom"
 import Headline from 'components/Headline'
 import { useFormik } from "formik";
 import { loginSchema } from "../../schema";
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import userServices from "../../services/users.services"
 import { useTranslation } from 'react-i18next'
-import { loginAction } from "store/userSlice"
+import { logIn } from "store/userSlice"
 import { useDispatch } from 'react-redux'
-
+import { Alert, Snackbar } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 function Login() {
 
           const { t } = useTranslation();
 
-
+          const isLoggedIn: any = useSelector(logIn)
           const dispatch = useDispatch()
           const navigate = useNavigate()
           const loginUser = userServices.loginUser
-          const [openModal, setOpenModal] = useState(false);
+          const [notifySuccess, setNotifySuccess] = useState(false);
+          const [notifyFail, setNotifyFail] = useState(false);
+
+          console.log(isLoggedIn);
 
 
           const handleClose = () => {
-                    setOpenModal(false)
-                    navigate('/')
+                    setNotifySuccess(false)
+                    setNotifyFail(false)
           }
 
           const onSubmitHandler = async () => {
                     try {
                               await loginUser(values.username, values.password)
                                         .then(() => {
-                                                  setOpenModal(true)
-                                                  dispatch(loginAction)
+                                                  dispatch(logIn(localStorage.getItem("access_token")))
+                                                  setNotifySuccess(true)
+                                                  setTimeout(() => {
+                                                            navigate("/")
+                                                  }, 1000);
                                         })
                     } catch (error: any) {
-                              alert("Invalid username or password!")
+                              setNotifyFail(true)
+                              console.log("Invalid username or password!")
                     }
 
           }
@@ -58,19 +63,6 @@ function Login() {
                     validationSchema: loginSchema,
                     onSubmit: onSubmitHandler,
           })
-
-
-          const styleModal = {
-                    position: 'absolute' as 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 400,
-                    bgcolor: 'background.paper',
-                    border: '2px solid #000',
-                    boxShadow: 24,
-                    p: 4,
-          };
 
           return (
                     <AppLayout>
@@ -112,18 +104,16 @@ function Login() {
                                         </form>
 
                               </div >
-                              <Modal
-                                        open={openModal}
-                                        onClose={handleClose}
-                                        aria-labelledby="modal-modal-title"
-                                        aria-describedby="modal-modal-description"
-                              >
-                                        <Box sx={styleModal}>
-                                                  <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            Login successfull!
-                                                  </Typography>
-                                        </Box>
-                              </Modal>
+                              <Snackbar open={notifySuccess} autoHideDuration={3000} onClose={handleClose}>
+                                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                                  Successfully logged in!
+                                        </Alert>
+                              </Snackbar>
+                              <Snackbar open={notifyFail} autoHideDuration={3000} onClose={handleClose}>
+                                        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                                                  Invalid username and/or password!
+                                        </Alert>
+                              </Snackbar>
                     </AppLayout>
 
           )

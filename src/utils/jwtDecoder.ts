@@ -13,8 +13,6 @@ export default function getRolesFromToken() {
           let validated: boolean = false
 
           const validate = (data: Role) => {
-                    console.log("data for validation: ", data);
-
                     Object.keys(data).length === 0 ? validated = false :
                               (typeof data.iat !== "number" && typeof data.sub !== "number" && typeof data.user !== "number") ? validated = false :
                                         validated = true
@@ -40,8 +38,6 @@ export default function getRolesFromToken() {
                     }
 
                     validate(decodedJwtData)
-                    console.log("validated: ", validated);
-
                     if (validated) {
                               return true
                     } else {

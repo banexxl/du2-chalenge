@@ -8,9 +8,6 @@ import logo from "../../assets/images/wonderland.png";
 import Container from "components/Container";
 import LoginBadge from "components/Badges/LoginBadge";
 import LogoutBadge from "components/Badges/LogoutBadge";
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
 import WishListBadgeListed from "components/Badges/WishlistBadgeListed"
 import LanguageSelect from "../Language/languageSelect"
@@ -18,6 +15,7 @@ import { useDispatch } from "react-redux"
 import { clearCart } from "store/cartSlice"
 import { clearWishList } from "store/wishListSlice"
 import getRolesFromToken from "../../utils/jwtDecoder"
+import { Alert, Snackbar } from "@mui/material";
 
 export const Header = () => {
 
@@ -33,10 +31,10 @@ export const Header = () => {
           const wishList = useSelector((state: any) => state.wishList)
           const dispatch = useDispatch()
 
-          const [openModal, setOpenModal] = useState(false);
-          const handleOpen = () => setOpenModal(true);
+          const [notifySuccess, setNotifySuccess] = useState(false);
+          const handleOpen = () => setNotifySuccess(true);
           const handleClose = () => {
-                    setOpenModal(false)
+                    setNotifySuccess(false)
                     navigate('/')
           }
 
@@ -48,23 +46,9 @@ export const Header = () => {
                     navigate("/")
           }
 
-          const styleModal = {
-                    position: 'absolute' as 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 400,
-                    bgcolor: 'background.paper',
-                    border: '2px solid #000',
-                    boxShadow: 24,
-                    p: 4,
-          };
-
           useEffect(() => {
                     setUserValidated(validated)
           }, [validated])
-
-
 
           return (
                     <header className={headerStyles.header}>
@@ -124,18 +108,12 @@ export const Header = () => {
                                                   </div>
                                         </div>
                               </Container>
-                              <Modal
-                                        open={openModal}
-                                        onClose={handleClose}
-                                        aria-labelledby="modal-modal-title"
-                                        aria-describedby="modal-modal-description"
-                              >
-                                        <Box sx={styleModal}>
-                                                  <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            Logout successfull!
-                                                  </Typography>
-                                        </Box>
-                              </Modal>
+                              <Snackbar open={notifySuccess} autoHideDuration={6000} onClose={handleClose}>
+                                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                                  Logged out successfully!
+                                        </Alert>
+                              </Snackbar>
+
                     </header>
 
           );
