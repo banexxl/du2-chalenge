@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { logIn } from "store/userSlice"
 import { useDispatch } from 'react-redux'
 import { Alert, Snackbar } from '@mui/material'
+import getRolesFromToken from "../../utils/jwtDecoder"
 
 function Login() {
 
@@ -21,27 +22,27 @@ function Login() {
           const [notifySuccess, setNotifySuccess] = useState(false);
           const [notifyFail, setNotifyFail] = useState(false);
 
+          console.log(getRolesFromToken());
+
 
           const handleClose = () => {
                     setNotifySuccess(false)
                     setNotifyFail(false)
           }
 
-          const onSubmitHandler = async () => {
-                    try {
-                              await loginUser(values.username, values.password)
-                                        .then(() => {
+          const onSubmitHandler = () => {
+                    loginUser(values.username, values.password)
+                              .then(() => {
+                                        if (getRolesFromToken()) {
                                                   dispatch(logIn(localStorage.getItem("access_token")))
                                                   setNotifySuccess(true)
                                                   setTimeout(() => {
                                                             navigate("/")
-                                                  }, 1000);
-                                        })
-                    } catch (error: any) {
-                              setNotifyFail(true)
-                              console.log("Invalid username or password!")
-                    }
-
+                                                  }, 2000);
+                                        } else {
+                                                  setNotifyFail(true)
+                                        }
+                              })
           }
 
           const {

@@ -1,4 +1,4 @@
-const { createSelector } = require("@reduxjs/toolkit");
+import { createSelector } from "@reduxjs/toolkit"
 
 const cartSelector = (state: any) => state.cart
 const wishListSelector = (state: any) => state.wishList

@@ -3,12 +3,16 @@ import SvgIcon from "components/Badges/SvgIcon";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
+import { logOut } from "store/userSlice"
+import { useDispatch } from 'react-redux'
 
 const LogoutBadge = () => {
 
           const navigate = useNavigate()
-
+          const dispatch = useDispatch()
           const [notifySuccess, setNotifySuccess] = useState(false);
+
+
           const handleClose = () => {
                     setNotifySuccess(false)
                     navigate('/')
@@ -16,10 +20,8 @@ const LogoutBadge = () => {
 
           function logout() {
                     window.localStorage.removeItem('access_token')
+                    dispatch(logOut)
                     setNotifySuccess(true);
-                    setTimeout(() => {
-                              navigate("/")
-                    }, 3000);
           }
 
           return (
