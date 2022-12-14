@@ -17,10 +17,11 @@ import LanguageSelect from "../Language/languageSelect"
 import { useDispatch } from "react-redux"
 import { clearCart } from "store/cartSlice"
 import { clearWishList } from "store/wishListSlice"
+import getRolesFromToken from "../../utils/jwtDecoder"
 
 export const Header = () => {
 
-          const token = window.localStorage.getItem("access_token")
+          const userValidated = getRolesFromToken()
 
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
@@ -65,9 +66,14 @@ export const Header = () => {
                                                             <Link to={"/"} className={headerStyles.nav_item}>
                                                                       Home
                                                             </Link>
-                                                            <Link to={"/example"} className={headerStyles.nav_item}>
-                                                                      Example
-                                                            </Link>
+                                                            {
+                                                                      userValidated ?
+                                                                                <Link to={"/example"} className={headerStyles.nav_item}>
+                                                                                          Example
+                                                                                </Link>
+                                                                                : null
+                                                            }
+
                                                   </div>
                                                   <div className={headerStyles.header_content}>
                                                             <LanguageSelect />
@@ -83,14 +89,25 @@ export const Header = () => {
 
                                                             }
                                                             <CartBadge />
-                                                            <LoginBadge />
+                                                            {
+                                                                      userValidated ?
+                                                                                null
+                                                                                :
+                                                                                <LoginBadge />
+                                                            }
                                                             <div style={{ display: "flex" }}>
-                                                                      <span onClick={logout}>
-                                                                                <LogoutBadge />
-                                                                      </span>
-                                                                      <span>
-                                                                                <UserBadge />
-                                                                      </span>
+                                                                      {
+                                                                                userValidated ?
+                                                                                          <div className={headerStyles.user_actions}>
+                                                                                                    <span onClick={logout}>
+                                                                                                              <LogoutBadge />
+                                                                                                    </span>
+                                                                                                    <span>
+                                                                                                              <UserBadge />
+                                                                                                    </span>
+                                                                                          </div>
+                                                                                          : null
+                                                                      }
                                                             </div>
 
                                                   </div>

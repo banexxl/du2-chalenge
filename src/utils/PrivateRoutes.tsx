@@ -5,9 +5,6 @@ const PrivateRoutes = () => {
 
           const validated = getRolesFromToken()
 
-          console.log("validated:", validated);
-
-
           return (
                     validated ? <Outlet /> : <Navigate to="/auth/login" />
           )
