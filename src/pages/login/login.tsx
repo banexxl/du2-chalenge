@@ -22,9 +22,6 @@ function Login() {
           const [notifySuccess, setNotifySuccess] = useState(false);
           const [notifyFail, setNotifyFail] = useState(false);
 
-          console.log(getRolesFromToken());
-
-
           const handleClose = () => {
                     setNotifySuccess(false)
                     setNotifyFail(false)
@@ -38,7 +35,7 @@ function Login() {
                                                   setNotifySuccess(true)
                                                   setTimeout(() => {
                                                             navigate("/")
-                                                  }, 2000);
+                                                  }, 1000);
                                         } else {
                                                   setNotifyFail(true)
                                         }
