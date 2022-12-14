@@ -13,9 +13,9 @@ function App() {
                               <Route path="/auth/login" element={<LoginPage />} />
                               <Route path="/item/:itemId" element={<ItemDetails />} />
                               <Route path="/checkout" element={<Checkout />} />
-                              <Route path="/user" element={<User />} />
-                              <Route path="/wishlist" element={<WishList />} />
                               <Route element={<PrivateRoutes />}>
+                                        <Route path="/user" element={<User />} />
+                                        <Route path="/wishlist" element={<WishList />} />
                                         <Route path="/example" element={<ExamplePage />} />
                               </Route>
                     </Routes>

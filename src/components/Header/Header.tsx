@@ -65,22 +65,14 @@ export const Header = () => {
                                                             <Link to={"/"} className={headerStyles.nav_item}>
                                                                       Home
                                                             </Link>
-                                                            {
-                                                                      token === null || token === "undefined" ?
-                                                                                null
-                                                                                :
-                                                                                <Link to={"/example"} className={headerStyles.nav_item}>
-                                                                                          Example
-                                                                                </Link>
-
-                                                            }
-
+                                                            <Link to={"/example"} className={headerStyles.nav_item}>
+                                                                      Example
+                                                            </Link>
                                                   </div>
                                                   <div className={headerStyles.header_content}>
                                                             <LanguageSelect />
                                                             {
                                                                       wishList === undefined || wishList.length === 0 ?
-
                                                                                 <Link to="/wishlist">
                                                                                           <WishlistBadge />
                                                                                 </Link>
@@ -91,20 +83,16 @@ export const Header = () => {
 
                                                             }
                                                             <CartBadge />
+                                                            <LoginBadge />
+                                                            <div style={{ display: "flex" }}>
+                                                                      <span onClick={logout}>
+                                                                                <LogoutBadge />
+                                                                      </span>
+                                                                      <span>
+                                                                                <UserBadge />
+                                                                      </span>
+                                                            </div>
 
-                                                            {
-                                                                      token === null || token === "undefined" ?
-                                                                                <LoginBadge />
-                                                                                :
-                                                                                <div style={{ display: "flex" }}>
-                                                                                          <span onClick={logout}>
-                                                                                                    <LogoutBadge />
-                                                                                          </span>
-                                                                                          <span>
-                                                                                                    <UserBadge />
-                                                                                          </span>
-                                                                                </div>
-                                                            }
                                                   </div>
                                         </div>
                               </Container>

@@ -1,13 +1,15 @@
 import { Outlet, Navigate } from "react-router-dom"
-import loadToken from "services/base-http.service"
-
+import getRolesFromToken from "./jwtDecoder"
 
 const PrivateRoutes = () => {
 
-          const token = loadToken().getAccessToken()
+          const validated = getRolesFromToken()
+
+          console.log("validated:", validated);
+
 
           return (
-                    token ? <Outlet /> : <Navigate to="/auth/login" />
+                    validated ? <Outlet /> : <Navigate to="/auth/login" />
           )
 }
 

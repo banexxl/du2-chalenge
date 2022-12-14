@@ -31,7 +31,7 @@ const Home = () => {
                               return data
                     })
           }
-          console.log("data: ", data);
+
 
           useEffect(() => {
                     setOpenBackdrop(true)
@@ -100,8 +100,6 @@ const Home = () => {
                     })
                     setFilteredValues(newItem)
           }
-
-          console.log("filteredvalues ", filteredValues);
 
 
           return (
