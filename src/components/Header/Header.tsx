@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import CartBadge from "components/Badges/CartBadge";
 import UserBadge from "components/Badges/UserBadge"
 import WishlistBadge from "components/Badges/WishlistBadge";
@@ -21,7 +21,13 @@ import getRolesFromToken from "../../utils/jwtDecoder"
 
 export const Header = () => {
 
-          const userValidated = getRolesFromToken()
+
+          const validated = getRolesFromToken()
+          const [userValidated, setUserValidated] = useState(false)
+
+          window.addEventListener("storage", () => {
+                    window.location.reload();
+          })
 
           const navigate = useNavigate()
           const wishList = useSelector((state: any) => state.wishList)
@@ -53,6 +59,11 @@ export const Header = () => {
                     boxShadow: 24,
                     p: 4,
           };
+
+          useEffect(() => {
+                    setUserValidated(validated)
+          }, [validated])
+
 
 
           return (
