@@ -21,20 +21,26 @@ export default function getRolesFromToken() {
           };
 
           if (token !== null && token !== undefined) {
-                    const jwtData = token!.split(".")[1]
+
+                    const jwtData = token.split(".")[1]
                     let decodedJwtJsonData: string = ""
+                    let decodedJwtData: Role = {
+                              "sub": 1,
+                              "user": "",
+                              "iat": 1
+                    }
+
                     try {
                               decodedJwtJsonData = window.atob(jwtData)
+                              decodedJwtData = JSON.parse(decodedJwtJsonData)
                     } catch (error: any) {
                               console.log(error.message)
                               validated = false
                               return false
                     }
-                    const decodedJwtData = JSON.parse(decodedJwtJsonData)
 
                     validate(decodedJwtData)
                     console.log("validated: ", validated);
-
 
                     if (validated) {
                               return true
