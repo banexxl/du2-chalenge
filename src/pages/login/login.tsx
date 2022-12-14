@@ -10,20 +10,16 @@ import { useTranslation } from 'react-i18next'
 import { logIn } from "store/userSlice"
 import { useDispatch } from 'react-redux'
 import { Alert, Snackbar } from '@mui/material'
-import { useSelector } from 'react-redux'
 
 function Login() {
 
           const { t } = useTranslation();
 
-          const isLoggedIn: any = useSelector(logIn)
           const dispatch = useDispatch()
           const navigate = useNavigate()
           const loginUser = userServices.loginUser
           const [notifySuccess, setNotifySuccess] = useState(false);
           const [notifyFail, setNotifyFail] = useState(false);
-
-          console.log(isLoggedIn);
 
 
           const handleClose = () => {

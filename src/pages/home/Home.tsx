@@ -31,7 +31,6 @@ const Home = () => {
                     })
           }
 
-
           useEffect(() => {
                     setOpenBackdrop(true)
                     getAllItems()
