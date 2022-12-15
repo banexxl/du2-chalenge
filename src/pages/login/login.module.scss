@@ -113,3 +113,17 @@
   text-align: left;
   margin-top: 0.25rem;
 }
+
+@media(0px <= width <= 600px){
+.login_container{
+          width: 60vw;
+}
+}
+
+
+@media(0px <= width <= 800px){
+.login_title{
+          font-size: medium;
+}
+}
+
