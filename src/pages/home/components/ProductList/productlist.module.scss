@@ -5,10 +5,23 @@
           max-width: 80vw;
           max-height: 60vh;
           overflow: auto;  
+          margin: 20px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.product_list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 @media (max-width: 500px){
   .product_list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
