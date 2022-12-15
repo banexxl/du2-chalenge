@@ -112,17 +112,14 @@ function ItemDetails() {
                                                                                 }}>Add to cart</Button>
                                                             }
                                                             {
-                                                                      !validated ? null :
-                                                                                (
-                                                                                          !inWishList ?
-                                                                                                    <div onClick={addToWL}>
-                                                                                                              <WishlistBadge />
-                                                                                                    </div>
-                                                                                                    :
-                                                                                                    <div onClick={removeFromWL}>
-                                                                                                              <WishlistBadgeListed />
-                                                                                                    </div>
-                                                                                )
+                                                                      !inWishList ?
+                                                                                <div onClick={addToWL}>
+                                                                                          <WishlistBadge />
+                                                                                </div>
+                                                                                :
+                                                                                <div onClick={removeFromWL}>
+                                                                                          <WishlistBadgeListed />
+                                                                                </div>
                                                             }
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>

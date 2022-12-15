@@ -1,0 +1,4 @@
+{
+          "typescript.format.insertSpaceAfterTypeAssertion": true,
+          "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true
+}
