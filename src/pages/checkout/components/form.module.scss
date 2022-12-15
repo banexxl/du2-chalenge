@@ -91,3 +91,9 @@ select.input-error {
 button:disabled {
   opacity: 0.35;
 }
+
+@media(0px <= width <= 500px){
+          .form_modal{
+                    width: 60%;
+          }
+}
