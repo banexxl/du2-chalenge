@@ -1,6 +1,6 @@
 import { AppLayout } from "components/Layouts";
 import Headline from "components/Headline";
-import styles from "./cart.module.css";
+import styles from "./cart.module.scss";
 import CartItem from "./components/CartItem";
 import CartTotals from "./components/CartTotals";
 import Button from "components/Button";
@@ -41,7 +41,7 @@ const CartView = () => {
                                         <div className={styles.cartTotalWrapp}>
                                                   <CartTotals />
                                                   <Link to={"/checkout"}>
-                                                            < Button className={styles.proceedBtn}>Checkout</Button>
+                                                            <Button className={styles.proceedBtn}>Checkout</Button>
                                                   </Link>
                                         </div>
                               </div>

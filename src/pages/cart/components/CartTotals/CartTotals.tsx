@@ -15,8 +15,8 @@ const CartTotals = () => {
 
           return (
                     <div className={styles.cartTotal}>
-                              <div className={styles.cart_content}>
-                                        <h4>Cart totals</h4>
+                              <div className={styles.title_head}>
+                                        <h4 className={styles.title_head}>Cart totals</h4>
                                         <table>
                                                   <thead>
                                                             <tr>

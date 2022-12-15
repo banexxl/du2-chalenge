@@ -1,3 +1,5 @@
+@use "../../global.scss" as globalVariables;
+
 .cartPage {
     display: grid;
     margin: 2.375rem 0;
@@ -5,19 +7,21 @@
     grid-template-columns: 1fr 400px;  /* repeat(2,minmax(0,1fr)) */
 }
 .cartItems {
-    margin-top: 30px;
+    margin: 30px;
 }
+
 .proceedBtn {
-  margin-top: 20px;
-  background:#232326;
+  background: globalVariables.$color-primary;
   color: #fff;
   font-size: 16px;
+  width: 100px;
 }
 
 .cartTotalWrapp {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    margin:20px;
+    align-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -30,7 +34,7 @@
 
 .button_clear_all{
 position: relative;
-margin-top: 20px;
-left: 30%;
+margin-right: auto;
+margin-left: auto;
 width: 100px;
 }
