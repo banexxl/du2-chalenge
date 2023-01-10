@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { ProductFilterCategory } from './components/ProductFilterCategory';
 import { ProductSort } from './components/ProductSort';
 import { ProductListSearch } from './components/ProductListSearch';
+import Button from 'components/Button'
 
 const Home = () => {
 
@@ -118,6 +119,7 @@ const Home = () => {
                                                   <div className={productContainerStyles.search}>
                                                             <ProductListSearch searchValueSelected={onSearchValueSelected} />
                                                   </div>
+                                                  <Button style={{ maxWidth: '150px' }} onClick={() => setFilteredValues(data)}>Clear Filters</Button>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {

@@ -125,6 +125,13 @@ function ItemDetails() {
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
                                                             Category: {data.category}
                                                   </div>
+                                                  <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'lightblue' }}>
+                                                            Description:
+                                                  </div>
+                                                  <br />
+                                                  <div style={{ fontSize: '1.5rem' }}>
+                                                            {data.description}
+                                                  </div>
                                         </div>
                               </div>
                     </AppLayout >

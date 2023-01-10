@@ -8,13 +8,13 @@ export default function ProductFilterCategory(props: any) {
 
           return (
 
-                    <FormControl sx={{ m: 1, minWidth: 80 }}>
-                              <InputLabel id="demo-simple-select-autowidth-label">Filter</InputLabel>
+                    <FormControl sx={{ minWidth: 120 }}>
+                              <InputLabel id="demo-simple-select-autowidth-label">Categories</InputLabel>
                               <Select
                                         labelId="demo-simple-select-autowidth-label"
                                         id="demo-simple-select-autowidth"
                                         autoWidth
-                                        label="Filter"
+                                        label="Categories"
                                         onChange={onFilterValueChanged}
                                         defaultValue={""}
                               >
