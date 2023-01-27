@@ -1,14 +1,20 @@
-describe('Jedan obican test :)', () => {
+describe('Successfull Login Test', () => {
           it('passes', () => {
                     cy.visit('http://localhost:3000/')
 
+                    //cekamo proizvode
+                    cy.wait(5000)
+
+                    //login stranica
                     cy.get('[href="/auth/login"]').click()
 
-                    cy.get('.login_login_button__pOUWU').click()
+                    //click na login dugme
+                    cy.get('.LoginBadge_user_badge__Gw66c').click()
+
                     cy.get('#username').type("sdsdsd")
                     cy.get('#password').type("sdsdsd")
 
-                    cy.get('.login_login_button__pOUWU').click()
+                    cy.get('.login_login_button__gKM7I').click()
 
 
                     cy.get('.MuiAlert-message').contains("Invalid username and/or password!")
@@ -20,12 +26,11 @@ describe('Jedan obican test :)', () => {
                     cy.get('#password').type("83r5^_")
 
 
-                    cy.get('.login_login_button__pOUWU').click()
+                    cy.get('.login_login_button__gKM7I').click()
 
-                    cy.get('.headerStyles_user_actions__uujbj > :nth-child(2) > a')
+                    cy.get('.MuiAlert-message').contains('Successfully logged in')
 
-                    cy.get('.headerStyles_user_actions__uujbj > :nth-child(1)').click()
-
+                    cy.wait(3000)
 
           })
 })
