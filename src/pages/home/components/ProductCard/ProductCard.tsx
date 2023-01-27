@@ -31,7 +31,7 @@ function ProductCard(product: any) {
                     <div className={productCardStyle.card_box}>
                               {
                                         addToCartAlert ?
-                                                  <Alert variant="filled" severity="success" style={{ position: 'absolute', top: '0px' }}>
+                                                  <Alert variant="filled" severity="success" style={{ position: 'fixed', top: '0px', alignContent: 'center' }}>
                                                             Successfully added to cart!
                                                   </Alert>
                                                   :
