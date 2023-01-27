@@ -1,5 +1,6 @@
 import userCardStyle from "./usercard.module.scss"
 import UserBadgeLarge from "components/Badges/UserBadgeLarge"
+import { t } from "i18next"
 
 
 function UserCard(user: any) {
@@ -11,28 +12,28 @@ function UserCard(user: any) {
                               </div>
                               <div className={userCardStyle.user_details_container}>
                                         <span className={userCardStyle.title}>
-                                                  User details:
+                                                  {t("user_details")}:
                                         </span>
                                         <span className={userCardStyle.user_details}>
-                                                  First name:
+                                                  {t("first_name")}:
                                         </span>  {user.firstname}
                                         <span className={userCardStyle.user_details}>
-                                                  Last name:
+                                                  {t("last_name")}:
                                         </span>{user.lastname}
                                         <span className={userCardStyle.user_details}>
-                                                  City:
+                                                  {t("city")}:
                                         </span>{user.city}
                                         <span className={userCardStyle.user_details}>
-                                                  ZIP:
+                                                  {t("zip")}:
                                         </span>{user.zipcode}
                                         <span className={userCardStyle.user_details}>
-                                                  Street:
+                                                  {t("street")}:
                                         </span>  {user.street} {user.number}
                                         <span className={userCardStyle.user_details}>
-                                                  Email:
+                                                  {t("email")}:
                                         </span>{user.email}
                                         <span className={userCardStyle.user_details}>
-                                                  Phone number:
+                                                  {t("phone")}:
                                         </span>{user.phone}
                               </div>
                     </div>

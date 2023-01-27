@@ -16,10 +16,11 @@ import { clearCart } from "store/cartSlice"
 import { clearWishList } from "store/wishListSlice"
 import getRolesFromToken from "../../utils/jwtDecoder"
 import { Alert, Snackbar } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export const Header = () => {
 
-
+          const { t } = useTranslation();
           const validated = getRolesFromToken()
           const [userValidated, setUserValidated] = useState(false)
 
@@ -59,7 +60,7 @@ export const Header = () => {
                                                   </div>
                                                   <div>
                                                             <Link to={"/"} className={headerStyles.nav_item}>
-                                                                      Home
+                                                                      {t("home")}
                                                             </Link>
                                                             {
                                                                       userValidated ?

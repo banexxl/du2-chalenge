@@ -32,7 +32,7 @@ function WishList() {
                                                   })
                                         }
                               </div>
-                              <Button style={{ width: '200px' }} onClick={() => dispatch(clearWishList())}>Clear wish list</Button>
+                              <Button style={{ width: '200px' }} onClick={() => dispatch(clearWishList())}>{t("clear_wishlist")}</Button>
                     </AppLayout>
           )
 }

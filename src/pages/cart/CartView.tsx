@@ -20,7 +20,7 @@ const CartView = () => {
           return (
                     <AppLayout>
                               <Headline title={t("cart")} />
-                              <Button className={styles.button_clear_all} onClick={() => dispatch(clearCart())}>Clear Cart</Button>
+                              <Button className={styles.button_clear_all} onClick={() => dispatch(clearCart())}>{t("clear_cart")}</Button>
                               <div className={styles.cartPage}>
 
                                         <div className={styles.cartItems}>
@@ -41,7 +41,7 @@ const CartView = () => {
                                         <div className={styles.cartTotalWrapp}>
                                                   <CartTotals />
                                                   <Link to={"/checkout"}>
-                                                            <Button className={styles.proceedBtn}>Checkout</Button>
+                                                            <Button className={styles.proceedBtn}>{t("checkout")}</Button>
                                                   </Link>
                                         </div>
                               </div>

@@ -119,7 +119,7 @@ const Home = () => {
                                                   <div className={productContainerStyles.search}>
                                                             <ProductListSearch searchValueSelected={onSearchValueSelected} />
                                                   </div>
-                                                  <Button style={{ maxWidth: '150px' }} onClick={() => setFilteredValues(data)}>Clear Filters</Button>
+                                                  <Button style={{ maxWidth: '150px' }} onClick={() => setFilteredValues(data)}>{t("clear_filters")}</Button>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {

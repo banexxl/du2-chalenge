@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearCart } from "store/cartSlice";
+import { t } from "i18next";
 
 const styleModal = {
           position: 'absolute' as 'absolute',
@@ -65,7 +66,7 @@ const BasicForm = () => {
 
           return (
                     <form onSubmit={handleSubmit} autoComplete="off" className={formStyle.form_modal}>
-                              <label htmlFor="firstName" className={formStyle.form_label}>First name</label>
+                              <label htmlFor="firstName" className={formStyle.form_label}>{t("first_name")}:</label>
                               <input
                                         value={values.firstName}
                                         onChange={handleChange}
@@ -76,7 +77,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.firstName && touched.firstName && <p className={formStyle.error}>{errors.firstName}</p>}
-                              <label htmlFor="lastName" className={formStyle.form_label}>Last name</label>
+                              <label htmlFor="lastName" className={formStyle.form_label}>{t("last_name")}:</label>
                               <input
                                         value={values.lastName}
                                         onChange={handleChange}
@@ -86,7 +87,7 @@ const BasicForm = () => {
                                         onBlur={handleBlur}
                               />
                               {errors.lastName && touched.lastName && <p className={formStyle.error}>{errors.lastName}</p>}
-                              <label htmlFor="streeAddress" className={formStyle.form_label}>Address</label>
+                              <label htmlFor="streeAddress" className={formStyle.form_label}>{t("street")}:</label>
                               <input
                                         value={values.streeAddress}
                                         onChange={handleChange}
@@ -97,7 +98,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.streeAddress && touched.streeAddress && <p className={formStyle.error}>{errors.streeAddress}</p>}
-                              <label htmlFor="city" className={formStyle.form_label}>City</label>
+                              <label htmlFor="city" className={formStyle.form_label}>{t("city")}:</label>
                               <input
                                         value={values.city}
                                         onChange={handleChange}
@@ -108,7 +109,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.city && touched.city && <p className={formStyle.error}>{errors.city}</p>}
-                              <label htmlFor="zipCode" className={formStyle.form_label}>ZIP code</label>
+                              <label htmlFor="zipCode" className={formStyle.form_label}>{t("zip")}:</label>
                               <input
                                         value={values.zipCode}
                                         onChange={handleChange}
@@ -119,7 +120,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.zipCode && touched.zipCode && <p className={formStyle.error}>{errors.zipCode}</p>}
-                              <label htmlFor="phone" className={formStyle.form_label}>Mobile phone</label>
+                              <label htmlFor="phone" className={formStyle.form_label}>{t("phone")}:</label>
                               <input
                                         value={values.phone}
                                         onChange={handleChange}
@@ -130,7 +131,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.phone && touched.phone && <p className={formStyle.error}>{errors.phone}</p>}
-                              <label htmlFor="email" className={formStyle.form_label}>Email</label>
+                              <label htmlFor="email" className={formStyle.form_label}>{t("email")}:</label>
                               <input
                                         value={values.email}
                                         onChange={handleChange}
@@ -142,7 +143,7 @@ const BasicForm = () => {
                               />
                               {errors.email && touched.email && <p className={formStyle.error}>{errors.email}</p>}
                               <button disabled={isSubmitting} type="submit" onClick={handleOpen}>
-                                        Submit
+                                        {t("submit")}
                               </button>
                               <Modal
                                         open={openModal}
@@ -152,10 +153,10 @@ const BasicForm = () => {
                               >
                                         <Box sx={styleModal}>
                                                   <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            Thank you!
+                                                            {t("thank_you")}
                                                   </Typography>
                                                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                                            We will inform you when the package is on its way!
+                                                            {t("package_confirm_message")}
                                                   </Typography>
                                         </Box>
                               </Modal>

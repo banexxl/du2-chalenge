@@ -3,6 +3,7 @@ import { removeFromWishList } from "../../../store/wishListSlice"
 import { useDispatch } from "react-redux"
 import Button from "components/Button";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 
 function ProductCard(product: any) {
@@ -19,7 +20,7 @@ function ProductCard(product: any) {
                                         {product.title}
                               </div>
                               <Button className={wishListCardStyle.remove_from_wishlist} onClick={() => dispatch(removeFromWishList(product))}>
-                                        Remove from wish list
+                                        {t("remove_from_wishlist")}
                               </Button>
                     </div>
           )
