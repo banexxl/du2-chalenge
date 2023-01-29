@@ -9,12 +9,12 @@ describe('Successfull Login Test', () => {
                     cy.get('[href="/auth/login"]').click()
 
                     //click na login dugme
-                    cy.get('.LoginBadge_user_badge__Gw66c').click()
+                    cy.get('#loginbadge').click()
 
                     cy.get('#username').type("sdsdsd")
                     cy.get('#password').type("sdsdsd")
 
-                    cy.get('.login_login_button__gKM7I').click()
+                    cy.get('#buttonlogin').click()
 
 
                     cy.get('.MuiAlert-message').contains("Invalid username and/or password!")
@@ -26,7 +26,7 @@ describe('Successfull Login Test', () => {
                     cy.get('#password').type("83r5^_")
 
 
-                    cy.get('.login_login_button__gKM7I').click()
+                    cy.get('#buttonlogin').click()
 
                     cy.get('.MuiAlert-message').contains('Successfully logged in')
 

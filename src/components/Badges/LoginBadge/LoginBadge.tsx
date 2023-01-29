@@ -6,7 +6,7 @@ import SvgIcon from "components/Badges/SvgIcon";
 const LoginBadge = () => {
           return (
                     <Link to={"/auth/login"}>
-                              <span className={styles.user_badge}>
+                              <span id="loginbadge" className={styles.user_badge}>
                                         <SvgIcon type="login" className={styles.user_icon} />
                               </span>
                     </Link>
