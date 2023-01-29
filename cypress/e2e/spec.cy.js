@@ -5,15 +5,15 @@ describe('Checkout Test', () => {
                     cy.wait(5000)
 
                     //add products
-                    cy.get(':nth-child(1) > .button_btn__7rFQD').click()
-                    cy.get(':nth-child(1) > .button_btn__7rFQD').click()
-                    cy.get(':nth-child(1) > .button_btn__7rFQD').click()
+                    cy.get('Button[id="add2cart"]').eq(0).click()
+                    cy.get('Button[id="add2cart"]').eq(1).click()
+                    cy.get('Button[id="add2cart"]').eq(2).click()
 
                     //cart button
-                    cy.get('.container_container__wmKTy > :nth-child(1) > .headerStyles_header_content__tAwG5 > :nth-child(3) > a').click()
+                    cy.get('span[id="cartbadge"]').click()
 
                     //checkout button
-                    cy.get('a > .button_btn__7rFQD').click()
+                    cy.get('Button[id="checkout"]').click()
 
                     //form
                     cy.get('#firstName').type("Branislav")
@@ -27,7 +27,7 @@ describe('Checkout Test', () => {
                     cy.get('#phone').click()
 
                     //provera error poruke
-                    cy.get('.form_error__cReGm').contains("Please enter a valid email")
+                    cy.contains("Please enter a valid email")
 
                     cy.get('#email').clear()
                     cy.get('#email').type("damjanovic.branislav@gmail.com")

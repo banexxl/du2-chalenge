@@ -41,7 +41,7 @@ const CartView = () => {
                                         <div className={styles.cartTotalWrapp}>
                                                   <CartTotals />
                                                   <Link to={"/checkout"}>
-                                                            <Button className={styles.proceedBtn}>{t("checkout")}</Button>
+                                                            <Button id="checkout" className={styles.proceedBtn}>{t("checkout")}</Button>
                                                   </Link>
                                         </div>
                               </div>

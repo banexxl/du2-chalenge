@@ -142,7 +142,7 @@ const BasicForm = () => {
                                         className={errors.email && touched.email ? "input-error" : ""}
                               />
                               {errors.email && touched.email && <p className={formStyle.error}>{errors.email}</p>}
-                              <button disabled={isSubmitting} type="submit" onClick={handleOpen}>
+                              <button id="submitform" disabled={isSubmitting} type="submit" onClick={handleOpen}>
                                         {t("submit")}
                               </button>
                               <Modal

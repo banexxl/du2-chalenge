@@ -56,7 +56,7 @@ function ProductCard(product: any) {
                                                   emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                         />
                               </div>
-                              <Button className={productCardStyle.add_to_cart} onClick={onClickHandler}>
+                              <Button id="add2cart" className={productCardStyle.add_to_cart} onClick={onClickHandler}>
                                         {t("add_to_cart")}
                               </Button>
                     </div >
