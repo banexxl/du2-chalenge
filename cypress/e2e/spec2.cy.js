@@ -3,7 +3,7 @@ describe('Successfull Login Test', () => {
                     cy.visit('http://localhost:3000/')
 
                     //cekamo proizvode
-                    cy.wait(5000)
+                    cy.wait(3000)
 
                     //login stranica
                     cy.get('[href="/auth/login"]').click()
@@ -27,10 +27,7 @@ describe('Successfull Login Test', () => {
 
 
                     cy.get('#buttonlogin').click()
-                    cy.wait(1500)
                     cy.get('.MuiAlert-message').contains('Successfully logged in')
-
-                    cy.wait(3000)
 
           })
 })
