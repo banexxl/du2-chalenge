@@ -17,4 +17,5 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: npm i
+      - run: npm run start
       - run: npx cypress run
