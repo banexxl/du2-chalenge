@@ -1,5 +1,7 @@
 {
           "eslint.format.enable": true,
           "prettier.jsxSingleQuote": true,
-          "editor.formatOnSave": true
+          "editor.formatOnSave": true,
+          "typescript.format.insertSpaceAfterTypeAssertion": true,
+          "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true
 }

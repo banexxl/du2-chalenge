@@ -11,12 +11,10 @@ import { useTranslation } from 'react-i18next';
 import { ProductFilterCategory } from './components/ProductFilterCategory';
 import { ProductSort } from './components/ProductSort';
 import { ProductListSearch } from './components/ProductListSearch';
-// import { useSelector } from 'react-redux';
-// import { logIn } from "store/userSlice"
+import Button from 'components/Button'
 
 const Home = () => {
 
-          // const isLoggedIn: any = useSelector(logIn)
           const [data, setData] = useState([])
           const basehttpservice = BaseHttpService
           const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -121,6 +119,7 @@ const Home = () => {
                                                   <div className={productContainerStyles.search}>
                                                             <ProductListSearch searchValueSelected={onSearchValueSelected} />
                                                   </div>
+                                                  <Button style={{ maxWidth: '150px' }} onClick={() => setFilteredValues(data)}>{t("clear_filters")}</Button>
                                         </div>
                                         <div className={productContainerStyles.product_list}>
                                                   {

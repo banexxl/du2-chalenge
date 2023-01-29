@@ -2,7 +2,7 @@ import QuantityButton from "components/QuantityButton/QuantityButton";
 import SvgIcon from "components/Badges/SvgIcon";
 import { ICartItem } from "interfaces";
 import { useDispatch } from "react-redux";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { removeAllSingleItems } from "store/cartSlice";
 
 interface ICartProps extends ICartItem {
@@ -30,11 +30,13 @@ const CartItem = ({
                                                   {price} x {quantity}
                                         </span>
                               </div>
+
                               <QuantityButton quantity={quantity} id={id} />
                               <div>sum: ${(price * quantity).toFixed(2)}</div>
                               <span onClick={() => { dispatch(removeAllSingleItems(id)) }} className={styles.remove_all_single_items}>
                                         <SvgIcon type="remove" width={20} height={20} color="#928F8F" />
                               </span>
+
                     </div>
           );
 };

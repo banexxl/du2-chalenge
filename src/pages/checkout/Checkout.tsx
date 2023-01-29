@@ -13,8 +13,8 @@ function Checkout() {
                     <AppLayout>
                               <Headline title={t("checkout")} />
                               <div className={checkoutStyle.checkout_container}>
-                                        <CheckoutForm />
                                         <CartTotals />
+                                        <CheckoutForm />
                               </div>
                     </AppLayout >
           )

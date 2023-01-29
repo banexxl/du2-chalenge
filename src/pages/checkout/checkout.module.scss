@@ -3,3 +3,9 @@
           justify-content: space-around;
           align-items: center;
 }
+
+@media(0px <= width <= 700px){
+          .checkout_container{
+                    flex-direction: column;
+          }
+}

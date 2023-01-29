@@ -1,10 +1,11 @@
 @use "../../global.scss" as globalVariables;
 
 .headline{
-    margin: 0;
+    margin: 20px;
     padding: 20px;
     background-color: globalVariables.$color-primary;
     font-size: 25px;
     border-radius: 20px;
     text-align: center;
+    color: white;
 }

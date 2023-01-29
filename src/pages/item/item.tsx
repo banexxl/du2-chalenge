@@ -26,7 +26,7 @@ function ItemDetails() {
           const productServices = ProducServices
           const dataRating = data.rating
           const [openBackdrop, setOpenBackdrop] = useState(false);
-          const validated = getRolesFromToken()
+          // const validated = getRolesFromToken()
 
           const getProduct = () => {
 
@@ -92,10 +92,10 @@ function ItemDetails() {
                                                             {data.title}
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_rate}>
-                                                            Rating: {dataRating?.rate}
+                                                            {t("rating")}: {dataRating?.rate}
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_price}>
-                                                            Price: {data.price}$
+                                                            {t("price")}: {data.price}$
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_cart}>
                                                             {
@@ -109,24 +109,28 @@ function ItemDetails() {
                                                                                 :
                                                                                 <Button onClick={() => {
                                                                                           dispatch(addToCart(data))
-                                                                                }}>Add to cart</Button>
+                                                                                }}>{t("add_to_cart")}</Button>
                                                             }
                                                             {
-                                                                      !validated ? null :
-                                                                                (
-                                                                                          !inWishList ?
-                                                                                                    <div onClick={addToWL}>
-                                                                                                              <WishlistBadge />
-                                                                                                    </div>
-                                                                                                    :
-                                                                                                    <div onClick={removeFromWL}>
-                                                                                                              <WishlistBadgeListed />
-                                                                                                    </div>
-                                                                                )
+                                                                      !inWishList ?
+                                                                                <div onClick={addToWL}>
+                                                                                          <WishlistBadge />
+                                                                                </div>
+                                                                                :
+                                                                                <div onClick={removeFromWL}>
+                                                                                          <WishlistBadgeListed />
+                                                                                </div>
                                                             }
                                                   </div>
                                                   <div className={itemDetailsStyles.item_details_description_container_category}>
-                                                            Category: {data.category}
+                                                            {t("category")}: {data.category}
+                                                  </div>
+                                                  <div className={itemDetailsStyles.item_details_description_container_description_title}>
+                                                            {t("description")}:
+                                                  </div>
+                                                  <br />
+                                                  <div className={itemDetailsStyles.item_details_description_container_description}>
+                                                            {data.description}
                                                   </div>
                                         </div>
                               </div>

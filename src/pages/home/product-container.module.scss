@@ -15,5 +15,15 @@
 
 .filter_container{
           display: flex;
-          height: 80px;
+          justify-content: start;
+          align-items: center;
+          flex-wrap: wrap;
+          max-height: 200px;
+          margin: 20px;
+}
+
+@media(0px <= width <= 600px){
+          .filter_container{
+                    max-width: 400px;
+          }
 }

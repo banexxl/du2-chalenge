@@ -93,7 +93,8 @@ function Login() {
                                                             />
                                                             {errors.password && touched.password && <p className={loginStyles.error}>{errors.password}</p>}
                                                   </div>
-
+                                                  username: mor_2314
+                                                  password: 83r5^_
                                                   <button type="submit" className={loginStyles.login_button}>Login</button>
                                         </form>
 
