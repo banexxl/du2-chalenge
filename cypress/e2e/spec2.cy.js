@@ -16,7 +16,7 @@ describe('Successfull Login Test', () => {
 
                     cy.get('#buttonlogin').click()
 
-
+                    cy.wait(3000)
                     cy.get('.MuiAlert-message').contains("Invalid username and/or password!")
 
                     cy.get('#username').clear()
@@ -27,7 +27,7 @@ describe('Successfull Login Test', () => {
 
 
                     cy.get('#buttonlogin').click()
-
+                    cy.wait(3000)
                     cy.get('.MuiAlert-message').contains('Successfully logged in')
 
                     cy.wait(3000)
