@@ -2,7 +2,7 @@ describe('Checkout Test', () => {
           it('passes', () => {
                     cy.visit('http://localhost:3000/')
 
-                    cy.wait(3000)
+                    cy.wait(5000)
 
                     //add products
                     cy.get('Button[id="add2cart"]').eq(0).click()
